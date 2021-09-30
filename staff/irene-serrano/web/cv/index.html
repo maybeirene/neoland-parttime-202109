@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header>
-        <h1>Donald Trump 🐥</h1>
+        <h1 class="header-title">Donald Trump 🐥</h1>
       ​
         <img
-        width="300"
+        class="header-img"
         src="https://pm1.narvii.com/6633/3b077aa5359e9a4a667881d9a7e77eeafd838cf4_hq.jpg" 
         alt="belcebu"/>
-        <address>
+        <address class="header-address">
             <a href="mailto:trump@donald.com">trump@donald.com</a><br>
             34 Calvario Ave<br>
             Infierno, NY<br>
@@ -25,7 +26,7 @@
 
     </header>
 
-    <section>
+    <section class="experiencia-container">
         <h2>Experiencia</h2>
         ​
         <ul>
@@ -53,10 +54,11 @@
         </ul>
     </section>
   
-    <section>
+    <section class="formacion-container">
         <h2>Formación</h2>
-
-        <figure>
+      <!-- i know we're practising semantic html but i dont think another section will be the best solution-->
+        <div class="figure_container">
+          <figure>
             <h3>Master Big Data</h3>
             <a href="https://cdn.discordapp.com/attachments/731183507455606824/892483556788568064/canva-azul-y-dorado-con-borde-terminaciC3B3n-certificado-7LDIQp8YfRo.png" target="_blank">
                 <img width="200"
@@ -64,9 +66,9 @@
             alt="certificado">
             </a>
             <figcaption>Pompeu Fabra - Septiembre 2007</figcaption>
-        </figure>
+          </figure>
 
-        <figure>
+          <figure>
             <h3>Grado Ingeniería Mecánica</h3>
             <a href="https://cdn.discordapp.com/attachments/731183507455606824/892483556788568064/canva-azul-y-dorado-con-borde-terminaciC3B3n-certificado-7LDIQp8YfRo.png" target="_blank">
             <img width="200"
@@ -74,12 +76,15 @@
             alt="certificado">
             </a>
             <figcaption>UCAM - Junio 2005</figcaption>
-        </figure>
+          </figure>
+
+        </div>
+        
         ​
         
     </section>  
 
-    <section>
+    <section class="form-container">
       <h2>¿Alguna pregunta?</h2>
       <p>Rellena el formulario y enseguida te contestaremos</p>
       ​
@@ -107,8 +112,8 @@
       </form>
     </section>
 
-    <section>
-        <h2>Si has llegado hasta aquí te lo mereces</h2>
+    <section class="extra-container">
+        <h2>Si has llegado hasta aquí, te lo mereces:</h2>
       ​
         <iframe
         width="560"
