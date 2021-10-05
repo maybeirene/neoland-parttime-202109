@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+:root{
+	--color_primary: #345AED;
+	--color_lightgrey:  #eee;
+	--color_darkgrey:  #aaa;
+}
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    min-width: 400px;
+}
+.header__container{
+	background: var(--color_primary);
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-flow: column;
+}
+
+.header__info{
+    max-height: 70px;
+    width: 50vw;
+    margin:0 auto;
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    padding-top: 10px;
+}
+.header__info button{
+    padding: 5px;
+    background: white;
+    color:var(--color_primary);
+
+}
+
+.header__logo{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    padding: 25px 0;
+}
+
+.header__nav ul{
+    padding: 5px 0 25px;
+	display: flex;
+    flex-direction: row;
+	list-style: none;
+    justify-content: space-around;
+    font-family: 'Roboto', sans-serif;
+}
+ 
+.header__nav a{
+    text-decoration: none;
+    
+    color:white;
+
+}
+
+.header__nav li {
+    display: inline-block;
+}
+
+.main__container{
+    min-width: 500px;
+    width:60vw;
+    margin:30px auto;
+
+    display:grid;
+    grid-template-columns: repeat(8, 1fr); 
+    column-gap: 25px;
+}
+.main__container img{
+    width: 100%;
+}
+.main__column--1{
+    grid-column: 1/4;
+}
+.main__column--2{
+    grid-column: 4/7;
+}
+.main__column--3{
+    grid-column: 7/9;
+}
+[class^='main__card--']{
+    padding: 10px 5px 0 5px;
+    margin-bottom: 25px;
+    background: var(--color_lightgrey);
+    border-top: 1px solid var(--color_darkgrey);
+}
+[class^='main__card--'] span,h2{
+    display: inline;
+    margin: 0 10px 10px 10px;
+}
+[class^='main__card--'] span{
+    color: var(--color_primary);
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+[class^='main__card--'] h2{
+   
+    font-weight: normal;
+}
+
+/* === RESPONSIVE FONTS ===*/
+
+.responsive__font--big{
+    font-size: 1.6vw;
+}
+.responsive__font--small{
+    font-size: 1.1vw;
+}
