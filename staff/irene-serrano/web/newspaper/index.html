@@ -9,10 +9,10 @@
 </head>
 <body>
     
-	<header class="header__container">
+	<header class="header">
 		<div class="header__info">
 			<p>Sábado, 2 de Octubre de 2021</p>
-			<button>Suscríbete</button>
+			<button class="header__info-button">Suscríbete</button>
 		</div>
 		<div class="header__logo">
 			<h1>EL🌐MUNDO</h1>
@@ -32,49 +32,62 @@
 		</nav>
 	</header>
 
-	<main class="main__container">
+	<main class="main">
 
-        <div class="main__column--1 ">
-            <section class="main__card--1 responsive__font--big">
-                <span class="card__info card__info--main">Leopoldo López.</span>
-                <h2 class="card__info" >"Laya dividió a los sectores democráticos en Venezuela y eso tuvo lamentables consecuencias"</h2>
-            </section>
-            <section class="main__card--2 responsive__font--small">
-                <span class="card__info card__info--main">Directo.</span>
-                <h2 class="card__info" >Volcán en La Palma, últimas noticias de la erupción | Una nube de dióxido de azufre del volcán alcanza Puerto Rico y el Caribe</h2>
-            </section>
-        </div>
-        <div class="main__column--2">
-            
-            <section class="main__card--4 responsive__font--big">
-                <img src="https://www.publico.es/uploads/2021/09/25/614f4ebaef3fe.jpeg" alt="">
-                <span class="card__info card__info--main">La Palma.</span>
-                <h2 class="card__info" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, veniam repudiandae. Id aut quod omnis a incidunt voluptas, quis commodi blanditiis recusandae modi? Sint alias neque ratione odio dolorum assumenda!</h2>
-            </section>
-        </div>
+		<div class="main__grid">
+			<div class="main__grid-column-1 ">
+				<article class="grid-item-1 responsive__font--small">
+					<span class="grid-item__title">Leopoldo López.</span>
+                	<h2 class="grid-item__subtitle" >"Laya dividió a los sectores democráticos en Venezuela y eso tuvo lamentables consecuencias"</h2>
+				</article>
+				<article class="grid-item-2 responsive__font--big">
+					<span class="grid-item__title">Directo.</span>
+                	<h2 class="grid-item__subtitle" >Volcán en La Palma, últimas noticias de la erupción | Una nube de dióxido de azufre del volcán alcanza Puerto Rico y el Caribe.</h2>
+				</article>
 
-		<div class="main__column--3">
-			<section class="main__card--3 responsive__font--small">
-                <span class="card__info card__info--main">ESPAÑA.</span>
-                <h2 class="card__info" >Grande-Marlaska es recibido en los actos centrales de la Guardia Civil con abucheos</h2>
-            </section>
-            <section class="main__card--5 responsive__font--small">
-                <span class="card__info card__info--main">LALIGA.</span>
-                <h2 class="card__info" >El Espanyol desnuda al Real Madrid en Cornellà</h2>
-            </section>
-        </div>
+			</div>
+			<div class="main__grid-column-2">
+				<article class="grid-item-1 responsive__font--big">
+					<img class="grid-item__img" src="https://www.publico.es/uploads/2021/09/25/614f4ebaef3fe.jpeg" alt="">
+					<span class="grid-item__title">La Palma.</span>
+                	<h2 class="grid-item__subtitle" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, veniam repudiandae. Id aut quod omnis a incidunt voluptas, quis commodi blanditiis recusandae modi? Sint alias neque ratione odio dolorum assumenda!</h2>
+				</article>
+			
+
+			</div>
+			<div class="main__grid-column-3">
+				<article class="grid-item-1 responsive__font--small">
+					<span class="grid-item__title">España.</span>
+                	<h2 class="grid-item__subtitle" >Grande-Marlaska es recibido en los actos centrales de la Guardia Civil con abucheos.</h2>
+				</article>
+				<article class="grid-item-2 responsive__font--small">
+					<span class="grid-item__title">Laliga.</span>
+                	<h2 class="grid-item__subtitle" >El Espanyol desnuda al Real Madrid en Cornellà.</h2>
+				</article>
+
+			</div>
+		</div>
+
+        
 		
 		
 	</main>
 
 
 	<section class="opinion">
-		<h2 class="opinion__title">Opinión</h2>
+		<h2 class="opinion__title ">Opinión</h2>
 
 		<div class="opinion__container">
-			<div class="opinion__card">
+			<div class="opinion__item">
 				<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod."
+				</p>
+				<span>Pepe Sanchez | Barcelona</span>
+				
+			</div>
+			<div class="opinion__item">
+				<p>
+				" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 				consequat."
@@ -82,34 +95,22 @@
 				<span>Pepito Grillo | Madrid</span>
 				
 			</div>
-			<div class="opinion__card">
+			<div class="opinion__item">
 				<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 				consequat."
 				</p>
-				<span>Pepito Grillo | Madrid</span>
+				<span>Cristina Gil | Ourense</span>
 				
 			</div>
-			<div class="opinion__card">
+			<div class="opinion__item">
 				<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 				consequat."
 				</p>
-				<span>Pepito Grillo | Madrid</span>
-				
-			</div>
-			<div class="opinion__card">
-				<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat."
-				</p>
-				<span>Pepito Grillo | Madrid</span>
+				<span>Pedro Arce | Madrid</span>
 				
 			</div>			
 
