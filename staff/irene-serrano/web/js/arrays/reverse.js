@@ -1,4 +1,4 @@
-var arr1 = [0,1,2,3,4,5];
+
 function arrayReverser (arr){
     var reversedArr;
     var r = 0;
@@ -8,4 +8,3 @@ function arrayReverser (arr){
     }
     return reversedArr;
 }
-console.log(arrayReverser(arr1))

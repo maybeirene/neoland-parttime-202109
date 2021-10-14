@@ -1,4 +1,4 @@
-function indexOfArr(arr, value) {
+function indexOf(arr, value) {
   var index;
   for (var i = 0; i < arr.length; i++) {
     var currentItem = arr[i];

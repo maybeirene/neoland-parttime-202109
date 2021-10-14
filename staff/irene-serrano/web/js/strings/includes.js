@@ -17,7 +17,7 @@ function strSplit(str, separador) {
 }
 
 
-function strIncludes (str, value){
+function includes (str, value){
    var newArr = strSplit(str, ' ');
 
    for(var i = 0; i < newArr.length; i++){

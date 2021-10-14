@@ -1,4 +1,4 @@
-function indexOfStr(str, value) {
+function indexOf(str, value) {
   var index;
   for (var i = 0; i < str.length; i++) {
 

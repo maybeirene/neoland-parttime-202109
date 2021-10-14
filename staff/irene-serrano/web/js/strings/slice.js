@@ -1,3 +1,14 @@
+/* SLICE toma 2 o 3 argumentos. El primero es un string y los otros dos se corresponden a un índice. Slice toma los dos índices y secciona el string entre los caracteres que correspondan, resultando un nuevo string.
+Con este algoritmo conseguimos que:
+    ·Si declaramos los dos argumentos (indice inicial y final):
+        -compruebe si ambos son números: devuelve error si no lo son.
+        -compruebe si el inicial es menor que el final: devuelve error si no lo son.
+        -comprueba que el final no es mayor que el indice mayor del string: devuelve error si lo es.
+    ·Si sólo declaramos uno, lo tosmará como inicial:
+        -Si es positivo, recorrerá el string hasta el final.
+        -Si es negativo, empezará por el final y recorrerá tantos indices hacia atrás como se indique.
+    ·Si por error solo introducimos el string, también devolverá un error, ya que no reconoce los argumentos 2 y 3 como números
+*/
 function sliceStr (str, init, end){
     var newStr = '';
     
@@ -6,15 +17,23 @@ function sliceStr (str, init, end){
         for(let i = realIndex; i< str.length; i++){
             newStr = newStr + str[i];
         }
+    } else if( init > 0 && end == undefined){
+        for(let i = init; i< str.length; i++){
+            newStr = newStr + str[i];
+        }
     } else if ( isNaN(init) || isNaN(end)){
-        console.log('Introduce un índice válido')
+        console.log('Introduce un índice numérico')
     } else if ( end >= str.length || end < 0) {
         console.log('Indique un indice entre 0 y '+ (str.length-1))
     } else if (init > 0 && end > init){
         for(let i = init; i<= end; i++){
             newStr = newStr + str[i];
         }
+    } else if (end < init){
+        console.log('El indice inicial no puede ser superior al final')
     }
 
     return newStr
 }
+
+
