@@ -19,10 +19,14 @@ function strSplit(str, separador) {
 
 function includes (str, value){
    var newArr = strSplit(str, ' ');
-
-   for(var i = 0; i < newArr.length; i++){
-       if (newArr[i] === value) return true
-       else return false
+   var include;
+   for(let i = 0; i<newArr.length; i++){
+       if(newArr[i] !== value){
+           include = false;
+       } else 
+           return include = true;
    }
-    
+   return include
+ 
+
 }

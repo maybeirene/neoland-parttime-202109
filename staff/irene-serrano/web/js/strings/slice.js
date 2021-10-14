@@ -9,7 +9,7 @@ Con este algoritmo conseguimos que:
         -Si es negativo, empezará por el final y recorrerá tantos indices hacia atrás como se indique.
     ·Si por error solo introducimos el string, también devolverá un error, ya que no reconoce los argumentos 2 y 3 como números
 */
-function sliceStr (str, init, end){
+function slice (str, init, end){
     var newStr = '';
     
     if( init < 0 && end == undefined){
@@ -36,4 +36,11 @@ function sliceStr (str, init, end){
     return newStr
 }
 
+console.log('DEMO slice')
+
+var sliced = slice('Quiero 3 manzanas', -8);
+console.log(sliced) //'manzanas'
+
+var sliced = slice('En un lugar de La Mancha, de cuyo nombre no quiero acordarme', 15, 23);
+console.log(sliced) //'La Mancha'
 
