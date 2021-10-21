@@ -9,13 +9,13 @@ SI EXISTE DELETE INDEX lo tendremos en cuenta para calcular el indice en el que 
 
 
 
-function spliceArr (arr, init, deleteIndex, value){
+function splice (arr, init, deleteIndex, value){
     var newArr = [];
     var j = 0;
     console.log(arr)
     //debugger
     if( typeof(arr) !== 'object'){
-        console.log('Introduce un array')
+        console.error('Introduce un array')
         
     } else if (typeof(deleteIndex) === 'number'){
 
@@ -66,4 +66,4 @@ function spliceArr (arr, init, deleteIndex, value){
 
 }
 
-spliceArr([1,2,3,4,5,6,7,8,9], 4, 0,'Melón')
+splice([1,2,3,4,5,6,7,8,9], 4, 0,'Melón')
