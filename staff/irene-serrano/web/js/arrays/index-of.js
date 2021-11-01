@@ -4,6 +4,7 @@ function indexOf(arr, value) {
     var currentItem = arr[i];
     if (currentItem === value) {
       index = i;
+      return index
     } else {
       index = -1;
     }

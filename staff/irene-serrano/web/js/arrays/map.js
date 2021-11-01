@@ -1,14 +1,10 @@
-function map(array, callback){
+function map(array, callback) {
+  var result = [];
 
-    var result = []
+  for (var i = 0; i < array.length; i++) {
+    var element = array[i];
 
-    for ( var i = 0; i < array.length; i++){
-
-        var element = array[i]
-
-
-        result[i] = callback(element, i, array)
-         
-    }
-return result
+    result[i] = callback(element, i, array);
+  }
+  return result;
 }

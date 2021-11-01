@@ -1,6 +1,6 @@
-console.log('TEST slice')
-
-console.log('case 1')
+console.log('--- TEST SLICE ---')
+ 
+console.log('CASE 1')
 
 var animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 var res = slice(animals, 2)
@@ -16,11 +16,11 @@ if (res instanceof Array
     && animals[2] === 'camel'
     && animals[3] === 'duck'
     && animals[4] === 'elephant')
-    console.log('test ok')
-else
-    console.error('test ko')
+    
+  console.log("✅");
+  else console.error("🖕");
 
-console.log('case 2')
+console.log('CASE 2')
 
 var animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 var res = slice(animals, 2, 4)
@@ -35,11 +35,11 @@ if (res instanceof Array
     && animals[2] === 'camel'
     && animals[3] === 'duck'
     && animals[4] === 'elephant')
-    console.log('test ok')
-else
-    console.error('test ko')
+    
+  console.log("✅");
+  else console.error("🖕");
 
-console.log('case 3')
+console.log('CASE 3')
 
 var animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 var res = slice(animals, 1, 7)
@@ -56,11 +56,11 @@ if (res instanceof Array
     && animals[2] === 'camel'
     && animals[3] === 'duck'
     && animals[4] === 'elephant')
-    console.log('test ok')
-else
-    console.error('test ko')
+    
+  console.log("✅");
+  else console.error("🖕");
 
-console.log('case 4')
+console.log('CASE 4')
 
 var animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 var res = slice(animals, 2, 0)
@@ -73,11 +73,11 @@ if (res instanceof Array
     && animals[2] === 'camel'
     && animals[3] === 'duck'
     && animals[4] === 'elephant')
-    console.log('test ok')
-else
-    console.error('test ko')
+    
+  console.log("✅");
+  else console.error("🖕");
 
-console.log('case 5')
+console.log('CASE 5')
 
 var animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 var res = slice(animals, -2)
@@ -92,11 +92,11 @@ if (res instanceof Array
     && animals[2] === 'camel'
     && animals[3] === 'duck'
     && animals[4] === 'elephant')
-    console.log('test ok')
-else
-    console.error('test ko')
+    
+  console.log("✅");
+  else console.error("🖕");
 
- console.log('case 6')
+ console.log('CASE 6')
 
 var animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 var res = slice(animals, -100)
@@ -114,11 +114,11 @@ if (res instanceof Array
     && animals[2] === 'camel'
     && animals[3] === 'duck'
     && animals[4] === 'elephant')
-    console.log('test ok')
-else
-    console.error('test ko')
+    
+  console.log("✅");
+  else console.error("🖕");
 
-console.log('case 7')
+console.log('CASE 7')
 
 var animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 var res = slice(animals, 2, -1)
@@ -133,11 +133,11 @@ if (res instanceof Array
     && animals[2] === 'camel'
     && animals[3] === 'duck'
     && animals[4] === 'elephant')
-    console.log('test ok')
-else
-    console.error('test ko')
+    
+  console.log("✅");
+  else console.error("🖕");
 
-console.log('case 8')
+console.log('CASE 8')
 
 var animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
 var res = slice(animals, 2, -100)
@@ -150,6 +150,6 @@ if (res instanceof Array
     && animals[2] === 'camel'
     && animals[3] === 'duck'
     && animals[4] === 'elephant')
-    console.log('test ok')
-else
-    console.error('test ko')  
+    
+  console.log("✅");
+  else console.error("🖕");

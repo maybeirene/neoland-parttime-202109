@@ -1,4 +1,4 @@
-console.log("----- SORT TEST -----");
+console.log("--- SORT TEST ---");
 
 console.log("CASE 1");
 
@@ -27,13 +27,13 @@ if (
   sorted instanceof Array &&
   sorted.length === 4 &&
   sorted[0] === 1 &&
-  sorted[1] === 5 &&
+  sorted[1] === 200 &&
   sorted[2] === 40 &&
-  sorted[3] === 200 &&
+  sorted[3] === 5 &&
   sorted.length === array.length
 )
   console.log("✅");
-else console.error("🖕");
+else console.error("🖕"); 
 
 console.log("CASE 3");
 
@@ -43,9 +43,9 @@ var sorted = sort(array, -1);
 if (
   sorted instanceof Array &&
   sorted.length === 4 &&
-  sorted[0] === 200 &&
+  sorted[0] === 5 &&
   sorted[1] === 40 &&
-  sorted[2] === 5 &&
+  sorted[2] === 200 &&
   sorted[3] === 1 &&
   sorted.length === array.length
 )
@@ -80,8 +80,8 @@ if (
   sorted[2] === "Dd" &&
   sorted[3] === "A" &&
   sorted[4] === 98 &&
-  sorted[5] === 19 &&
-  sorted[6] === 3 &&
+  sorted[5] === 3 &&
+  sorted[6] === 19 &&
   sorted.length === array.length
 )
   console.log("✅");
@@ -99,10 +99,16 @@ var sorted = sort(array);
 if (
   sorted instanceof Array &&
   sorted.length === 3 &&
-  sorted[0] === [1, 2, 3] &&
-  sorted[1] === [10, true] &&
-  sorted[2] === ["a", 4, 5, 6] &&
-  sorted.length === array.length
+  sorted[0][0] === 1 &&
+  sorted[0][1] === 2 &&
+  sorted[0][2] === 3 &&
+  sorted[1][0] === 10 &&
+  sorted[1][1] === true &&
+  sorted[2][0] === "a" &&
+  sorted[2][1] === 4 &&
+  sorted[2][2] ===  5 &&
+  sorted[2][3] ===  6 &&
+  array.length === 3
 )
   console.log("✅");
 else console.error("🖕");
@@ -115,36 +121,12 @@ var sorted = sort(array);
 if (
   sorted instanceof Array &&
   sorted.length === 6 &&
-  sorted[0] === 0 &&
+  sorted[0] === 0 && 
   sorted[1] === false &&
   sorted[2] === null &&
   sorted[3] === null &&
   sorted[4] === undefined &&
   sorted[5] === undefined &&
-  sorted.length === array.length
-)
-  console.log("✅");
-else console.error("🖕");
-
-console.error("CASE ERROR");
-console.info(
-  "Hay que tener en cuenta que el método sort, para ordenar números, toma el valor UNICODE de, unicamnte, la primera cifra, por lo que si no pasamos funcion de callback para especificarlo, sort tomará como mayor 4 frente a 30, o 9 frente a 20000. Igualmente, toma ciertos valores como 0 (arrays vacíos o strings vacíos)"
-);
-console.info("Si creamos el test en base al método sort(), no lo pasará");
-var array = [40, 1, 5, 200, "", NaN, undefined, []];
-var sorted = sort(array);
-console.log(sorted);
-console.log([40, 1, 5, 200, "", NaN, undefined, []].sort());
-if (
-  sorted.length === 8 &&
-  sorted[0] === "" &&
-  sorted[1] === 1 &&
-  sorted[2] === 5 &&
-  sorted[3] === 40 &&
-  sorted[4] === 200 &&
-  sorted[5] === NaN &&
-  sorted[6] === undefined &&
-  sorted[7] === [] &&
   sorted.length === array.length
 )
   console.log("✅");

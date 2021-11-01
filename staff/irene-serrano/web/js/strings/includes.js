@@ -7,6 +7,6 @@ function includes(string, search){
         if (char === target)
     }
 
-
+ 
 
 }

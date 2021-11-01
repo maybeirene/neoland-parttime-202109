@@ -1,6 +1,6 @@
-console.log('TEST join')
+console.log('--- TEST JOIN ---')
 
-console.log('case 1')
+console.log('CASE 1')
 
 var elements = ['Fire', 'Air', 'Water', 'Ground', 'Ether']
 var res = join(elements)
@@ -14,11 +14,10 @@ if (typeof res === 'string'
     && elements[2] === 'Water'
     && elements[3] === 'Ground'
     && elements[4] === 'Ether')
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+else console.error("🖕");
 
-console.log('case 2')
+console.log('CASE 2')
 
 var elements = ['Fire', 'Air', 'Water', 'Ground', 'Ether']
 var res = join(elements, '')
@@ -32,11 +31,10 @@ if (typeof res === 'string'
     && elements[2] === 'Water'
     && elements[3] === 'Ground'
     && elements[4] === 'Ether')
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+else console.error("🖕");
 
-console.log('case 3')
+console.log('CASE 3')
 
 var elements = ['Fire', 'Air', 'Water', 'Ground', 'Ether']
 var res = join(elements, '-')
@@ -50,11 +48,10 @@ if (typeof res === 'string'
     && elements[2] === 'Water'
     && elements[3] === 'Ground'
     && elements[4] === 'Ether')
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+else console.error("🖕");
 
-console.log('case 4')
+console.log('CASE 4')
 
 var empty = []
 var elements = ['', null, 'Fire', 'Air', 'Water', undefined, 'Ground', 'Ether', empty]
@@ -73,11 +70,10 @@ if (typeof res === 'string'
     && elements[6] === 'Ground'
     && elements[7] === 'Ether'
     && elements[8] === empty)
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+else console.error("🖕");
 
-console.log('case 5')
+console.log('CASE 5')
 
 var empty = []
 var elements = ['', null, 'Fire', 'Air', 'Water', undefined, 'Ground', 'Ether', empty]
@@ -96,11 +92,10 @@ if (typeof res === 'string'
     && elements[6] === 'Ground'
     && elements[7] === 'Ether'
     && elements[8] === empty)
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+else console.error("🖕");
 
-console.log('case 6')
+console.log('CASE 6')
 
 var empty = []
 var elements = ['', null, 'Fire', 'Air', 'Water', undefined, 'Ground', 'Ether', empty]
@@ -119,11 +114,10 @@ if (typeof res === 'string'
     && elements[6] === 'Ground'
     && elements[7] === 'Ether'
     && elements[8] === empty)
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+else console.error("🖕");
 
-console.log('case 7')
+console.log('CASE 7')
 
 var empty = []
 var nonEmpty = [1, 2, 3]
@@ -144,11 +138,10 @@ if (typeof res === 'string'
     && elements[7] === 'Ether'
     && elements[8] === empty
     && elements[9] === nonEmpty)
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+else console.error("🖕");
 
-console.log('case 8')
+console.log('CASE 8')
 
 var empty = []
 var nonEmpty = [1, 2, 3]
@@ -169,11 +162,10 @@ if (typeof res === 'string'
     && elements[7] === 'Ether'
     && elements[8] === empty
     && elements[9] === nonEmpty)
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+else console.error("🖕");
 
-console.log('case 9')
+console.log('CASE 9')
 
 var empty = []
 var nonEmpty = [1, 2, 3]
@@ -194,11 +186,10 @@ if (typeof res === 'string'
     && elements[7] === 'Ether'
     && elements[8] === empty
     && elements[9] === nonEmpty)
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+    else console.error("🖕");
 
-console.log('case 10')
+console.log('CASE 10')
 
 var empty = []
 var nonEmpty = [1, 2, 3]
@@ -222,6 +213,5 @@ if (typeof res === 'string'
     && elements[10] === ' '
     && elements[11] === '\t'
     && elements[12] === '\n')
-    console.log('test ok')
-else
-    console.error('test ko')
+    console.log("✅");
+else console.error("🖕");

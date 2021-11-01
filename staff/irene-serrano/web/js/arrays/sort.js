@@ -1,8 +1,7 @@
-var count = 0
-
 function sort(arr, criterio) {
+  //debugger
   for (var j = 0; j < arr.length; j++) {
-    for (var i = 0; i < arr.length; i++) {
+    for (var i = 0; i < arr.length - 1; i++) {
       var elementBase = arr[i];
       var elementCompare = arr[i + 1];
 
@@ -19,11 +18,10 @@ function sort(arr, criterio) {
         }
       }
 
-      count++
     }
   }
 
-  console.log('iteraions', count)
+
   
   return arr;
 }

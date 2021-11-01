@@ -4,4 +4,4 @@ function reverse (str){
         reversedStr = reversedStr + str[i]
     }
     return reversedStr
-}
+} 

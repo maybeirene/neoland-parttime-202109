@@ -1,21 +1,30 @@
-console.log('DEMO lastIndexOf')
+console.log('--- TEST LAST-INDEX-OF ---')
 
-// DEMO 1
+console.log("CASE 1");
 
 var index = lastIndexOf('hola mundo', 'o')
-console.log(index) // 9
 
-// DEMO 2
+if (typeof index === "number" && index === 9) console.log("✅");
+else console.error("🖕");
 
-var index = lastIndexOf('adios mundo cruel', 'u')
-console.log(index) // 14
+console.log("CASE 2");
 
-// DEMO 3
+var index = lastIndexOf("adios mundo cruel", "u");
 
-var index = lastIndexOf('012345678901234567890123456789', '7')
-console.log(index) // 27
 
-// DEMO 4
+if (typeof index === "number" && index === 14) console.log("✅");
+else console.error("🖕");
 
-var index = lastIndexOf('un nuevo caso', 'w')
-console.log(index) // -1 
+console.log("CASE 3");
+
+var index = lastIndexOf('012345678901234567890123456789', '7');
+
+if (typeof index === "number" && index === 27) console.log("✅");
+else console.error("🖕");
+
+console.log("CASE 4");
+
+var index = lastIndexOf('un nuevo caso', 'w');
+
+if (typeof index === "number" && index === -1) console.log("✅");
+else console.error("🖕");

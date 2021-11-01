@@ -1,6 +1,6 @@
 console.log('TEST splice')
 
-console.log('case 1')
+console.log('CASE 1')
 
 var array = ['Jan', 'March', 'April', 'June']
 var res = splice(array, 1, 0, 'Feb')
@@ -13,11 +13,11 @@ if (res instanceof Array
     && array[2] === 'March'
     && array[3] === 'April'
     && array[4] === 'June')
-    console.log('✅ 😉')
-else
-    console.error('❌ 🤡')
+   
+  console.log("✅");
+  else console.error("🖕");
 
-console.log('case 2')
+console.log('CASE 2') 
 
 var array = ['Jan', 'Feb', 'March', 'April', 'June']
 var res = splice(array, 4, 1, 'May')
@@ -31,10 +31,11 @@ if (res instanceof Array
     && array[2] === 'March'
     && array[3] === 'April'
     && array[4] === 'May')
-    console.log('✅ 😉')
-else
-    console.error('❌ 🤡')
-    console.log('case 3')
+    
+  console.log("✅");
+  else console.error("🖕");
+
+    console.log('CASE 3')
 
 var array = ['Jan', 'Feb', 'March', 'April', 'June', 'July', 'August']
 var res = splice(array, 2, 3, 'X')
@@ -50,11 +51,11 @@ if (res instanceof Array
     && array[2] === 'X'
     && array[3] === 'July'
     && array[4] === 'August')
-    console.log('✅ 😉')
-else
-    console.error('❌ 🤡')
+    
+  console.log("✅");
+else console.error("🖕");
 
-console.log('case 4')
+console.log('CASE 4')
 
 var array = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 var res = splice(array, 3, 5, 'X')
@@ -73,11 +74,11 @@ if (res instanceof Array
     && array[3] === 'X'
     && array[4] === '8'
     && array[5] === '9')
-    console.log('✅ 😉')
-else
-    console.error('❌ 🤡')
+   
+  console.log("✅");
+  else console.error("🖕");
 
-console.log('case 5')
+console.log('CASE 5')
 
 var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
 var res = splice(array, 4, 4, 'x')
@@ -95,6 +96,6 @@ if (res instanceof Array
     && array[3] === 'd'
     && array[4] === 'x'
     && array[5] === 'i')
-    console.log('✅ 😉')
-else
-    console.error('❌ 🤡') 
+    
+  console.log("✅");
+  else console.error("🖕");
