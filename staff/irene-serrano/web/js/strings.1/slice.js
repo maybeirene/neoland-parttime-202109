@@ -26,12 +26,21 @@ function slice (str, init, end){
     } else if ( end >= str.length || end < 0) {
         console.error('Indique un indice entre 0 y '+ (str.length-1))
     } else if (init > 0 && end > init){
-        for(let i = init; i< end; i++){
+        for(let i = init; i<= end; i++){
             newStr = newStr + str[i];
         }
     } else if (end < init){
         console.error('El indice inicial no puede ser superior al final')
     }
- 
+
     return newStr
 }
+
+console.log('DEMO slice')
+
+var sliced = slice('Quiero 3 manzanas', -8);
+console.log(sliced) //'manzanas'
+
+var sliced = slice('En un lugar de La Mancha, de cuyo nombre no quiero acordarme', 15, 23);
+console.log(sliced) //'La Mancha'
+

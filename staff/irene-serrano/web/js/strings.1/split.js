@@ -36,3 +36,13 @@ function split(str, separador) {
 
   return arrSplit;
 }
+
+
+console.log('DEMO split')
+
+var splited = split('hola que tal como estas?', ' ');
+console.log(splited) //['hola', 'que', 'tal', 'como', 'estas?']
+
+var splited = split('se.me.rompio.la.barra.espaciadora.', '.');
+console.log(splited) //['se', 'me', 'rompio', 'la', 'barra', 'espaciadora']
+
