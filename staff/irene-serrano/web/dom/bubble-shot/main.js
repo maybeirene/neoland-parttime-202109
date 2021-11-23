@@ -1,101 +1,211 @@
-var users = [
-  {
-    username: "admin",
-    email: "",
-    password: "admin",
-  },
-];
-
 // save elements in variables
 //sections:
-var HEADER = document.querySelector("header");
-var HEADER_USERNAME = HEADER.querySelector(".username");
+var header = document.querySelector("header");
+var headerUsername = header.querySelector(".username");
 
-var SIGNIN = document.querySelector(".signin");
-var SIGNIN_FORM = document.querySelector("form");
-var SIGNIN_BTN = SIGNIN.querySelector(".button");
-var SIGNIN_FEEDBACK = SIGNIN.querySelector(".signin__feedback");
-var SIGNIN_SIGNUP_LINK = SIGNIN.querySelector(".signin_signup-text-link");
+var signin = document.querySelector(".signin");
+var signinForm = document.querySelector("form");
+var signinBtn = signin.querySelector(".button");
+var signinFeedback = signin.querySelector(".signin_Feedback");
+var signinSignupLink = signin.querySelector(".signin_signup-text-link");
 
-var SIGNUP = document.querySelector(".signup");
-var SIGNUP_SIGNIN_LINK = SIGNUP.querySelector(".signup_signin-text-link");
-var SIGNUP_BTN = SIGNUP.querySelector(".button");
-var SIGNUP_FORM = SIGNUP.querySelector("form");
+var signup = document.querySelector(".signup");
+var signupSigninLink = signup.querySelector(".signup_signin-text-link");
+var signupBtn = signup.querySelector(".button");
+var signupForm = signup.querySelector("form");
+var signupFeedback = signup.querySelector(".signup_Feedback");
 
-var POSTSIGNUP = document.querySelector(".post-signup");
-var POSTSIGNUP_USERNAME = POSTSIGNUP.querySelector(".post-signup-username");
-var POSTSIGNUP_BTN = POSTSIGNUP.querySelector(".button");
+var postSignup = document.querySelector(".post-signup");
+var postSignupUsername = postSignup.querySelector(".post-signup-username");
+var postSignupBtn = postSignup.querySelector(".button");
 
-var GAME = document.querySelector(".game");
+var game = document.querySelector(".game");
 
 //add event listeners to buttons
 
-SIGNIN_BTN.addEventListener("click", function (event) {
+signinBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  console.log("click");
 
-  var usernameInput = SIGNIN_FORM.username;
-  var passwordInput = SIGNIN_FORM.password;
+  var usernameInput = signinForm.username;
+  var passwordInput = signinForm.password;
 
   var username = usernameInput.value;
   var password = passwordInput.value;
+  var userToken;
 
-  var user = users.find(function (user) {
-    return user.username === username && user.password === password;
+  authenticateUser(username, password, function (error, token) {
+    if (error) {
+      signinFeedback.classList.remove("off");
+
+      if (!username.trim() || !password.trim()) {
+        signinFeedback.innerText = "Username or password is empty";
+      } else if (password.trim().length < 8) {
+        signinFeedback.innerText =
+          "Password length is smaller than 8 characters";
+      }
+    } else {
+      
+      userToken = token
+      retrieveUser(token, function (error, user) {
+        if (error) {
+          signinFeedback.classList.remove("off");
+        } else {
+          signin.classList.add("off");
+          postSignup.classList.remove("off");
+          postSignupUsername.innerText = username;
+          headerUsername.innerText = username;
+        }
+      });
+    }
   });
-  if (!user) {
-    SIGNIN_FEEDBACK.classList.remove("off");
-  } else {
-    SIGNIN.classList.add("off");
-    POSTSIGNUP.classList.remove("off");
-    POSTSIGNUP_USERNAME.innerText = username;
-    HEADER_USERNAME.innerText = username;
-  }
+
 });
 
-SIGNIN_SIGNUP_LINK.addEventListener("click", function (e) {
+signinSignupLink.addEventListener("click", function (e) {
   e.preventDefault();
 
-  SIGNIN.classList.add("off");
-  SIGNUP.classList.remove("off");
+  signin.classList.add("off");
+  signup.classList.remove("off");
 });
 
-SIGNUP_BTN.addEventListener("click", function (event) {
+signupBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
-  var usernameInput = SIGNUP_FORM.username;
-  var emailInput = SIGNUP_FORM.email;
-  var passwordInput = SIGNUP_FORM.password;
+  var usernameInput = signupForm.username;
+  var emailInput = signupForm.email;
+  var passwordInput = signupForm.password;
 
   var username = usernameInput.value;
   var email = emailInput.value;
   var password = passwordInput.value;
 
-  user = {};
+try{
+  registerUser(username, email, password, function (error){
 
-  user.username = username;
-  user.email = email;
-  user.password = password;
+    if(error) {
+      signupFeedback.classList.remove('off')
+      if(email.trim() === "" || username.trim() === ""){
+        signupFeedback.innerText = "Invalid email or username. You must write something!";
 
-  users.push(user);
+      } else if (password.trim().length < 8){
+        signupFeedback.innerText = "Password length is smaller than 8 characters";
+      }
+    } else{
+      authenticateUser(username, password, function(error, token){
+        if(error) {
+          console.error(error)
+        }else{
+          retrieveUser(token, function (error, user){
+            if(error){
+              signupFeedback.classList.remove('off')
+            } else {
+              signup.classList.add("off");
+                postSignup.classList.remove("off");
+                postSignupUsername.innerText = username;
+                headerUsername.innerText = username;
+            }
+          })
+        }
+      })
+    }
 
-  POSTSIGNUP_USERNAME.innerText = username;
-  HEADER_USERNAME.innerText = username;
+  })
+}catch (error){
+  signupFeedback.innerText = error
+}
 
-  SIGNUP.classList.add("off");
-  POSTSIGNUP.classList.remove("off");
+
+
+
+
+
+  signup.classList.add("off");
+  postSignup.classList.remove("off");
 });
 
-SIGNUP_SIGNIN_LINK.addEventListener("click", function (e) {
+signupSigninLink.addEventListener("click", function (e) {
   e.preventDefault();
 
-  SIGNUP.classList.add("off");
-  SIGNIN.classList.remove("off");
+  signup.classList.add("off");
+  signin.classList.remove("off");
 });
 
-POSTSIGNUP_BTN.addEventListener("click", function (e) {
+postSignupBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
-  POSTSIGNUP.classList.add("off");
-  GAME.classList.remove("off");
+  postSignup.classList.add("off");
+  game.classList.remove("off");
 });
+
+var profilePanel = document.querySelector('.profile')
+var profileform = profilePanel.querySelector('form')
+
+
+
+function createProfileformItem () {
+  retrieveUser(token, function (error, username) {
+    if (error) {
+      signupFeedback.classList.remove("off");
+    } else {
+
+      console.log(username)
+      signup.classList.add("off");
+      postSignup.classList.remove("off");
+      postSignupUsername.innerText = username;
+      headerUsername.innerText = username;
+    }
+  });
+
+}
+
+
+/* =====  PROFILE  ===== */
+
+
+var profileUser = document.querySelector(".profile-user");
+var profilePassword = document.querySelector(".profile-item-password");
+
+var newPassword = document.querySelector(".profile-new-username").value;
+var newUsername = document.querySelector(".profile-new-password").value;
+
+var newUserCredentials 
+
+var profileSubmitbtn = document.querySelector(".profile-btn");
+
+/* authenticateUser(username, password, function (error, token) {
+  if (error) {
+  } else {
+   
+
+    retrieveUser(token, function (error, user) {
+      if (error) {
+      } else {
+        userObj = user;
+        saveUser(user, token);
+      }
+    });
+  }
+}); */
+
+function saveUser(user, token) {
+  profileUser.innerText = user.username + "✏️";
+  console.log(newUserCredentials);
+
+  profileSubmitbtn.onsubmit = function (event) {
+  event.preventDefault();
+    
+
+    newUserCredentials = {
+      username: newUsername === "" ? user.username : newUsername,
+      password: newPassword === "" ? user.password : newPassword,
+    };
+
+    modifyUser(token, newUserCredentials, function () {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log(newUserCredentials);
+      }
+    });
+  };
+}

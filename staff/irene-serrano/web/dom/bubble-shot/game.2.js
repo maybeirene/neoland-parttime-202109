@@ -1,73 +1,74 @@
-var signin = document.querySelector(".signin");
-var game = document.querySelector(".game");
+var SIGNIN = document.querySelector(".signin");
+var GAME = document.querySelector(".game");
 
-/* TEMPORAL (salta el control de acceso) */
-game.classList.remove("off");
-signin.classList.add("off");
-
-/*---------------------------------------*/
-
-/*=== SCREEN, LEVEL AND POINTS DIVS ===*/
-var gameScreen = document.querySelector(".game-screen");
+var GAME_SCREEN = document.querySelector(".game_screen");
 
 var counter = document.createElement("div");
-game.append(counter);
+GAME.append(counter);
 counter.classList.add("game_counter");
 var points = 0;
 counter.innerText = `${points} pts`;
 
-var gameLevel = document.createElement("div");
-game.append(gameLevel);
-gameLevel.classList.add("gameLevel");
-var level = 1;
-gameLevel.innerText = `Level ${level}`;
+var game_level = document.createElement("div");
+GAME.append(game_level);
+game_level.classList.add("game_level");
 
-var screenBlockContainer = document.createElement("div");
-  gameScreen.append(screenBlockContainer);
-  screenBlockContainer.classList.add("block-container");
-   // console.log(screenBlockContainer.getClientRects())
+var screen_block_container = document.createElement("div");
+GAME_SCREEN.append(screen_block_container);
+screen_block_container.classList.add("block-container");
 var body = document.querySelector("body");
 
-/*---------------------------------------*/
+//Añadir más posibles niveles mediante un select
 
-/*=== GENERATE UPPER BLOCKS ===*/
-var blocks = [];
+var level = 1;
+game_level.innerText = `Level ${level}`;
+
+/* TEMPORAL */
+GAME.classList.remove("off");
+SIGNIN.classList.add("off");
+
+/*----------*/
+
+/* == GENERATE UPPER BLOCKS == */
+
+
 var blocksProps = [];
-var colors = ["var(--color1)", "var(--color2)"];
-var lineItemsQtty = 15;
 
-function pickRandomColor() {
-    var index = Math.floor(Math.random() * 2);
-    return colors[index];
+var blocks = [];
+
+switch (level) {
+  case 1:
+    var itemsQtty = 10;
+    var colors = ["var(--color1)", "var(--color2)"];
+
+    for (i = 0; i <= itemsQtty; i++) {
+      var background = pickRandomColor();
+
+      var screen_block_element = document.createElement("div");
+      screen_block_container.append(screen_block_element);
+      screen_block_element.classList.add("block-element");
+      screen_block_element.dataset.color = background;
+      screen_block_element.style.backgroundColor = background;
+
+      var blockProps = screen_block_element.getClientRects()[0];
+
+      var block = {
+        x: blockProps.x,
+        y: blockProps.y,
+        width: blockProps.width,
+        background: background
+      };
+      
+
+      blocks.push(block);
+      
+    }
+    break;
 }
 
-for (i = 0; i < lineItemsQtty; i++) {
-    var background = pickRandomColor();
-
-    var screenBlockElement = document.createElement("div");
-    screenBlockContainer.append(screenBlockElement);
-    screenBlockElement.classList.add("block-element");
-    screenBlockElement.dataset.color = background;
-    screenBlockElement.style.backgroundColor = background;
-
-    blockProps = screenBlockElement.getClientRects()[0];
-    var block = {
-      x: blockProps.x,
-      y: blockProps.y,
-      width: blockProps.width,
-      background: background
-    };
-    
-    blocksProps.push(blockProps)
-    blocks.push(block);
-  }
-
-/*---------------------------------------*/
-
-/*=== GENERATE SHOOTER ===*/
 
 var screen_shooter = document.createElement("div");
-gameScreen.append(screen_shooter);
+GAME_SCREEN.append(screen_shooter);
 screen_shooter.classList.add("shooter");
 
 var shooter = {
@@ -81,7 +82,8 @@ screen_shooter.style.transform = `translate(${shooter.x}px)`;
 shooter.background = screen_shooter.style.backgroundColor;
 var step = 20;
 
-/*=== shooter moves ===*/
+/* == SHOOTER MOVE == */
+
 document.onkeydown = function (e) {
   if (e.key === "ArrowRight") {
     if (shooter.x <= 600) {
@@ -98,19 +100,19 @@ document.onkeydown = function (e) {
     }
   }
 };
-/* == SET SHOOTER RANDOM COLOR with shot event == */
-
+/* == SET SHOOTER RANDOM COLOR with space key event== */
+/* == shot event == */
 var screen_shot;
 var shot = {
   x: shooter.x + shooter.width / 2,
-  y: 0,
+  y: -8,
   maxXpos: 600,
   background: shooter.background,
 };
 
 function createShot() {
   screen_shot = document.createElement("div");
-  gameScreen.append(screen_shot);
+  GAME_SCREEN.append(screen_shot);
   screen_shot.classList.add("shot");
   screen_shot.style.transform = `translate(${shot.x}px)`;
   shotShot();
@@ -131,7 +133,6 @@ function shotShot() {
   shot.y = -8;
 }
 
-
 function deleteShot() {
   screen_shot.remove();
 }
@@ -139,35 +140,31 @@ var newShooterBg;
 
 var blocksElements = document.querySelectorAll(".block-element");
 var margin;
-var fixedShotXPosition;
 
+function checkPosition() {
 
-function checkPosition() { 
-var currentShooterX = screen_shooter.getClientRects()[0].x + 46/2
-
-console.log(currentShooterX)
-
+  
+console.log('checkiando')
 
   margin = (body.getClientRects()[0].width - 713) / 2;
 
   for (var i = 0; i < blocks.length; i++) {
-  //  console.log(blocks[i])
     var maxX =
-    blocks[i].x + blocks[i].width
-    /*   i === 10
+      i === 10
         ? blocks[i].x + blocks[i].width
-        : blocks[i + 1].x; */
+        : blocks[i + 1].x ;
+
     var minX = blocks[i].x;
 
     if (fixedShotXPosition + margin >= minX && fixedShotXPosition + margin <= maxX) {
-      console.log('Entró en el bloque ' + (i +1));
+      console.log('Entró en el bloque ' + i);
     }
     console.log(minX, fixedShotXPosition, maxX)
-   
+    console.log(shot.x)
   }
 
 }
-
+var fixedShotXPosition;
 
 function getShot(event) {
   if (event.key === " ") {
@@ -185,4 +182,10 @@ function getShot(event) {
 
 document.addEventListener("keydown", getShot);
 
+//Al comprobar que el color del shot y element son el mismo o no:
 
+/* 
+  
+  shot.remove(); */
+
+/* == MATCHING POSITION AND COLOR BLOCK-SHOT == */

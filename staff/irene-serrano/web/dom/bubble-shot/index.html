@@ -12,22 +12,25 @@
 
 <header class="container--horizontal">
     <h1 class="title">Matching colors</h1>
-    <span class="username">Please, sign in</span>
+    <a id="user-profile-btn" class="username">username</a>
 </header>
 
-    <div class="signin container container--vertical ">
+    <div class="signin container container--vertical">
         <div class="panel">
             <h2>Sign-in</h2>
             <form class=" container--vertical">
-                <input class="field" type="text" name="username" placeholder="username">
-                <input class="field" type="password" name="password" placeholder="password">
+                <input class="field" type="text" name="username" placeholder="username" required>
+                <input class="field" type="password" name="password" placeholder="password" required>
                 <button class="button">Sign in</button >
             </form>
 
             <span class="signin__feedback off error">Ups! Incorrect username or password </span>
-
+            <p class="signin-text">
             Don’t have an account? <button class="signin_signup-text-link link">Sign up</button >
-        </div>
+            </p>
+
+            </div>
+
     </div>
 
 
@@ -36,11 +39,13 @@
             <h2>Sign-up</h2>
             <form class=" container--vertical">
                
-                <input class="field" type="text" name="username" placeholder="username">
-                <input class="field" type="email" name="email" placeholder="email">
-                <input class="field" type="password" name="password" placeholder="password">
+                <input class="field" type="text" name="username" placeholder="username" required>
+                <input class="field" type="email" name="email" placeholder="email" required>
+                <input class="field" type="password" name="password" placeholder="password" required>
                 <button class="button">Sign up</button>
             </form>
+
+            <span class="signup__feedback off error">Ups! Incorrect username or password </span>
 
             <p class="signin-text">
                 Already have an account? 
@@ -61,13 +66,49 @@
         </div>
     </div>
 
-    <div class="game container container--vertical off">
+    <div class="profile container container--vertical   off">
+      <div class="">
+          <h2 class="profile-user"></h2>
+
+          <form class="container--vertical">
+            
+            <div class="profile-item-container container--vertical"> 
+              <p class="profile-title">new username</p>
+              <input class="field profile-new-username" type="text" placeholder="new username">
+            </div>
+
+            <div class="profile-item-container container--vertical"> 
+              <p class="profile-title">password</p>
+              <input class="field profile-new-password" type="password"  placeholder="new password">
+            </div>
+
+           <button class="button profile-btn" type="submit">Guardar</button>
+
+          </form>
+
+      </div>
+  </div>
+
+    <div class="game container container--vertical  off">
         
-      <div class="game_screen"></div>
+      <div class="game-screen"></div>
     </div>
 
-    <script src="main.js"></script>
+    <script src="logic/register-user.js"></script>
+    <script src="logic/authenticate-user.js"></script>
+    <script src="logic/retrieve-user.js"></script>
+    <script src="logic/modify-user.js"></script>
+    <script src="logic/unregister-user.js"></script>
+
+
+
+
+    <!-- <script src="main.js"></script> -->
     <script src="game.js"></script>
+  
+
+    
+    <script src="profile.js"></script>
     
   </body>
 </html>
