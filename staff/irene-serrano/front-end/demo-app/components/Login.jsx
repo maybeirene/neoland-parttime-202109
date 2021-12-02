@@ -8,12 +8,13 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="panel">
+        <h2>Login</h2>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const username = e.target.username.value;
-            const password = e.target.password.value;
+          onSubmit={event => {
+            event.preventDefault();
+            const username = event.target.username.value;
+            const password = event.target.password.value;
 
             try {
               authenticateUser(username, password, (error, token) => {
@@ -30,20 +31,19 @@ class Login extends React.Component {
         >
           <input type="text" name="username" placeholder="username" />
           <input type="password" name="password" placeholder="password" />
-          <button>Login</button>
+          <button>Submit</button>
 
-          {this.state.feedback ? <p>{this.state.feedback}</p> : null}
+          {this.state.feedback ? <p className="error">{this.state.feedback}</p> : null}
         </form>
 
-        <a
+        <p >Don't have an account yet? Please 
+        <a 
           href=""
-          onClick={(e) => {
+          onClick={e => {
             e.preventDefault();
             this.props.onRegisterClick();
           }}
-        >
-          Register
-        </a>
+        > register</a> </p>
       </div>
     );
   }
