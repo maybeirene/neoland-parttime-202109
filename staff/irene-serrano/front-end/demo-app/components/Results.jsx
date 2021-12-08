@@ -1,7 +1,9 @@
 class Results extends React.Component{
     constructor(){
         super()
-        this.state = {vehicles: null }
+        this.state = {
+            vehicles: null,
+            active: false }
     }
 
     componentDidMount(){
@@ -26,17 +28,14 @@ class Results extends React.Component{
         }
     }
 
+
     render(){
         if(this.state.vehicles) {
             if (this.state.vehicles.length)
-                return <ul>
+                return <ul className="flex-list">
                     {this.state.vehicles.map(vehicle => 
-                    <li key={vehicle.id}>
-                        <h2>{vehicle.name}</h2>
-                        <img src={vehicle.thumbnail} onClick={() => this.props.onItemClick(vehicle.id)} />
-                        <span>{vehicle.price}$</span>
-
-                    </li>)}
+                    <CarCard vehicle={vehicle} key={vehicle.id} />
+                    )}
                 </ul>
             else
                 return <p>No results :(</p>

@@ -23,6 +23,7 @@ class Login extends React.Component {
                   return;
                 }
                 this.props.onLoggedIn(token);
+                sessionStorage.token = token
               });
             } catch (error) {
               this.setState({ feedback: error.message });

@@ -2,30 +2,39 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      view:  'login',
+      view:  sessionStorage.token ? 'home' : 'login',
       token: sessionStorage.token ? sessionStorage.token : null
     };
   }
  
   render() {
-    if (this.state.view === 'login') {
-      return <Login
-        onRegisterClick={()=> {
-          this.setState({view:'register'})
-        }}
-          onLoggedIn={token => this.setState({ view: 'home', token })}
-        />
-    } else if (this.state.view === 'register') {
-      return <Register 
-      onRegistered={()=> this.setState({view: 'home'})}
-      onLoginClick={()=> this.setState({view: 'login'})
-      } />
-    }else if (this.state.view === 'reggister-succes') {
-      return <RegisterSuccess onLoginClick={
-        ()=> this.setState({ view: 'login'})
-      } />;
-    }else if (this.state.view === 'home') {
-      return <Home token={this.state.token}  onLoggedOut={()=> this.setState({view:login, token})}/>;
-    }
+    return (
+      <div>
+        <Forecast  />
+
+      {
+      this.state.view === 'login' ? 
+        <Login 
+          onRegisterClick={()=> {
+            this.setState({view:'register'})
+          }}
+          onLoggedIn={token => this.setState({ view: 'home', token })}/> : 
+      this.state.view === 'register' ?
+        <Register 
+          onRegistered={()=> this.setState({view: 'home'})}
+          onLoginClick={()=> this.setState({view: 'login'})} /> : 
+      this.state.view === 'home' || this.state.view === 'results' || this.state.view === 'detail' ?
+        <Home token={this.state.token}  onLoggedOut={()=> this.setState({view:login, token: null})}/> :
+        null
+      }
+        <Search className="flex-list" onQuery={query => this.setState({ query, view: 'results'})} />
+
+            {this.state.view === 'results' && <Results query={this.state.query} /> }
+
+            {this.state.view === 'detail' && <Detail itemId={this.state.vehicleId} />}
+      </div>
+    )
+    
+    
   }
 }

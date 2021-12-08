@@ -1,3 +1,17 @@
+function Search(props) {
+  return <form onSubmit={event => {
+      event.preventDefault()
+
+      var query = event.target.query.value
+
+      props.onQuery(query)
+  }}>
+      <input type="text" name="query" placeholder="criteria" />
+      <button>Search</button>
+  </form>
+}
+
+/* 
 <form
   onSubmit={(e) => {
     e.preventDefault();
@@ -17,3 +31,4 @@
   <input type="text" name="query" placeholder="Buscar..."></input>
   <button>Search</button>
 </form>;
+ */

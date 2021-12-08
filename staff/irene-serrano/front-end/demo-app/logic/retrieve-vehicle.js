@@ -10,10 +10,9 @@ function retrieveVehicle(id, callback){
     xhr.onload = function (){
         if (this.status === 200){
             var vehicle = JSON.parse(this.responseText)
-
             callback(null, vehicle)
         } else {
-            var res = JSON.parse(this.responseText)
+            
             var error = res.error
 
             callback(new Error(error))
