@@ -23,14 +23,15 @@ function Cart (){
              
              if(userCart){
                 userCart.map((vehicle) => {
-                    retrieveVehicle(sessionStorage.token, vehicle.id, (error, vehicle) => {
+                    
+                    /* retrieveVehicle(sessionStorage.token, vehicle.id, (error, vehicle) => {
                         if (error) console.log(error.message);
                         else {
                             console.log(cartVehicles)
                             cartVehicles.push(vehicle)
                            
                         }
-                    })
+                    }) */
                 })
                 setCart(cartVehicles)
              }else console.log(' cart not found ')
