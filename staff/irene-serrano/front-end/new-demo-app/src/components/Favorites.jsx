@@ -1,52 +1,36 @@
 import { useState, useEffect } from 'react';
-import retrieveUser from '../logic/retrieve-user';
-import retrieveVehicle from '../logic/retrieve-vehicle';
+
+import retrieveFavVehicles from '../logic/retrieve-fav-vehicles';
 
 function Favorites (){
   const [favVehicles, setFavVehicles] = useState([])
-  const [userFavs,setUserFavs] = useState(null)
-
-  const getFavs = ()=>{
-    retrieveUser(sessionStorage.token, (error, user) => {
-      if (error) console.log(error.message);
-      else {
-        let userFavs = user.favs;
-        let favVehicles = [];
-        setUserFavs(userFavs)
-      
-        
-
-        if (userFavs) {
-          userFavs.map((id) => {
-            retrieveVehicle(sessionStorage.token, id, (error, vehicle) => {
-              if (error) console.log(error.message);
-              else {
-                favVehicles.push(vehicle);
-
-                setFavVehicles( favVehicles );
-              }
-            });
-          });
-        }
-      }
-    });
-  }
 
 
-  useEffect(()=>{
-    getFavs()
-  })
+
+  useEffect(() => {
+
+    try {
+        retrieveFavVehicles(sessionStorage.token, (error, vehicles) => {
+            if (error) return alert(error.message)
+
+            setFavVehicles(vehicles)
+
+        })
+    } catch (error) {
+        return alert(error.message)
+    }
+}, [])
 
     return (
       <div className="favs-container panel favs-panel">
         <h2>Your favorites</h2>
 
-        {userFavs ? (
+        {favVehicles ? (
           <ul className="favs-list-container">
             {favVehicles.map((vehicle) => {
               return (
                 <li className="favs-list-item" key={vehicle.id}>
-                  <img className="favs-list-item-img" src={vehicle.image}></img>
+                  <img className="favs-list-item-img" src={vehicle.image} alt={vehicle.name}></img>
                   <p className="favs-list-item-name">{vehicle.name}</p>
                   <p className="favs-list-item-price">{vehicle.price}$</p>
                   <span

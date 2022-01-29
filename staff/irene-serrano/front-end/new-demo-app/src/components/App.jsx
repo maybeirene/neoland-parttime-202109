@@ -8,7 +8,6 @@ import  Land  from "./Land";
 import  Favorites  from "./Favorites";
 import  Cart  from "./Cart";
 
-import  logger  from "../logger";
 
 import  retrieveUser  from '../logic/retrieve-user.js';
 
@@ -30,7 +29,7 @@ function App() {
     setView("home");
   };
   const goFavorites = () => {
-    console.log("going to favs");
+
     setView("favs");
   };
   const goRegister = () => {
@@ -85,6 +84,7 @@ function App() {
   });
 
   return (
+
     <div>
       <Nav
         loged={city ? true : false}

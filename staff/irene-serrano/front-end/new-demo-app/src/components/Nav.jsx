@@ -1,8 +1,6 @@
 
 function Nav(props){
 
-    console.log(props.username)
-
     return props.loged === false? 
     <nav className="nav">
         <h2 className="logo selectable" onClick={props.handleBack}>cars<span className="logo-detail">&</span>us</h2>
