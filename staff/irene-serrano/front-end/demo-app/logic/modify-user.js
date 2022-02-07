@@ -1,4 +1,5 @@
 function modifyUser(token, data, callback){
+    validateToken(token)
     var xhr = new XMLHttpRequest
 
     xhr.open('PATCH', 'https://b00tc4mp.herokuapp.com/api/v2/users')

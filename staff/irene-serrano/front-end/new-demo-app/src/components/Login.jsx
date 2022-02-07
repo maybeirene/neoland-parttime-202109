@@ -1,9 +1,11 @@
 import { useState } from "react";
 import authenticateUser from "../logic/authenticate-user";
 import retrieveUser from "../logic/retrieve-user";
+//import retrieveUser from "../logic/retrieve-user";
 
 function Login({ onClickRegister, onLoggedIn }) {
-  const  [feedback, setFeedback]  = useState(null);
+  const [feedback, setFeedback] = useState(null);
+  //const [user, setUser] = useState(null);
 
   const submit = (event) => {
     event.preventDefault();
@@ -12,26 +14,23 @@ function Login({ onClickRegister, onLoggedIn }) {
     const username = event.target.username.value;
 
     try {
-      authenticateUser(username, password, (error, token) => {
-        if (error) {
-          setFeedback(error.message);
-          return;
-        }
-        sessionStorage.token = token;
-        retrieveUser(token, (error, user) => {
-          if (error) {
-            setFeedback(error.message);
-            return;
-          }
-
-          var city = user.city;
-          onLoggedIn(token, username, city);
-        });
-      });
+      authenticateUser(username, password)
+        .then((token) => {
+          sessionStorage.token = token;
+          retrieveUser(token)
+            .then((user) => {
+             // setUser(user);
+              var city = user.city;
+              onLoggedIn(token, username, city);
+            })
+            .catch((error) => setFeedback(error.message));
+        })
+        .catch((error) => setFeedback(error.message));
     } catch (error) {
       setFeedback(error.message);
     }
   };
+
 
   return (
     <div className="login-container panel">

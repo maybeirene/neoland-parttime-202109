@@ -19,8 +19,24 @@ class Register extends Component {
     const email = event.target.email.value;
     const city = event.target.city.value;
     const password = event.target.password.value;
-  
+
     try {
+      registerUser( username, email, city, password)
+        .then(()=>{
+          authenticateUser(username, password)
+            .then((token)=>{
+              sessionStorage.token = token
+              console.log(sessionStorage.token)
+              //retrieveUser(sessionStorage.token)
+              this.props.onRegistered(sessionStorage.token, username, city)
+            })
+        })            
+           
+       } catch (error) {
+      this.setState({ feedback: error.message })
+    }
+  
+    /* try {
       registerUser(username, email, city, password, error => {
         if (error) {
           this.setState({ feedback: error.message })
@@ -49,7 +65,7 @@ class Register extends Component {
     } catch (error) {
       this.setState({ feedback: error.message })
     }
-  
+   */
   
   
   }

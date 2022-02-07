@@ -13,16 +13,20 @@ class Results extends Component {
       vehicles: null,
     };
   }
-
   goBack = () => this.setState({ id: null });
+  clickItem = id => onItemClick(id)
 
-  componentWillReceiveProps(props) {
+/* HOOKS CODE:  
+ const goBack = () => this.setState({ id: null });
+  const clickItem = id => onItemClick(id) */
+
+  componentWillReceiveProps({query, onItemClick}) {
     //logger.debug("Results -> component will receive props");
 
     try {
       searchVehicles(
         sessionStorage.token,
-        this.props.query,
+        query,
         (error, vehicles) => {
           if (error) return alert(error.message);
 
@@ -42,6 +46,7 @@ class Results extends Component {
             <ul className="results">
               {this.state.vehicles.map((vehicle) => (
                 <CarCard
+                  onClick={()=>this.clickItem(vehicle.id)}
                   key={vehicle.id}
                   id={vehicle.id}
                   goDetails={() => this.setState({ id: vehicle.id })}
@@ -55,7 +60,7 @@ class Results extends Component {
       } else
         return (
           <h3 className="error">
-            Ups! Nothing was found with "{this.props.query}".
+            Ups! Nothing was found with "{query}".
           </h3>
         );
     } else return null;

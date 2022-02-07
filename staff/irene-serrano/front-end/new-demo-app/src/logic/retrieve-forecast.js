@@ -1,12 +1,27 @@
-import { validateApikey, validateCity, validateCallback } from './helpers/validators'
+import { validateApikey, validateCity} from './helpers/validators'
 
 
-function retrieveForecast (apiKey, city, callback){
+function retrieveForecast (apiKey, city){
     validateApikey(apiKey)
     validateCity(city)
-    validateCallback(callback)
+  
+
+    return fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&combinationMethod=aggregate&contentType=json&unitGroup=metric&locationMode=single&key=' + apiKey + '&dataElements=default&locations=' + city, {
+        method:'GET'
+    }).then(response =>{     
+        var res = JSON.parse(response)
+        console.log(response)
+        if(res.errorCode) throw new Error(res.message)
+        console.log('Not parsed response '+ response)
+   
+        
+        return res.location.values.slice(0,3)
+              
+    }
+        
+    )
     
-    var xhr = new XMLHttpRequest
+   /*  var xhr = new XMLHttpRequest
 
     xhr.open('GET', 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&combinationMethod=aggregate&contentType=json&unitGroup=metric&locationMode=single&key=' + apiKey + '&dataElements=default&locations=' + city)
 
@@ -18,6 +33,6 @@ function retrieveForecast (apiKey, city, callback){
         callback(null, res.location.values.slice(0,3))
     }
 
-    xhr.send()
+    xhr.send() */
 }
 export default retrieveForecast

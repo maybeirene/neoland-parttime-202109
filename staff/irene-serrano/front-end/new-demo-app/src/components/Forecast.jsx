@@ -16,28 +16,32 @@ class Forecast extends Component {
 
   getForecast = () => {
     try {
-      retrieveUser(sessionStorage.token, (error, user) => {
-        if (error) {
-          this.setState({ feedback: error.message });
-          return;
-        }
-        this.setState({ city: user.city });
-
-        retrieveForecast(this.apiKey, this.state.city, (error, values) => {
-          if (error) {
-            return console.error(error.message);
-          } else {
-            this.setState({ values });
-          }
-        });
-      });
-    } catch (error) {
+      retrieveUser(sessionStorage.token)
+        .then(user=>{
+          var city = user.city
+          this.setState({ city })
+          
+          console.log(this.state)
+          retrieveForecast(this.apiKey, this.state.city)
+            .then((values)=>{
+              console.log(values)
+              this.setState({ values });
+            }).catch(error=>{
+              return console.error(error.message);
+            })
+        }).catch (error=>{
+        this.setState({feedback: error.message })
+        return
+      })
+     
+        
+      } catch (error) {
       console.error(error.message);
     }
   };
 
   componentDidMount() {
-    this.getForecast();
+    this.getForecast(this.apiKey, this.props.city);
   }
   render() {
     if (this.state.values && this.state.city) {
