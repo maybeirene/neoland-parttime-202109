@@ -12,7 +12,7 @@ readdir(".")
     return Promise.all(reads);
   })
   .then((races) =>
-  const stats = 
+
     races.reduce(
       //reduce(accum(en este caso un objeto, partimos de las estadisitcas=0), nextValue)
       (stats, race) => {
