@@ -1,9 +1,9 @@
 const { models: { Note } } = require('data')
 
-function createNote (user, date, color, public, text){
+function createNote (user, color, text, public){
 
 
-    return Note.create({user, date, color, public, text})
+    return Note.create({user, color, text, public})
     .then(note => { })
 
 }
