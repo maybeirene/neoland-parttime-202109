@@ -5,6 +5,7 @@ const {
     retrieveUser, 
     deleteUser, 
     updateUser, 
+    createNote,
     retrieveNotes, 
     retrieveNote,
     retrievePublicNotes,

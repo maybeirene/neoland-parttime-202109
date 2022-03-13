@@ -1,6 +1,6 @@
 const { User } = require("data/src/models")
 
-function retrieveUser(id){
+function retrieveUser(userId){
 
     //TODO validations
 
@@ -12,8 +12,16 @@ function retrieveUser(id){
         }
     }) */
 
-        return  User.findById(id)
-        .then(doc => doc)
+        return  User.findById(userId)
+        .then(user => {
+            const doc = user._doc
+
+            doc.id = doc._id.toString()
+            delete doc._id
+            delete doc.__v
+            
+            return doc
+            })
   
 
 

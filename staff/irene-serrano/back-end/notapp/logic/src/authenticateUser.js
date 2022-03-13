@@ -5,9 +5,13 @@ function authenticateUser( email, password) {
 
     return User.findOne({ email, password })
         .then(user => {
-            if (!user) throw new Error('wrong credentials')
 
-            return user.id
+            debugger
+            if (!user) throw new Error('wrong credentials')
+            else {
+                return user.id
+            }
+            
         })
 }
 
