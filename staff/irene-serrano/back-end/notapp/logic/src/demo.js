@@ -10,7 +10,8 @@ const {
     retrieveNote,
     retrievePublicNotes,
     updateNote,
-    deleteNote  } = require('.')
+    deleteNote,
+    findPublicNotes  } = require('.')
 
 connect('mongodb://localhost:27017/notapp')
     .then(()=> console.log('connected to db'))
@@ -36,9 +37,17 @@ connect('mongodb://localhost:27017/notapp')
         }catch (error){
             console.error(error)
         }  */
-        try{
+    /*     try{
             return deleteNote("62211cbb80bf256643e376e3",'62211cbb80bf256643e376eb')
                 .then(()=> console.log('Nota eliminada'))
+                .catch(error => console.error(error))
+        }catch (error){
+            console.error(error)
+        }  */
+
+        try{
+            return findPublicNotes("6228f1444829fc96605ea05c")
+                .then((notes)=> console.log(notes))
                 .catch(error => console.error(error))
         }catch (error){
             console.error(error)

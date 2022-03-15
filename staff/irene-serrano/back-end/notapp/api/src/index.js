@@ -3,9 +3,12 @@ const {
   registerUser,
   authenticateUser,
   retrieveUser,
-  authenticateUser,
-  createNote
+  createNote,
+  deleteNote,
+  findPublicNotes,
+  findNotes
 } = require("logic");
+
 const {
   mongoose: { connect },
 } = require("data");
@@ -122,7 +125,67 @@ connect("mongodb://localhost:27017/notapp").then(() => {
     }
   })
 
+  router.delete('notes/:noteId', jsonBodyParser, (req, res) => {
+    try{
+      const {
+        headers: { Authorization },
+        params: {noteId}
+      } = req;
 
+      const [, userId] = Authorization.split(" ");
+
+      deleteNote(userId, noteId)
+        .then(() => res.status(204))
+        .catch((error) => res.status(400).json({ error: error.message }))
+
+    }catch(error){
+      res.status(400).json({ error: error.message });
+    }
+  })
+
+  router.get("/notes/public", (req, res) => {
+  
+    try {
+      const {
+        headers: { authorization },
+      } = req;
+
+      const [, userId] = authorization.split(" ");
+
+
+      findPublicNotes(userId)
+        .then((notes) => res.json(notes))
+        .catch((error) => res.status(400).json({ error: error.message }));
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  router.get("/notes", jsonBodyParser, (req, res) => {
+  
+    try {
+      const {
+        headers: { authorization },
+        body: filter
+      } = req;
+
+      const [, userId] = authorization.split(" ");
+
+
+      findNotes(userId, filter)
+        .then((notes) => res.json(notes))
+        .catch((error) => res.status(400).json({ error: error.message }));
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+
+
+
+
+
+  
   api.use("/api", router);
 
   api.listen(8080, () => console.log("json server running"));

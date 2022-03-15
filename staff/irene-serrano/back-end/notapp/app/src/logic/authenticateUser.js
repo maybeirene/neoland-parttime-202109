@@ -1,6 +1,10 @@
-function authenticateUser(email, password) {
-  // TODO Validators
+import {validators} from 'commons'
+const { validateEmail, validatePassword } = validators
 
+function authenticateUser(email, password) {
+  validateEmail(email) 
+  validatePassword(password)
+  
   return fetch("http://localhost:8080/api/user/auth", {
     method: "POST",
     headers: {

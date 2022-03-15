@@ -1,8 +1,9 @@
 const { models: { User }} = require('data')
 
 function authenticateUser( email, password) {
-    //TODO validation
-
+    validateEmail(email) 
+    validatePassword(password)
+    
     return User.findOne({ email, password })
         .then(user => {
 

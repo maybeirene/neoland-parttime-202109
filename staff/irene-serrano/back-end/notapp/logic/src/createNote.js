@@ -1,6 +1,8 @@
 const { models: { Note } } = require('data')
 const { User } = require('data/src/models')
 
+
+
 function createNote (userId, color, text, public){
 
 return User.findById(userId)

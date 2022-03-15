@@ -1,6 +1,6 @@
 const { Note } = require("data/src/models")
 
-function retrieveNotes (userId, ownerId){
+function retrieveNotes(userId, ownerId){
 
     if ( userId === ownerId){
         return  Note.find({user : userId})

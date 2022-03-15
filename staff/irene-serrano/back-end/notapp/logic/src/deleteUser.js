@@ -2,6 +2,9 @@ const {
   models: { User },
 } = require("data");
 
+/* import {validators} from 'commons'
+const {validateEmail, validateName, validatePassword} = validators
+ */
 function deleteUser(id, password) {
   //TODO validations
 

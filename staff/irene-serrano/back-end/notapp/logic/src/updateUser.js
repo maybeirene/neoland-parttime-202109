@@ -1,10 +1,14 @@
-
 const {models : { User } } = require('data')
 
+/* import {validators} from 'commons'
+const { validateEmail, validateName, validatePassword, validateId } = validators
+ */
 function updateUser(id, name, email, password ){
-    // TODO validate id
-    // TODO validate update is object
-    // TODO validate each property
+    /* validateEmail(email)
+    validateName(name)
+    validatePassword(password)
+    validateId(id)
+ */
     
     return User.updateOne({_id: id}, {name, email, password})
     .then(result => {

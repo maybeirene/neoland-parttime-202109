@@ -1,5 +1,10 @@
+import {validators} from 'commons'
+const {validateEmail, validateName, validatePassword} = validators
+
 function registerUser(name, email, password){
-    // TODO validators
+    validateName(name)
+    validateEmail(email)
+    validatePassword(password)
 
     return fetch('http://localhost:8080/api/user', {
     method: 'POST',

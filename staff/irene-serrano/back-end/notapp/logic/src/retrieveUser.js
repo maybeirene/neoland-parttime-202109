@@ -1,8 +1,11 @@
 const { User } = require("data/src/models")
 
+/* import {validators} from 'commons'
+const {validateId} = validators */
+
 function retrieveUser(userId){
 
-    //TODO validations
+/*   validateId(userId) */
 
     // findById
   /*   User.findById(id,(err, docs)=>{
