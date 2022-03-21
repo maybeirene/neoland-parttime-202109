@@ -1,15 +1,14 @@
-const { models: { Note } } = require('data')
-const { User } = require('data/src/models')
+const { models: { Note, User } } = require('data')
 
 
 
-function createNote (userId, color, text, public){
+function createNote (userId, text, color, public = false){
 
 return User.findById(userId)
-    .then(user=>{
+    .then(user => {
         if(!user) throw new Error (`User with id ${userId} not found`)
     
-        return Note.create({ color, text, public })
+        return Note.create({ user: userId, text, color, public })
     })
     .then(note => { })
 

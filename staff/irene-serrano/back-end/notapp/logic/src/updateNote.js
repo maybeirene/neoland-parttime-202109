@@ -8,7 +8,6 @@ function updateNote(userId, noteId, text, color, public) {
     const { matchedCount } = result;
     if (matchedCount === 0) throw new Error(`Note with id ${noteId} not found`);
 
-    return;
   });
 }
 module.exports = updateNote;

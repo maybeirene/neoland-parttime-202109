@@ -1,18 +1,13 @@
 const {models : { User } } = require('data')
 
-/* import {validators} from 'commons'
-const { validateEmail, validateName, validatePassword, validateId } = validators
- */
 function updateUser(id, name, email, password ){
-    /* validateEmail(email)
-    validateName(name)
-    validatePassword(password)
-    validateId(id)
- */
-    
+
     return User.updateOne({_id: id}, {name, email, password})
     .then(result => {
-        
+        const { matchedCount } = result
+
+        if (matchedCount === 0)
+            throw new Error(`user with id ${userId} not found`)
     })
 }
 module.exports = updateUser
