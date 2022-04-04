@@ -1,10 +1,12 @@
 import  registerUser  from "./registerUser";
 import  authenticateUser  from "./authenticateUser";
-
+import retrievePublicNotes from './retrievePublicNotes';
+import createNote from './createNote'
 
 export {
     registerUser,
-    authenticateUser
-
+    authenticateUser,
+    retrievePublicNotes,
+    createNote,
 }
    

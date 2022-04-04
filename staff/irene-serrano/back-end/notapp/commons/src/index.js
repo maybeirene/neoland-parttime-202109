@@ -1,11 +1,8 @@
-const { validateEmail,
-    validateName,
-    validatePassword,
-    validateId } = require('./validators')
+const validators = require('./validators')
+const errors = require('./errors')
+
 
 module.exports =  {
-    validateEmail,
-    validateName,
-    validatePassword,
-    validateId
+   validators,
+   errors
 }

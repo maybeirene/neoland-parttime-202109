@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     try {
         const userId = extractUserIdFromAuthorization(req)
 
-        createNote(userId, color, text, public)
+        createNote(userId, text, color,  public)
         .then(() => res.status(201).send())
         .catch((error) => res.status(400).json({ error: error.message }));
     } catch (error) {

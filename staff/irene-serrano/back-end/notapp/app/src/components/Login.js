@@ -1,6 +1,6 @@
 import { authenticateUser } from '../logic'
 
-function Login(){
+export default ({onLoggedIn}) => {
     const login = event => {
         event.preventDefault()
         const { target: 
@@ -12,12 +12,17 @@ function Login(){
         try {
             authenticateUser(email, password)
                 .then(res=> {
-                    console.log(res)
-                    console.log('user authenticated')
+                    const token = res.token
+                 
+                    sessionStorage.token = token
+                    onLoggedIn()
                 })
-                .catch(error=> alert(error.message))
+                .catch(error=> {
+                    delete sessionStorage.token
+                    console.error(error.message)})
         }catch (error){
-            alert(error.message + ' from catch @ Logic compo line 17')
+            delete sessionStorage.token
+            console.error(error.message)
         }
     }
     return <form onSubmit={login}>
@@ -26,8 +31,7 @@ function Login(){
         <input type="password" name="password" placeholder="password"/>
     
         <button type="submit">Login</button>
-    
+        <p>Don't have an account yet? Please, <a href="/register">register</a></p>
     </form>
 }
 
-export default Login

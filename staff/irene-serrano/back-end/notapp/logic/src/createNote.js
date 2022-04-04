@@ -4,6 +4,7 @@ const { models: { Note, User } } = require('data')
 
 function createNote (userId, text, color, public = false){
 
+  debugger
 return User.findById(userId)
     .then(user => {
         if(!user) throw new Error (`User with id ${userId} not found`)

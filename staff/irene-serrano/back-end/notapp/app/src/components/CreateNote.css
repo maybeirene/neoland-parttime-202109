@@ -1,0 +1,19 @@
+.CreateNote{
+    width: 350px;
+    height: 500px;
+    background: #fdfdfd;
+    border-radius:7px;
+    padding: 10px;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+
+}
+.CreateNote__form{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+}

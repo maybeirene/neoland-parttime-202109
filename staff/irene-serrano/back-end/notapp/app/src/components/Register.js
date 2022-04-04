@@ -1,6 +1,7 @@
 import { registerUser } from '../logic'
+import { authenticateUser } from '../logic'
 
-function Register(){
+export default function ({onLoggedIn}){
     const register = event => {
         event.preventDefault()
         const { target: 
@@ -11,10 +12,27 @@ function Register(){
 
         try {
             registerUser( name, email, password)
-                .then(()=> console.log('user registered'))
-                .catch(error=> alert(error.message))
+                .then(()=>{
+                    
+                    
+                    try {
+                        authenticateUser(email, password)
+                            .then(res=> {
+                                const token = res.token
+                                sessionStorage.token = token
+                                onLoggedIn()
+                            })
+                            .catch(error=> {
+                                delete sessionStorage.token
+                                console.error(error.message)})
+                    }catch (error){
+                        delete sessionStorage.token
+                        console.error(error.message)
+                    }
+                })
+                .catch(error=> console.log(error.message))
         }catch (error){
-            alert(error.message + ' from catch @ Register compo line 17')
+            console.error(error.message)
         }
     }
     return <form onSubmit={register}>
@@ -23,8 +41,8 @@ function Register(){
         <input type="password" name="password" placeholder="password"/>
     
         <button type="submit">Register</button>
+
+        <p>Do you already have an account? Please, <a href="/login">sign in</a></p>
     
     </form>
 }
-
-export default Register

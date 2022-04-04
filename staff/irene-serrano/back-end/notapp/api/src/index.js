@@ -75,8 +75,8 @@ connect(MONGODB_URL)
   
   router.get('/notes', jsonBodyParser, retrieveNote)
 
-router.get('/users/:ownerId/notes', jsonBodyParser, retrievePublicNotesFromUser)
-
+  router.get('/users/:ownerId/notes', jsonBodyParser, retrievePublicNotesFromUser)
+      
   api.use("/api", router);
 
   api.listen(PORT, () => console.log("json server running"));

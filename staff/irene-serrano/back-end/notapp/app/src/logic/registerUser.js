@@ -1,12 +1,13 @@
-import {validators} from 'commons'
+
+import {validators, errors} from 'commons'
 const {validateEmail, validateName, validatePassword} = validators
 
 function registerUser(name, email, password){
     validateName(name)
     validateEmail(email)
-    validatePassword(password)
+    validatePassword(password) 
 
-    return fetch('http://localhost:8080/api/user', {
+    return fetch('http://localhost:8080/api/users', {
     method: 'POST',
     headers: {
             'Content-Type': 'application/json'
@@ -19,7 +20,7 @@ function registerUser(name, email, password){
             if(status === 201){
                 return
             } else if(status >= 400 && status < 500){
-                throw new Error('client error')
+                throw new Error(res.statusText)
             } else if (status >= 500) throw new Error('server error')
 
         })

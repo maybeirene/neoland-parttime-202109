@@ -1,12 +1,15 @@
 const {
   models: { User },
 } = require("data");
+const { validate } = require("data/src/models/Note");
+const {validators} = require('commons')
 
-/* import {validators} from 'commons'
-const {validateEmail, validateName, validatePassword} = validators
- */
+const {validateEmail, validateName, validatePassword, validateId} = validators
+ 
 function deleteUser(id, password) {
   //TODO validations
+  validateId(id)
+  validatePassword(password)
 
   /*return User.deleteOne({_id: id, password : password})
     .then(result => {

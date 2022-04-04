@@ -1,11 +1,11 @@
-import {validators} from 'commons'
-const { validateEmail, validatePassword } = validators
+//import {validators} from 'commons'
+//const { validateEmail, validatePassword } = validators
 
 function authenticateUser(email, password) {
-  validateEmail(email) 
-  validatePassword(password)
+/*   validateEmail(email) 
+  validatePassword(password) */
   
-  return fetch("http://localhost:8080/api/user/auth", {
+  return fetch("http://localhost:8080/api/users/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +19,7 @@ function authenticateUser(email, password) {
      return res.json().then((payload) => payload);
     
     } else if (status >= 400 && status < 500) {
-      throw new Error("client");
+      throw new Error(res.statusText);
     } else if (status >= 500) throw new Error("server error");
   });
 }
