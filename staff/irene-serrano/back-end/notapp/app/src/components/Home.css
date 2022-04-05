@@ -18,15 +18,12 @@
     font-weight: 900;
     font-size: 1.5rem;
 }
+.Home__noteContainer{
 
-.note {
-  width: 250px;
-  height: 250px;
-  padding: 25px;
-  margin-top: 10px;
-  border-radius: 3px;
-  
-  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
-  text-decoration: none;
-  list-style: none;
+  max-width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+ 
 }

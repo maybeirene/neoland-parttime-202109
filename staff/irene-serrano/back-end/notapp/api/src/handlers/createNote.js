@@ -1,14 +1,18 @@
-const { extractUserIdFromAuthorization } = require('./helpers')
-const { createNote } = require('logic')
+const { extractUserIdFromAuthorization } = require("./helpers");
+const { createNote } = require("logic");
 
 module.exports = (req, res) => {
-    try {
-        const userId = extractUserIdFromAuthorization(req)
+  try {
+    const userId = extractUserIdFromAuthorization(req);
 
-        createNote(userId, text, color,  public)
-        .then(() => res.status(201).send())
-        .catch((error) => res.status(400).json({ error: error.message }));
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
-}
+    const {
+      body: { text, color, public: _public },
+    } = req;
+
+    createNote(userId, text, color, _public)
+      .then(() => res.status(201).send())
+      .catch((error) => res.status(400).json({ error: error.message }));
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};

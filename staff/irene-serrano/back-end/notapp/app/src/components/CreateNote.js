@@ -4,16 +4,16 @@ import { createNote } from '../logic'
 export default ({ onCreated }) => {
     const handleCreateNote = event => {
         event.preventDefault()
-       
+      /*  
         const text = event.target.text.value
         const color = event.target.color.value
-        const _public = event.target.public.value
-
-     /*    const { target: {
+        const _public = event.target.public.checked
+ */
+        const { target: {
             text: { value: text },
             color: { value: color },
             public: { checked: _public }
-        }} = event */
+        }} = event
         console.log(sessionStorage.token)
         console.log(text, color, _public)
         try {
@@ -34,10 +34,15 @@ export default ({ onCreated }) => {
 
             <label htmlFor="text">Pick a color:</label>
             <select name="color">
+                <option selected disabled >--Choose a color--</option>
+                <option value="white">white</option>
                 <option value="red">red</option>
                 <option value="green">green</option>
                 <option value="blue">blue</option>
                 <option value="yellow">yellow</option>
+                <option value="pink">pink</option>
+                <option value="purple">purple</option>
+                
             </select>
             
             <label htmlFor="public">public</label>

@@ -10,9 +10,9 @@ export default ({content, onClose }) => {
     }
 
     return <div className="Modal" onClick={handleClickOnModal}>
-    <button className="Modal__closeButton" onClick={onClose}>X</button>
-    <div onClick={handleClickOnContent}>
-       {content}
-    </div>
-</div>
+                <button className="Modal__closeButton" onClick={onClose}>X</button>
+                <div onClick={handleClickOnContent}>
+                    {content}
+                 </div>
+            </div>
 }

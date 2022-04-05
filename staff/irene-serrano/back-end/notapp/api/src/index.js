@@ -67,7 +67,8 @@ connect(MONGODB_URL)
 
   router.patch("/notes/:noteId", jsonBodyParser, updateUser)
 
-  router.delete('notes/:noteId', jsonBodyParser, deleteNote)
+  // router.delete('notes/:noteId', jsonBodyParser, deleteNote)
+  router.delete('/notes/', jsonBodyParser, deleteNote)
 
   router.get("/notes/public", jsonBodyParser, findPublicNotes);
 

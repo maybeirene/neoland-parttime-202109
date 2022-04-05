@@ -1,32 +1,17 @@
-import { useEffect, useState } from 'react'
-import { retrievePublicNotes } from '../logic'
+import { useState } from 'react'
 
 import Modal from './Modal'
+import Nav from './Nav'
 import CreateNote from './CreateNote'
 import './Home.css'
+import Feed from './Feed'
 
 // import Note from './Note';
 
 export default({ onLoggedOut }) => {
-    const [notes, setNotes] = useState()
+
     const [modal, setModal] = useState()
-
-    const loadNotes = () => {
-        try{
-            retrievePublicNotes(sessionStorage.token)
-                .then(notes=> {
-                
-                    setNotes(notes)
-                } )
-                .catch(error => console.error(error.message))
-        } catch (error) {
-            console.error(error.message)
-        }
-    }
-
-    useEffect(()=>{
-        loadNotes()
-    }, [])
+    const [refresh, setRefresh] = useState()
 
     const handleLogout = () => {
         delete sessionStorage.token
@@ -40,32 +25,21 @@ export default({ onLoggedOut }) => {
     const handleCloseModalAndReloadNotes = () => {
         handleCloseModal()
 
-        loadNotes()
+        setRefresh(true)
     }
 
+
+
     return <div className="Home">
-        <button onClick={handleLogout}>Logout</button>
+        <Nav onLogout={handleLogout}/>
         
         <div className="Home__title">
             <h2>NOTES</h2>
             <button className="title__button" onClick={handleOpenModal}>+</button>
 
         </div>
-        
-     {notes? <ul>
-        {notes.map(note => 
-        <li className="note"
-        style={{backgroundColor: note.color}} 
-        key={note.id}>
-            {note.text}
-            </li>)}
-
-      {/*    {notes.map( note => {
-             
-             return <Note key={note.id}  showText={()=>console.log(note.text)} /> 
-         })} */}
-     </ul> : <p>no notes</p>
-     }
+        <Feed refresh={refresh}/>
+     
 
      {modal && <Modal content={
          <CreateNote onCreated={handleCloseModalAndReloadNotes} />

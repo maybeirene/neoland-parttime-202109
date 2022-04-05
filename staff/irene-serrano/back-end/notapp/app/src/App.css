@@ -1,18 +1,15 @@
 :root{
   --color__white:#fffaf1;
-  --color__light: #C7BA9F;
-  --color__medium:#403C33;
+  --color__light: #ecdfc6;
+  --color__medium:#928975;
   --color__dark:#2A2523;
   --color__black: #0F0E0C;
   --color__primary:#DD681E;
-  --color__secondary:#1A19DE;
-  --color__terciary:#0D918A;
+  --color__secondary:#0D918A;
   --color__success: #5CDE35;
   --color__error: #911A14;
 
 }
-
-
 
 *{
   margin: 0;
@@ -22,6 +19,7 @@
 }
 
 .app {
+  width: 100%;
   min-height: 100vh;
   background-color:var(--color__white);
 

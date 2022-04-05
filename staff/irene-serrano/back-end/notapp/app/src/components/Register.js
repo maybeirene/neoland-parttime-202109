@@ -1,6 +1,9 @@
 import { registerUser } from '../logic'
 import { authenticateUser } from '../logic'
 
+
+import './Register.css'
+
 export default function ({onLoggedIn}){
     const register = event => {
         event.preventDefault()
@@ -35,14 +38,21 @@ export default function ({onLoggedIn}){
             console.error(error.message)
         }
     }
-    return <form onSubmit={register}>
-        <input type="text" name="name" placeholder="name"/>
-        <input type="email" name="email" placeholder="email"/>
-        <input type="password" name="password" placeholder="password"/>
+    return <div className="register">
+        <h3 className="register__title">Register</h3>
+
+        <form onSubmit={register} className="register__form">
+        <input className="form__input" type="text" name="name" placeholder="name"/>
+        <input className="form__input" type="email" name="email" placeholder="email"/>
+        <input className="form__input" type="password" name="password" placeholder="password"/>
     
-        <button type="submit">Register</button>
+        <button className="form__submit" type="submit">Register</button>
 
         <p>Do you already have an account? Please, <a href="/login">sign in</a></p>
     
     </form>
+    </div>
+    
+    
+    
 }
