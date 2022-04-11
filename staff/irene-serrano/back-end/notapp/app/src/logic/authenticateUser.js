@@ -19,8 +19,9 @@ function authenticateUser(email, password) {
      return res.json().then((payload) => payload);
     
     } else if (status >= 400 && status < 500) {
-      throw new Error(res.statusText);
-    } else if (status >= 500) throw new Error("server error");
+      
+      throw new Error('Invalid password or username');
+    } else if (status >= 500) throw new Error('Can not connect to server. Please, try it later :(');
   });
 }
 

@@ -17,17 +17,12 @@ export default function (token) {
 
             if (status === 200)
                 return res.json()
-                    .then(notes => {
-                        notes.forEach(note => note.date = new Date(note.date).toDateString())
-
-                        return notes
-                    })
             else if (status >= 400 && status < 500)
                 return res.json()
                     .then(payload => {
                         const { error: message } = payload
 
-                        throw new ClientError(message + ' jaja')
+                        throw new ClientError(message)
                     })
             else if (status >= 500)
                 return res.text()

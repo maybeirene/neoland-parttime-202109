@@ -1,4 +1,4 @@
-.CreateNote{
+.UpdateNote{
     width: 350px;
     height: 500px;
     background: #fdfdfd;
@@ -11,7 +11,7 @@
 
 
 }
-.CreateNote__form{
+.UpdateNote__form{
     display: flex;
     flex-direction: column;
     width: 80%;

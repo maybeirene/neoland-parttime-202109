@@ -1,12 +1,13 @@
 import { validators, errors } from 'commons'
 
-const { validateToken } = validators
-const { ClientError, ServerError } = errors
+const { validateToken, validateId } = validators
+const { AuthError, NotFoundError, FormatError, ClientError, ServerError } = errors
 
 export default function (token) {
-    validateToken(token)
+   validateToken(token)
+ 
 
-    return fetch('http://localhost:8080/api/notes', {
+    return fetch(`http://localhost:8080/api/users`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`
@@ -17,17 +18,24 @@ export default function (token) {
 
             if (status === 200)
                 return res.json()
-                    .then(notes => {
-                        notes.forEach(note => note.date = new Date(note.date).toDateString())
+                    .then(user => {
+                        
 
-                        return notes
+                        return user
                     })
             else if (status >= 400 && status < 500)
                 return res.json()
                     .then(payload => {
                         const { error: message } = payload
 
-                        throw new ClientError(message + ' jaja')
+                        if (status === 400)
+                            throw new FormatError(message)
+                        if (status === 401)
+                            throw new AuthError(message)
+                        else if (status === 404)
+                            throw new NotFoundError(message)
+                        else
+                            throw new ClientError(message)
                     })
             else if (status >= 500)
                 return res.text()

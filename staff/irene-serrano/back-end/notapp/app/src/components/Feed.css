@@ -1,9 +1,10 @@
 .Feed{
     width: fit-content;
-    margin: auto
+    margin: auto;
+    padding: 10px 0 50px 0
 }
 .Feed__notes{
-    margin: auto;
+    margin:auto;
     max-width: 70%;
     display: flex;
     flex-wrap: wrap;

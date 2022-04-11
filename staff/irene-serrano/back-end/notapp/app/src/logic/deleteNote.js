@@ -1,42 +1,33 @@
-/* import {validators, errors} from 'commons'
-const { validateToken, validateString, validateBoolean } = validators
+import { validators, errors } from "commons";
+const { validateToken, validateString, validateBoolean } = validators;
+const { ClientError, ServerError } = errors;
 
-export default function (userId, noteId) {
-    
-    return fetch('http://localhost:8080/api/notes', {
-        method: 'DELETE',
-        headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({user: userId, _id: noteId})
-    })
-        .then(res => {
-            const { status } = res
+export default function (token, noteId) {
+  validateToken(token);
 
-            if (status === 201)
-                return
-            else if (status >= 400 && status < 500)
-                return res.json()
-                    .then(payload => {
-                        const { error: message } = payload
+  return fetch(`http://localhost:8080/api/notes/${noteId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
+    const { status } = res;
 
-                        throw new Error(message)
-                    })
-            else if (status >= 500)
-                    return res.json()
-                    .then(payload => {
-                        const { error: message } = payload
-                        throw new Error(message)
-                    }) 
-            else {
-                console.log(res, status)
-            }
-        }
-        
-    
+    if (status === 204) return;
+    else if (status >= 400 && status < 500)
+      return res.json().then((payload) => {
+        const { error: message } = payload;
 
-    )
-
-
-} */
+        throw new ClientError(message);
+      });
+    else if (status >= 500)
+      return res.json().then((payload) => {
+        const { error: message } = payload;
+        throw new ServerError(message);
+      });
+    else {
+      console.log(res, status);
+    }
+  });
+}

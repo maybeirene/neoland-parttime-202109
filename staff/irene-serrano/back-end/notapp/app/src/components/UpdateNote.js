@@ -1,28 +1,29 @@
-import './CreateNote.css'
-import { createNote } from '../logic'
+import './UpdateNote.css'
+import { updateNote } from '../logic'
 
-export default ({ onCreated }) => {
-    const handleCreateNote = event => {
+export default ({ onUpdated }) => {
+    const handleUpdateNote = event => {
         event.preventDefault()
-   
+        console.log('To update')
+   /* 
         const { target: {
             text: { value: text },
             color: { value: color },
             public: { checked: _public }
         }} = event
         try {
-            createNote(sessionStorage.token, text, color, _public)
-                .then(() => onCreated())
+            UpdateNote(sessionStorage.token, text, color, _public)
+                .then(() => onUpdated())
                 .catch(error => console.error(error.message))
         } catch(error) {
             alert(error.message)
-        }
+        } */
     }
 
-    return <div className="CreateNote">
-        <h3>Create a note</h3>
+    return <div className="UpdateNote">
+        <h3>Update a note</h3>
         
-        <form className="CreateNote__form" onSubmit={handleCreateNote}>
+        <form className="UpdateNote__form" onSubmit={handleUpdateNote}>
             <div className='form__inputset form__inputset-column'>
             <label htmlFor="text">Your note text:</label>
             <textarea name="text" ></textarea>
@@ -49,7 +50,7 @@ export default ({ onCreated }) => {
             </div>
             
 
-            <button className='form__submit'>Create</button>
+            <button className='form__submit'>Update</button>
         </form>
     </div>
 }

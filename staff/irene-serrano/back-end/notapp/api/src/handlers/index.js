@@ -8,7 +8,7 @@ const createNote = require('./createNote')
 const updateNote = require('./updateNote')
 const retrieveNote = require('./retrieveNote')
 const findNotes = require('./findNotes')
-const findPublicNotes = require('./findPublicNotes')
+const retrievePublicNotes = require('./retrievePublicNotes')
 
 const retrievePublicNotesFromUser = require('./retrievePublicNotesFromUser')
 const deleteNote = require('./deleteNote')
@@ -23,7 +23,7 @@ module.exports = {
     updateNote,
     retrieveNote,
     findNotes,
-    findPublicNotes,
+    retrievePublicNotes,
     retrievePublicNotesFromUser,
     deleteNote
 

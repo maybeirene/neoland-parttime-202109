@@ -1,7 +1,9 @@
 import { authenticateUser } from '../logic'
+import {useState} from 'react'
 import './Login.css'
 
 export default ({onLoggedIn}) => {
+    const [feedback, setFeedback] = useState()
     const login = event => {
         event.preventDefault()
         const { target: 
@@ -20,9 +22,11 @@ export default ({onLoggedIn}) => {
                 })
                 .catch(error=> {
                     delete sessionStorage.token
+                    setFeedback(error.message)
                     console.error(error.message)})
         }catch (error){
             delete sessionStorage.token
+            setFeedback(error.message)
             console.error(error.message)
         }
     }
@@ -34,6 +38,7 @@ export default ({onLoggedIn}) => {
       <input className="form__input" type="password" name="password" placeholder="password"/>
   
       <button className="form__submit" type="submit">Login</button>
+    {  feedback? <p style={{color: 'red'}}>{feedback}</p> : null}
       <p>Don't have an account yet? Please, <a href="/register">register</a></p>
   </form>
     </div>

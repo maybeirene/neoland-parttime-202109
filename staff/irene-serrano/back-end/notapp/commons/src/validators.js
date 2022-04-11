@@ -7,7 +7,7 @@ function validateName (name){
 }
 
 function validateEmail (email){
-    if (typeof email !== 'string') throw new TypeError('Name is not string')
+    if (typeof email !== 'string') throw new TypeError('email is not string')
     if (!email.trim()) throw new Error('username is empty or blank')
    // if (EMAIL_REGEX.test(email) )throw new Error('invalid email JODER')
 }

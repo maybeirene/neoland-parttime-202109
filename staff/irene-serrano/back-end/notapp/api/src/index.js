@@ -17,23 +17,12 @@ const {
   updateNote,
   retrieveNote,
   findNotes,
-  findPublicNotes,
+  retrievePublicNotes,
   retrievePublicNotesFromUser,
   deleteNote
 
 } = require('./handlers')
 
-/* const {
-
-
-  createNote,
-  updateNote,
-  deleteNote,
-  retrieveNote,
-  retrievePublicNotesFromUser,
-  //findPublicNotes,
-  //findNotes
-} = require("logic"); */
 
 const {extractUserIdFromAuthorization } = require('./handlers/helpers')
 
@@ -67,10 +56,12 @@ connect(MONGODB_URL)
 
   router.patch("/notes/:noteId", jsonBodyParser, updateUser)
 
-  // router.delete('notes/:noteId', jsonBodyParser, deleteNote)
-  router.delete('/notes/', jsonBodyParser, deleteNote)
+  router.delete('/notes/:noteId', deleteNote)
+  //router.delete('/notes/', jsonBodyParser, deleteNote)
 
-  router.get("/notes/public", jsonBodyParser, findPublicNotes);
+ // router.get("/notes/public", jsonBodyParser, findPublicNotes);
+
+  router.get("/notes", jsonBodyParser, retrievePublicNotes);
 
   router.get("/notes", jsonBodyParser, findNotes);
   

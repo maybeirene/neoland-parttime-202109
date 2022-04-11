@@ -1,13 +1,10 @@
 import { validators, errors } from 'commons'
 
 const { validateToken, validateString, validateBoolean } = validators
-/* const { ClientError, ServerError } = errors
- */
+ const { ClientError, ServerError } = errors
+ 
 export default function (token, text, color, _public) {
      validateToken(token)
-   /* validateString(text, 'text')
-    validateString(color, 'color')
-    validateBoolean(_public, 'public') */
 
     return fetch('http://localhost:8080/api/notes', {
         method: 'POST',
@@ -30,10 +27,7 @@ export default function (token, text, color, _public) {
                         throw new Error(message)
                     })
             else if (status >= 500)
-                /* return res.text()
-                    .then(text => {
-                        throw new Error(text)
-                    }) */
+             
                     return res.json()
                     .then(payload => {
                         const { error: message } = payload

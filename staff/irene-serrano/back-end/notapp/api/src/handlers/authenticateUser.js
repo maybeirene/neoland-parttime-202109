@@ -12,7 +12,8 @@ module.exports = (req, res) => {
 
                 res.status(200).json({token})
             })
-            .catch( error => res.status(400).json({ error: error.message }))
+            .catch( error =>
+                res.status(400).json({ error: error.message }))
     } catch(error){
         res.status(400).json({ error: error.message })
     }

@@ -1,38 +1,72 @@
-import { retrievePublicNotes } from '../logic'
-import { useState, useEffect } from 'react'
+import { retrievePublicNotes, retrieveUser } from "../logic";
+import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
-import Note from './Note'
 
-import './Feed.css'
+import Note from "./Note";
+import Modal from './Modal'
+import NoteDetail from './NoteDetail'
 
-export default ({refresh}) => {
-    const [notes, setNotes] = useState()
+import "./Feed.css";
+
+
+export default ({ refresh }) => {
+  const [notes, setNotes] = useState();
+  const navigate = useNavigate()
+  const [feedback, setFeedback] = useState()
+
+  const [user, setUser] = useState()
  
 
-    const loadNotes = () => {
-        try{
-            retrievePublicNotes(sessionStorage.token)
-                .then(notes=> {
-                
-                    setNotes(notes)
-                } )
-                .catch(error => console.error(error.message))
-        } catch (error) {
-            console.error(error.message)
-        }
+  const getUser = () =>{
+    try {
+      retrieveUser(sessionStorage.token)
+      .then(user => setUser(user))
+      .catch(error=> setFeedback(error.message))
+    } catch (error) {
+      setFeedback(error.message)
     }
-    useEffect(()=>{
-        loadNotes()
-    }, [])
+  }
 
-    return <div className='Feed'>
-            {notes? <ul className='Feed__notes'>
+  const getNotes = () => {
+    try {
+      retrievePublicNotes(sessionStorage.token)
+        .then((notes) => {
+        
+          setNotes(notes);
+        })
+        .catch((error) => setFeedback(error.message));
+    } catch (error) {
+      setFeedback(error.message);
+    }
+  }
 
-               
-                {notes.map(note => 
-                    <Note  key={note.id} content={note} />)}
-                
-                
-                </ul> : <p>no notes</p>}
+  useEffect(() => {
+   getNotes()
+   getUser()
+  }, [refresh]);
+
+  const handleCloseModal = () => navigate('/')
+  const handleDeletedNoteAndRefresh = () => getNotes()
+
+  return (
+    <div className="Feed">
+      {feedback? <p>{feedback}</p>: null}
+      {notes ? 
+        <ul className="Feed__notes">
+          {notes.map((note) => (
+            
+            <li  key={note.id}>
+              <Note note={note} onDeleted={handleDeletedNoteAndRefresh} user={user}/>
+            </li>
+          ))}
+        </ul>
+       : 
+        <p>no notes</p>}
+
+        <Routes>
+            <Route path="n/:noteId" element={<Modal content={<NoteDetail />} onClose={handleCloseModal}  />} />
+        </Routes>
     </div>
-}
+  );
+};
