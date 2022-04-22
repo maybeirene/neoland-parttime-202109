@@ -19,3 +19,13 @@
 .Nav__link:hover{
     color: var(--color__primary);
 }
+
+.Nav__link-strong{
+   font-weight: 600;
+    padding-right: 50px;
+    font-size: 1.4rem;
+    
+}
+.Nav__link-light{
+    padding-left: 50px;
+}

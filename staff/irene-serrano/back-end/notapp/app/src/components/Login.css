@@ -33,3 +33,9 @@
     font-size: 1rem;
 
 }
+
+.form__feedback-error{
+    color:var(--color__error);
+    font-weight: 600;
+
+}

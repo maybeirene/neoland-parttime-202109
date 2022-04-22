@@ -39,15 +39,60 @@ export default ({ refresh, view }) => {
 
   if(view === "allNotes") getAllNotes() 
 
-  useEffect(() => {
+/*   useEffect(() => {
   
-    getAllNotes()
+    if(view === "userNotes") console.log("usernOtes")
     
     getUser();
   }, [refresh]);
-
+ */
   const handleCloseModal = () => navigate("/");
   const handleDeletedNoteAndRefresh = () => getAllNotes();
+
+  /* return (
+
+    view === "userNotes" ? (
+    <div>
+      <h3>EY, LAS NOTAS DEL USUARIO SON ESTAS</h3>
+      <ul>
+        <li>COSA</li>
+        <li>COSA</li>
+        <li>COSA</li>
+        <li>COSA</li>
+        <li>COSA</li>
+      </ul>
+    </div>) : 
+    view === "AllNotes" ? 
+    <div className="Feed">
+      {feedback ? <p>{feedback}</p> : null}
+      {notes ? (
+        <ul className="Feed__notes">
+          {notes.map((note) => (
+            <li key={note.id}>
+              <Note
+                note={note}
+                onDeleted={handleDeletedNoteAndRefresh}
+                user={user}
+              />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>no notes</p>
+      )
+      
+      }
+
+      <Routes>
+        <Route
+          path="n/:noteId"
+          element={
+            <Modal content={<NoteDetail />} onClose={handleCloseModal} />
+          }
+        />
+      </Routes>
+    </div> : null
+  ); */
 
   return (
 

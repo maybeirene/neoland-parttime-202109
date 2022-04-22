@@ -1,64 +1,72 @@
 import "./Note.css";
 import UpdateNote from "./UpdateNote";
-import Modal from './Modal'
+import Modal from "./Modal";
 
-import { deleteNote, retrieveUser }from '../logic'
-import { useState} from 'react'
+import { deleteNote, retrieveUser } from "../logic";
+import { useState } from "react";
 
-//export default ({ note: { id, text, color, date, ownerId, userName }, onDeleted, userId }) => {
-export default ({note, onDeleted, user }) => {
-  const [feedback, setFeedback] = useState()
-  const [modal, setModal] = useState()
-  const [refresh, setRefresh] = useState()
-  
-  const handleCloseModal = () => setModal(false)
+export default ({ note, onDeleted, user }) => {
+  const [feedback, setFeedback] = useState();
+  const [modal, setModal] = useState();
+  const [refresh, setRefresh] = useState();
 
-    const handleOpenModal = () => setModal(true)
+  const handleCloseModal = () => setModal(false);
 
-    const handleCloseModalAndReloadNotes = () => {
-        handleCloseModal()
+  const handleOpenModal = () => setModal(true);
 
-        setRefresh(true)
+  const handleCloseModalAndReloadNotes = () => {
+    handleCloseModal();
+    setRefresh(true);
+  };
+
+  const handleDeleteNote = () => {
+    try {
+      deleteNote(sessionStorage.token, note.id)
+        .then(() => {
+          setFeedback("Note deleted");
+          onDeleted();
+        })
+        .catch((error) => {
+          setFeedback(error.message);
+        });
+    } catch (error) {
+      setFeedback(error.message);
     }
-
-  const handleDeleteNote = () =>{
-    try{
-      deleteNote(sessionStorage.token, note.id )
-      .then(()=>{
-        setFeedback('Note deleted')
-        onDeleted()
-      }).catch((error)=>{
-        setFeedback(error.message)
-       
-      } )
-    
-    }catch (error) {
-      setFeedback(error.message)
-    }
-  
-}
+  };
 
   return (
     <div className={`note note__${note.color}`}>
-      {note.userId == user.id? <div className="note__userButtons">
-        <span className="note__deleteButton" onClick={handleDeleteNote} >🗑️</span>
-        <span className="note__editButton" onClick={handleOpenModal} >✏️</span>
-      </div>
+      {note.userId == user.id ? (
+        <div className="note__userButtons">
+          <span className="note__deleteButton" onClick={handleDeleteNote}>
+            🗑️
+          </span>
+          <span className="note__editButton" onClick={handleOpenModal}>
+            ✏️
+          </span>
+        </div>
+      ) : null}
 
-       : null}
-      
-     
       <p className="note__text">{note.text}</p>
-     
+
       <div className="note__info">
-      <hr></hr>
+        <hr></hr>
         <strong>{note.userName}</strong>
         <p>{note.date}</p>
       </div>
-      {feedback? <p className="note__feedback">{feedback}</p> : null}
-      {modal && <Modal content={
-         <UpdateNote onUpdated={handleCloseModalAndReloadNotes} />
-     } onClose={handleCloseModal} /> }
+      {feedback ? <p className="note__feedback">{feedback}</p> : null}
+      {modal && (
+        <Modal
+          content={
+            <UpdateNote
+              onUpdated={handleCloseModalAndReloadNotes}
+              noteId={note.id}
+              refresh={refresh}
+            />
+          }
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 };

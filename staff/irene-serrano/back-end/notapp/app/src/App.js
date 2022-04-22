@@ -43,7 +43,7 @@ function App() {
         <Route path='/*' element={loggedIn ? <Home onLoggedOut = {handleLoggedOut} /> : <Landing /> } /> 
         <Route path="/register" element={loggedIn ? <Navigate to="/" /> : <Register onLoggedIn={handleLoggedIn}/>} />
         <Route path="/login" element={loggedIn ? <Navigate to="/" /> : <Login onLoggedIn={handleLoggedIn} />} />
-
+       
       </Routes>
 
     </div>

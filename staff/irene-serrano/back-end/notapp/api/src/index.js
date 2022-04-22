@@ -54,7 +54,7 @@ connect(MONGODB_URL)
 
   router.post("/notes", jsonBodyParser, createNote)
 
-  router.patch("/notes/:noteId", jsonBodyParser, updateUser)
+  router.patch("/notes/:noteId", jsonBodyParser, updateNote)
 
   router.delete('/notes/:noteId', deleteNote)
   //router.delete('/notes/', jsonBodyParser, deleteNote)

@@ -31,14 +31,14 @@ export default ({ onCreated }) => {
             <div className='form__inputset form__inputset-column'>
             <label htmlFor="text">Pick a color:</label>
             <select name="color">
-                <option defaultValue disabled >--Choose a color--</option>
+            <option defaultValue disabled >--Choose a color--</option>
                 <option value="white">white</option>
-                <option value="red">red</option>
-                <option value="green">green</option>
-                <option value="blue">blue</option>
                 <option value="yellow">yellow</option>
+                <option value="red">red</option>
                 <option value="pink">pink</option>
                 <option value="purple">purple</option>
+                <option value="blue">blue</option>
+                <option value="green">green</option>
                 
             </select>
             </div>

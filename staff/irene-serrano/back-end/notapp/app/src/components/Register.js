@@ -1,10 +1,11 @@
 import { registerUser } from '../logic'
 import { authenticateUser } from '../logic'
-
+import {useState} from 'react'
 
 import './Register.css'
 
 export default function ({onLoggedIn}){
+    const [feedback, setFeedback] = useState()
     const register = event => {
         event.preventDefault()
         const { target: 
@@ -27,15 +28,21 @@ export default function ({onLoggedIn}){
                             })
                             .catch(error=> {
                                 delete sessionStorage.token
-                                console.error(error.message)})
+                                setFeedback(error.message)
+                              //  console.error(error.message)
+                            })
                     }catch (error){
                         delete sessionStorage.token
-                        console.error(error.message)
+                        setFeedback(error.message)
+                       // console.error(error.message)
                     }
                 })
-                .catch(error=> console.log(error.message))
+                .catch(error =>
+                    setFeedback(error.message))
+                
         }catch (error){
-            console.error(error.message)
+            setFeedback(error.message)
+           // console.error(error.message)
         }
     }
     return <div className="register">
@@ -47,7 +54,8 @@ export default function ({onLoggedIn}){
         <input className="form__input" type="password" name="password" placeholder="password"/>
     
         <button className="form__submit" type="submit">Register</button>
-
+       
+       {  feedback? <p className="form__feedback-error">{feedback}</p> : null}
         <p>Do you already have an account? Please, <a href="/login">sign in</a></p>
     
     </form>
