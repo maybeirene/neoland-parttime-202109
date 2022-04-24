@@ -22,6 +22,33 @@
 
 ### Data Model (ER)
 
+Encontramos dos esquemas distintos: 'user' y 'offer'. El 'user' se utilizará tanto para los usuarios demandantes como para los  ofertantes/empresas, diferenciandolos mediante una propiedad 'rol'.
+
+A continuación, el detalle de los esquemas:
+
+    user {
+        "rol": [number],
+        "email": [string],
+        "password": [string],
+        "name": [string],
+        "description": [string] [max char: 250],
+        "stack": [string],
+        "links": [array, string],
+        "acitve": [boolean],
+    }
+
+    offer {
+        "userId": [Objetc ID],
+        "title": [string],
+        "description": [string],
+        "publicationDate": [string],
+        "minSalary": [number],
+        "maxSalary": [number],
+        "location":  [string],
+        "active": [boolean]
+    }
+
+
 ### Code Coverage
 
 ### Technologies
