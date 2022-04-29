@@ -30,17 +30,25 @@ En esta aplicación tenemos dos líneas funcionales distintas en base al rol del
 
 ### Use Cases
 En base a los casos de uso que se han descrito en el punto anterior, listo las funciones que se utilizarán para realizar las acciones.
-- **registerUser**: registra a los usuarios. El rol viene dado por la pantalla desde la que se hace el registro.
+- **registerUser**: registra a los usuarios desarrolladores. Por defecto tiene el rol seteado
+
+- **registerCompany**: registra a los usuarios recruiter o empresa. Por defecto tiene el rol seteado, igual que las propiedades 'null' que no utiliza del modelo de datos.
 
 - **authenticateUser**
 
-- **updateUser**
+- **updateUser**: actualiza los datos de usuario
 
-- **retrieveUser**
+- **updateCompany**: actualiza los datos de la compañia
 
-- **retrieveAllUsers**: devuelve todos los usuarios activos
+- **retrieveUser**: devuelve el usuario indicado, con rol de developer 
+
+- **retrieveCompany**: devuelve el usuario indicado, con rol de compañía
+
+- **retrieveAllUsers**: devuelve todos los usuarios activos con rol de desarollador
 
 - **deleteUser**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
+
+**deleteCompany**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
 
 - **createOffer**
 
@@ -48,7 +56,7 @@ En base a los casos de uso que se han descrito en el punto anterior, listo las f
 
 - **retrieveAllOffers**: devuelve todas las ofertas activas
 
-- **retrieveUserOffers**: devuelve las ofertas activas un usuario concreto
+- **retrieveUserOffers**: devuelve las ofertas activas de un usuario concreto
 
 - **retrieveOffer**: devuelve una oferta concreta
 
@@ -69,28 +77,28 @@ Encontramos dos esquemas distintos: 'user' y 'offer'. El 'user' se utilizará ta
 A continuación, el detalle de los esquemas:
 
     user {
-        "id": [ObjectID],
-        "rol": [number],
-        "email": [string],
-        "password": [string],
-        "name": [string],
-        "description": [string] [max char: 250],
-        "stack": [string],
-        "location":  [string],
-        "links": [array, string],
-        "acitve": [boolean],
+        id: ObjectID,
+        rol: number,
+        email: string,
+        password: string,
+        name: string,
+        description: string (max char: 250),
+        stack: string,
+        location: string,
+        links: [string],
+        acitve: boolean,
     }
 
     offer {
-        "id": [ObjectID],
-        "userId": [Objetc ID],
-        "title": [string],
-        "description": [string],
-        "publicationDate": [string],
-        "minSalary": [number],
-        "maxSalary": [number],
-        "location":  [string],
-        "active": [boolean]
+        id: ObjectID,
+        userId: Objetc ID,
+        title: string,
+        description: string,
+        publicationDate: string,
+        minSalary: number,
+        maxSalary: number,
+        location:  string,
+        active: boolean,
     }
 
 
@@ -106,3 +114,5 @@ A continuación, el detalle de los esquemas:
 - Mongo ![](https://www.mongodb.com/favicon.ico)
 
 ### TODO list
+
+- Offer contact counter
