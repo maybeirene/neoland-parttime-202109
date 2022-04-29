@@ -14,15 +14,15 @@ En esta aplicación tenemos dos líneas funcionales distintas en base al rol del
 
     El rol 1 se refiere al desarrollador junior que quiere ver ofertas de trabajo.
 
-    En este caso, puede acceder a **todas las ofertas** , las cuales podría filtrar por fecha, localización, rango salarial o stack que se busca.
+    En este caso, puede acceder a **todas las ofertas** , las cuales podría filtrar por fecha, rango salarial o stack que se busca.
 
     El contacto con la empresa por la oferta se hará mediante un botón que envía un correo a la dirección proporcionada por esta.
 
 ###  **Rol 2 - usuario ofertante (recruiter/empresa) **
 
-    El rol 2 se refiere al recruiter que crea una oferta de trabajo.
+    El rol 2 se refiere a la empresa que crea una oferta de trabajo.
 
-    En este caso, pueden ver los perfiles de los usuarios (datos que introduce el usuario al crear la cuenta) que pueden filtrar por stack al que quieren acceder y localización. Igualmente, al crear una oferta, aparecen posibles candidatos que coinciden en stack.
+    En este caso, pueden ver los perfiles de los usuarios (datos que introduce el usuario al crear la cuenta) que pueden filtrar por stack al que quieren acceder. Igualmente, al crear una oferta, aparecen posibles candidatos que coinciden en stack.
 
     El contacto con el usuario se hará mediante un botón que envía un correo a la direccion proporcionada por este.
 
@@ -48,7 +48,7 @@ En base a los casos de uso que se han descrito en el punto anterior, listo las f
 
 - **deleteUser**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
 
-**deleteCompany**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
+- **deleteCompany**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
 
 - **createOffer**
 
@@ -60,6 +60,11 @@ En base a los casos de uso que se han descrito en el punto anterior, listo las f
 
 - **retrieveOffer**: devuelve una oferta concreta
 
+- **deactiveOffer**: cambia la propiedad active de true a false
+
+- **activeOffer**: cambia la propiedad active de false a true
+
+- **deleteOffer**: Elmina la oferta de la base de datos
 
 ### Activities
 
@@ -86,7 +91,7 @@ A continuación, el detalle de los esquemas:
         stack: string,
         location: string,
         links: [string],
-        acitve: boolean,
+        active: boolean,
     }
 
     offer {
@@ -94,9 +99,10 @@ A continuación, el detalle de los esquemas:
         userId: Objetc ID,
         title: string,
         description: string,
-        publicationDate: string,
+        stack: string,
         minSalary: number,
         maxSalary: number,
+        publicationDate: string,
         location:  string,
         active: boolean,
     }
