@@ -46,9 +46,9 @@ En base a los casos de uso que se han descrito en el punto anterior, listo las f
 
 - **retrieveAllUsers**: devuelve todos los usuarios activos con rol de desarollador
 
-- **deleteUser**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
+- **unregisterUser**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
 
-- **deleteCompany**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
+- **unregisterCompany**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
 
 - **createOffer**
 
