@@ -1,4 +1,4 @@
-const { models: { User }} = require('data')
+const { models:  User } = require('data')
 
 function authenticateUser( email, password){
     // TO-DO validators

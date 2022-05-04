@@ -1,11 +1,7 @@
 const { Schema } = require('mongoose')
-const { type: { ObjectId } } = Schema
+const { Types: { ObjectId } } = Schema
 
 const offer = new Schema({
-    id: {
-        type: ObjectId,
-        required: true
-    },
     userId: {
         type: ObjectId,
         ref: 'User',

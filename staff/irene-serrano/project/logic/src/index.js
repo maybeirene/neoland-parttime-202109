@@ -21,12 +21,12 @@ module.exports = {
     updateCompany,
     unregisterUser,
     unregisterCompany,
-    createOffer,
+    /* createOffer,
     updateOffer,
     retrieveOffer,
     retrieveAllOffers,
     retrieveUserOffers,
     deactiveOffer,
     activeOffer,
-    deleteOffer
+    deleteOffer */
 }

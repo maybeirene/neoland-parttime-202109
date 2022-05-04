@@ -1,4 +1,4 @@
-const {models : { User } } = require('data')
+const {models :  {User}  } = require('data')
 
 function registerCompany (role = 2, name, email, password, description, stack, location, link ){
     // TO DO validators

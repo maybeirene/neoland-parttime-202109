@@ -1,4 +1,6 @@
-const { User } = require("data/src/models")
+const { models: {User} } = require("data")
+
+
 
 function retrieveAllUsers(rol){
     //TO-DO validators

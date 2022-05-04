@@ -1,11 +1,7 @@
 const { Schema } = require('mongoose')
-const { type: { ObjectId } } = Schema
+const { Types:  { ObjectId } } = Schema
 
 const user = new Schema({
-    id: {
-        type: ObjectId,
-        required: true
-    },
     role: {
         type: Number,
         required: true

@@ -1,4 +1,4 @@
-const { User } = require("data/src/models")
+const { User } = require("../../data/src/models")
 
 function retrieveUser(userId){
     //TO-DO validators
