@@ -11,9 +11,9 @@ const {
   registerUser,
   registerCompany,
   authenticateUser,
- /*   retrieveUser,
+  retrieveUser,
   retrieveCompany,
-  retrieveAllUsers,
+ /* retrieveAllUsers,
   updateUser,
   updateCompany,
   unregisterUser,
@@ -28,6 +28,7 @@ const {
   deleteOffer */
 
 } = require('./handlers');
+
 
 /* 
 const {extractUserIdFromAuthorization } = require('./handlers/helpers')
@@ -53,6 +54,11 @@ connect(MONGODB_URL)
   router.post("/company", jsonBodyParser, registerCompany);
 
   router.post("/user/auth", jsonBodyParser, authenticateUser)
+  router.post("/company/auth", jsonBodyParser, authenticateUser)
+
+  router.get("/user", jsonBodyParser, retrieveUser)
+  router.get("/company", jsonBodyParser, retrieveCompany)
+
 
   api.use("/api", router);
 

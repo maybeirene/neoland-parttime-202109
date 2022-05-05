@@ -1,10 +1,14 @@
-const { User } = require("../../data/src/models")
+const {models :  {User}  } = require('data')
+const { validators: {validateId} } = require('commons')
 
 function retrieveUser(userId){
-    //TO-DO validators
+    validateId(userId)
 
     return  User.findById(userId)
         .then(user => {
+
+            if(user.role !==1) throw new Error('User not found')
+            
             const doc = user._doc
 
             doc.id = doc._id.toString()
