@@ -10,7 +10,7 @@ const cors = require("cors");
 const {
   registerUser,
   registerCompany,
-  authenticateUser,
+ /* authenticateUser,
   retrieveUser,
   retrieveCompany,
   retrieveAllUsers,
@@ -25,13 +25,14 @@ const {
   retrieveUserOffers,
   deactiveOffer,
   activeOffer,
-  deleteOffer
+  deleteOffer */
 
 } = require('./handlers')
 
-
+/* 
 const {extractUserIdFromAuthorization } = require('./handlers/helpers')
 
+*/
 
 const { env: { MONGODB_URL, PORT } } = process
 
@@ -48,7 +49,9 @@ connect(MONGODB_URL)
 
   const jsonBodyParser = express.json();
 
-  router.post("/users", jsonBodyParser, registerUser);
+  router.post("/user", jsonBodyParser, registerUser);
+  router.post("/company", jsonBodyParser, registerCompany);
+
 
   api.use("/api", router);
 

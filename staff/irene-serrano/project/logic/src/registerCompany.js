@@ -1,10 +1,36 @@
 const {models :  {User}  } = require('data')
 
-function registerCompany (role = 2, name, email, password, description, stack, location, link ){
-    // TO DO validators
+const {
+    validators: {
+        validateString,
+        validatePassword
+    },
+    errors: {
+        DuplicityError
+    }
+} = require('commons')
+const bcrypt = require('bcryptjs')
 
-    return User.create({role, name, email, password, description, stack, location, link })
-        .then(user => { })
+function registerUser (role , name, email, password, description, stack, location, link ){
+    validateString(name, explain = 'name') 
+    validateString(email, explain = 'email') 
+    validatePassword(password)
+    validateString(description, explain = 'description') 
+    if (location!== null){validateString(location, explain = 'location') }
+    
+ 
+    return bcrypt.hash(password, 10)
+            .then(hash => User.create({  role, name, email, password: hash, description, stack, location, link  }))
+            .then(user => { })
+            .catch(error => {
+                if (error.message.includes('duplicate'))
+                    throw new DuplicityError('user already exists')
+    
+                throw error
+            })
+ 
+
+   
 
 }
-module.exports = registerCompany
+module.exports = registerUser

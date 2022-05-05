@@ -14,7 +14,7 @@ En esta aplicación tenemos dos líneas funcionales distintas en base al rol del
 
     El rol 1 se refiere al desarrollador junior que quiere ver ofertas de trabajo.
 
-    En este caso, puede acceder a **todas las ofertas** , las cuales podría filtrar por fecha, rango salarial o stack que se busca.
+    En este caso, puede acceder a **todas las ofertas** , las cuales podría filtrar por rango salarial o stack que se busca.
 
     El contacto con la empresa por la oferta se hará mediante un botón que envía un correo a la dirección proporcionada por esta.
 
@@ -30,6 +30,9 @@ En esta aplicación tenemos dos líneas funcionales distintas en base al rol del
 
 ### Use Cases
 En base a los casos de uso que se han descrito en el punto anterior, listo las funciones que se utilizarán para realizar las acciones.
+
+    Para registar usuarios, tenemos dos lógicas separadas, aunque recaen en la misma colección. Esto nos permite diferenciarlas semánticamente. También evita que tengamos conflictos con usuarios registrados como empresa y como demandante de empleo.
+    En esta fase empleamos dcryptjs, una librería para encriptar contraseñas.
 - **registerUser**: registra a los usuarios desarrolladores. Por defecto tiene el rol seteado
 
 - **registerCompany**: registra a los usuarios recruiter o empresa. Por defecto tiene el rol seteado, igual que las propiedades 'null' que no utiliza del modelo de datos.
