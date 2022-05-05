@@ -10,8 +10,8 @@ const cors = require("cors");
 const {
   registerUser,
   registerCompany,
- /* authenticateUser,
-  retrieveUser,
+  authenticateUser,
+ /*   retrieveUser,
   retrieveCompany,
   retrieveAllUsers,
   updateUser,
@@ -27,7 +27,7 @@ const {
   activeOffer,
   deleteOffer */
 
-} = require('./handlers')
+} = require('./handlers');
 
 /* 
 const {extractUserIdFromAuthorization } = require('./handlers/helpers')
@@ -52,6 +52,7 @@ connect(MONGODB_URL)
   router.post("/user", jsonBodyParser, registerUser);
   router.post("/company", jsonBodyParser, registerCompany);
 
+  router.post("/user/auth", jsonBodyParser, authenticateUser)
 
   api.use("/api", router);
 

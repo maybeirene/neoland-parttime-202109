@@ -8,7 +8,7 @@ function validateName(name) {
 function validateEmail(email) {
     if (typeof email !== 'string') throw new TypeError('email is not string')
     if (!email.trim()) throw new FormatError('email is empty or blank')
-    if (!EMAIL_REGEX.test(email)) throw new FormatError('invalid email')
+  //  if (!EMAIL_REGEX.test(email)) throw new FormatError('invalid email')
 }
 
 function validatePassword(password) {
