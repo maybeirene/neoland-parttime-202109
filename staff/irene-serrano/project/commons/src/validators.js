@@ -53,7 +53,13 @@ function validateBoolean(boolean, explain = 'boolean') {
     if (typeof boolean !== 'boolean') throw new TypeError(`${explain} is not boolean`)
 }
 
+function validateRole(role, explain = 'role') {
+    if (typeof role !== 'number') throw new TypeError(`${explain} is not number`)
+   // if (role !== 1 | role !== 2) throw new FormatError(`invalid ${explain}`)
+}
+
 module.exports = {
+    validateRole,
     validateName,
     validateEmail,
     validatePassword,

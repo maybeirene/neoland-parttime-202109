@@ -13,8 +13,8 @@ const {
   authenticateUser,
   retrieveUser,
   retrieveCompany,
- /* retrieveAllUsers,
-  updateUser,
+  retrieveAllUsers,
+  /*updateUser,
   updateCompany,
   unregisterUser,
   unregisterCompany,
@@ -58,6 +58,9 @@ connect(MONGODB_URL)
 
   router.get("/user", jsonBodyParser, retrieveUser)
   router.get("/company", jsonBodyParser, retrieveCompany)
+
+  router.get("/users", jsonBodyParser, retrieveAllUsers)
+  router.get("/companies", jsonBodyParser, retrieveAllUsers)
 
 
   api.use("/api", router);

@@ -1,11 +1,12 @@
 const { models: {User} } = require("data")
+const { validators: {validateRole} } = require('commons')
 
 
 
-function retrieveAllUsers(rol){
-    //TO-DO validators
+function retrieveAllUsers(role){
+    validateRole(role)
 
-    return  User.findAll(rol)
+    return  User.find( {"role" : role} )
         .then(users => {
             return users.map(user => {
                 const doc = user._doc
