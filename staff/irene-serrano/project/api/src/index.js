@@ -20,11 +20,13 @@ const {
   unregisterCompany,
   createOffer,
   updateOffer,
-  /*retrieveOffer,
-  retrieveAllOffers,
-  retrieveUserOffers,
   deactiveOffer,
   activeOffer,
+  retrieveOffer,
+  /*retrieveAllOffers,
+  retrieveUserOffers,
+  
+
   deleteOffer */
 
 } = require('./handlers');
@@ -69,7 +71,14 @@ connect(MONGODB_URL)
   router.patch("/companies/unregister", jsonBodyParser, unregisterCompany )
 
   router.post("/offer", jsonBodyParser, createOffer);
+
+  router.get("/offers/:offerId", jsonBodyParser, retrieveOffer)
+
   router.patch("/offers/:offerId", jsonBodyParser, updateOffer);
+  router.patch("/offers/deactive/:offerId", jsonBodyParser, deactiveOffer);
+  router.patch("/offers/active/:offerId", jsonBodyParser, activeOffer);
+ // router.patch("/offers/:offerId/deactive", jsonBodyParser, deactiveOffer);
+
 
 
   api.use("/api", router);
