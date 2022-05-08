@@ -11,6 +11,8 @@ const unregisterCompany = require('./unregisterCompany')
 
 const createOffer = require('./createOffer')
 const retrieveOffer = require('./retrieveOffer')
+const retrieveAllOffers = require('./retrieveAllOffers')
+const retrieveUserOffers = require('./retrieveUserOffers')
 const updateOffer = require('./updateOffer')
 const deactiveOffer = require('./deactiveOffer')
 const activeOffer = require('./activeOffer')
@@ -30,6 +32,8 @@ module.exports = {
 
     createOffer,
     retrieveOffer,
+    retrieveAllOffers,
+    retrieveUserOffers,
     updateOffer,
     deactiveOffer,
     activeOffer,

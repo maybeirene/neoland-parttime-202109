@@ -57,9 +57,9 @@ En base a los casos de uso que se han descrito en el punto anterior, listo las f
 
 - **updateOffer**
 
-- **retrieveAllOffers**: devuelve todas las ofertas activas
+- **retrieveAllOffers**: devuelve todas las ofertas activas. En la petición, si no especificamos un body, nos devolverá TODAS las ofertas, activas e inactivas. Podemos ir añadiendo propiedades al body para poder filtrar. Por ejemplo {"active: true, "minSalary": 20000}
 
-- **retrieveUserOffers**: devuelve las ofertas activas de un usuario concreto
+- **retrieveUserOffers**: devuelve las ofertas activas de un usuario concreto. Comprueba si el usuario que hace la peticion es el mismo sobre el que se quieren sacar las notas. Si es el mismo, devuelve todas, activas e inactivas. Sino, solo las activas.
 
 - **retrieveOffer**: devuelve una oferta concreta
 
