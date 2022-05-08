@@ -14,9 +14,9 @@ const {
   retrieveUser,
   retrieveCompany,
   retrieveAllUsers,
-  /*updateUser,
+  updateUser,
   updateCompany,
-  unregisterUser,
+  /*unregisterUser,
   unregisterCompany,
   createOffer,
   updateOffer,
@@ -50,10 +50,10 @@ connect(MONGODB_URL)
 
   const jsonBodyParser = express.json();
 
-  router.post("/user", jsonBodyParser, registerUser);
+  router.post("/users", jsonBodyParser, registerUser);
   router.post("/company", jsonBodyParser, registerCompany);
 
-  router.post("/user/auth", jsonBodyParser, authenticateUser)
+  router.post("/users/auth", jsonBodyParser, authenticateUser)
   router.post("/company/auth", jsonBodyParser, authenticateUser)
 
   router.get("/user", jsonBodyParser, retrieveUser)
@@ -61,6 +61,9 @@ connect(MONGODB_URL)
 
   router.get("/users", jsonBodyParser, retrieveAllUsers)
   router.get("/companies", jsonBodyParser, retrieveAllUsers)
+
+  router.patch("/users", jsonBodyParser, updateUser )
+  router.patch("/companies", jsonBodyParser, updateCompany )
 
 
   api.use("/api", router);

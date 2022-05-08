@@ -4,8 +4,9 @@ const registerCompany = require('./registerCompany')
 const retrieveUser = require('./retrieveUser')
 const retrieveCompany = require('./retrieveCompany')
 const retrieveAllUsers = require('./retrieveAllUsers')
-/*const updateUser = require('./updateUser')
-const unregisterUser = require('./unregisterUser')
+const updateUser = require('./updateUser')
+const updateCompany = require('./updateCompany')
+/*const unregisterUser = require('./unregisterUser')
 
  */
 module.exports = {
@@ -15,7 +16,8 @@ module.exports = {
     retrieveUser,
     retrieveCompany,
     retrieveAllUsers,
-   /* updateUser,
-    unregisterUser,
+    updateUser,
+    updateCompany,
+  /*    unregisterUser,
  */
 }
