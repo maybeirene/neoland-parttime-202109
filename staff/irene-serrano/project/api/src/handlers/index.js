@@ -9,6 +9,8 @@ const updateCompany = require('./updateCompany')
 const unregisterUser = require('./unregisterUser')
 const unregisterCompany = require('./unregisterCompany')
 
+const createOffer = require('./createOffer')
+
 
 module.exports = {
     registerUser,
@@ -20,6 +22,8 @@ module.exports = {
     updateUser,
     updateCompany,
     unregisterUser,
-    unregisterCompany
+    unregisterCompany,
+
+    createOffer
  
 }

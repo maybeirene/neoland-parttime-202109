@@ -48,6 +48,10 @@ function validateString(string, explain = 'string') {
     if (typeof string !== 'string') throw new TypeError(`${explain} is not string`)
     if (!string.trim()) throw new FormatError(`${explain} is empty or blank`)
 }
+function validateSalary(salary, explain = 'salary') {
+    if (typeof salary !== 'number') throw new TypeError(`${explain} must be a number`)
+    if (!string.length) throw new FormatError(`${explain} is empty or blank. Anual salary revenue format must be a number without any puntuation sign, for example: 28000`)
+}
 
 function validateBoolean(boolean, explain = 'boolean') {
     if (typeof boolean !== 'boolean') throw new TypeError(`${explain} is not boolean`)
@@ -67,5 +71,6 @@ module.exports = {
     validateToken,
     validateId,
     validateString,
-    validateBoolean
+    validateBoolean,
+    validateSalary
 }
