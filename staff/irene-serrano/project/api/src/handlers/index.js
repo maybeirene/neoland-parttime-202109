@@ -6,9 +6,10 @@ const retrieveCompany = require('./retrieveCompany')
 const retrieveAllUsers = require('./retrieveAllUsers')
 const updateUser = require('./updateUser')
 const updateCompany = require('./updateCompany')
-/*const unregisterUser = require('./unregisterUser')
+const unregisterUser = require('./unregisterUser')
+const unregisterCompany = require('./unregisterCompany')
 
- */
+
 module.exports = {
     registerUser,
     registerCompany,
@@ -18,6 +19,7 @@ module.exports = {
     retrieveAllUsers,
     updateUser,
     updateCompany,
-  /*    unregisterUser,
- */
+    unregisterUser,
+    unregisterCompany
+ 
 }

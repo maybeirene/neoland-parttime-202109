@@ -1,8 +1,8 @@
 const {models : { User } } = require('data')
 
-function updateUser(id, name, email, password, description,  stack, location, link, active ){
+function updateUser(id, name, email, password, description,  stack, location, link ){
 
-    return User.updateOne({_id: id}, {name, email, password, description,  stack, location, link, active})
+    return User.updateOne({_id: id}, {name, email, password, description,  stack, location, link})
     .then(result => {
         const { matchedCount } = result
 

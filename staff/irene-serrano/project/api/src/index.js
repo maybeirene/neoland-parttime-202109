@@ -16,9 +16,9 @@ const {
   retrieveAllUsers,
   updateUser,
   updateCompany,
-  /*unregisterUser,
+  unregisterUser,
   unregisterCompany,
-  createOffer,
+  /*createOffer,
   updateOffer,
   retrieveOffer,
   retrieveAllOffers,
@@ -64,6 +64,9 @@ connect(MONGODB_URL)
 
   router.patch("/users", jsonBodyParser, updateUser )
   router.patch("/companies", jsonBodyParser, updateCompany )
+
+  router.patch("/users/unregister", jsonBodyParser, unregisterUser )
+  router.patch("/companies/unregister", jsonBodyParser, unregisterCompany )
 
 
   api.use("/api", router);

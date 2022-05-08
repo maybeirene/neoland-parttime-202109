@@ -1,8 +1,8 @@
 const {models : { User } } = require('data')
 
-function unregisterCompany(id, active ){
+function unregisterUser(id, active ){
 
-    return User.updateOne({_id: id}, {"active": active })
+    return User.updateOne({_id: id}, { active })
     .then(result => {
         const { matchedCount } = result
 
@@ -11,4 +11,4 @@ function unregisterCompany(id, active ){
     })
 }
 
-module.exports = unregisterCompany
+module.exports = unregisterUser
