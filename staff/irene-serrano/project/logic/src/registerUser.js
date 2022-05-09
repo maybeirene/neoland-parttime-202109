@@ -17,6 +17,8 @@ function registerUser (role , name, email, password, description, stack, locatio
     validatePassword(password)
     validateString(description, explain = 'description') 
     if (location!== null){validateString(location, explain = 'location') }
+    if (stack!== null){validateString(stack, explain = 'stack') }
+    if (link!== null){validateString(link, explain = 'link') }
     
  
     return bcrypt.hash(password, 10)
