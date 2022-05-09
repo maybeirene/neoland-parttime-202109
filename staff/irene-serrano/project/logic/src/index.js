@@ -16,7 +16,7 @@ const retrieveUserOffers = require('./retrieveUserOffers')
 const updateOffer = require('./updateOffer')
 const deactiveOffer = require('./deactiveOffer')
 const activeOffer= require('./activeOffer')
-
+const deleteOffer = require('./deleteOffer')
 
 module.exports = {
     registerUser,
@@ -37,5 +37,5 @@ module.exports = {
     retrieveOffer,
     retrieveAllOffers,
     retrieveUserOffers,
-   /* deleteOffer */
+    deleteOffer
 }
