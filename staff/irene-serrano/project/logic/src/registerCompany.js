@@ -21,10 +21,10 @@ function registerUser (role , name, email, password, description, stack, locatio
  
     return bcrypt.hash(password, 10)
             .then(hash => User.create({  role, name, email, password: hash, description, stack, location, link  }))
-            .then(user => { })
+            .then(company => { })
             .catch(error => {
                 if (error.message.includes('duplicate'))
-                    throw new DuplicityError('user already exists')
+                    throw new DuplicityError('company already exists')
     
                 throw error
             })

@@ -6,7 +6,7 @@ const {
     }
 } = require('commons')
 
-function createOffer(userId, title, description, stack, minSalary, maxSalary, publicationDate = Date.now(), location) {
+function createOffer(companyId, title, description, stack, minSalary, maxSalary, publicationDate = Date.now(), location) {
    /*  validateString(title)
     validateString(description)
     validateString(stack)
@@ -14,12 +14,12 @@ function createOffer(userId, title, description, stack, minSalary, maxSalary, pu
     validateSalary(minSalary)
     validateSalary(maxSalary) */
 
-    return User.findById(userId)
-        .then(user => {
-            if (!user) throw new Error(`user with id ${userId} not found`)
-            if (user.role !== 2)  throw new Error(`user with id ${userId} does not have permission to create an offer`)
+    return User.findById(companyId)
+        .then(company => {
+            if (!company) throw new Error(`company with id ${companyId} not found`)
+            if (company.role !== 2)  throw new Error(`company with id ${companyId} does not have permission to create an offer`)
 
-            return Offer.create({ user: userId, title, description, stack, minSalary, maxSalary, publicationDate, location })
+            return Offer.create({ company: companyId, title, description, stack, minSalary, maxSalary, publicationDate, location })
         })
         .then(note => { })
 }

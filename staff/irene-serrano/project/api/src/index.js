@@ -24,7 +24,7 @@ const {
   activeOffer,
   retrieveOffer,
   retrieveAllOffers,
-  retrieveDeveloperOffers,
+  retrieveCompanyOffers,
   deleteOffer
 
 } = require('./handlers');
@@ -72,7 +72,7 @@ connect(MONGODB_URL)
 
   router.get("/offer/:offerId", jsonBodyParser, retrieveOffer)
   router.get("/offers", jsonBodyParser, retrieveAllOffers)
-  router.get("/company/:companyId/offers", jsonBodyParser, retrieveDeveloperOffers)
+  router.get("/company/:companyId/offers", jsonBodyParser, retrieveCompanyOffers)
 
   router.patch("/offer/:offerId", jsonBodyParser, updateOffer);
   router.patch("/offer/:offerId/deactivate", jsonBodyParser, deactiveOffer);

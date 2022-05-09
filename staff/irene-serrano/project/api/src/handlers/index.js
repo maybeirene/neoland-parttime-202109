@@ -1,6 +1,6 @@
 const registerDeveloper = require('./registerDeveloper')
 const registerCompany = require('./registerCompany')
- const authenticateDeveloper = require('./authenticateDeveloper')
+ const authenticateUser = require('./authenticateUser')
 const retrieveDeveloper = require('./retrieveDeveloper')
 const retrieveCompany = require('./retrieveCompany')
 const retrieveAllDevelopers = require('./retrieveAllDevelopers')
@@ -12,7 +12,7 @@ const unregisterCompany = require('./unregisterCompany')
 const createOffer = require('./createOffer')
 const retrieveOffer = require('./retrieveOffer')
 const retrieveAllOffers = require('./retrieveAllOffers')
-const retrieveDeveloperOffers = require('./retrieveDeveloperOffers')
+const retrieveCompanyOffers = require('./retrieveCompanyOffers')
 const updateOffer = require('./updateOffer')
 const deactiveOffer = require('./deactiveOffer')
 const activeOffer = require('./activeOffer')
@@ -22,7 +22,7 @@ const deleteOffer = require('./deleteOffer')
 module.exports = {
     registerDeveloper,
     registerCompany,
-    authenticateDeveloper,
+    authenticateUser,
     retrieveDeveloper,
     retrieveCompany,
     retrieveAllDevelopers,
@@ -34,7 +34,7 @@ module.exports = {
     createOffer,
     retrieveOffer,
     retrieveAllOffers,
-    retrieveDeveloperOffers,
+    retrieveCompanyOffers,
     updateOffer,
     deactiveOffer,
     activeOffer,

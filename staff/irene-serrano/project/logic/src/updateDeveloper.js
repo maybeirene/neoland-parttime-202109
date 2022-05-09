@@ -7,7 +7,7 @@ function updateUser(id, name, email, password, description,  stack, location, li
         const { matchedCount } = result
 
         if (matchedCount === 0)
-            throw new Error(`user with id ${userId} not found`)
+            throw new Error(`developer with id ${developerId} not found`)
     })
 }
 

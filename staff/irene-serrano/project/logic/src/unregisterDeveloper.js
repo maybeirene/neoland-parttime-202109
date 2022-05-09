@@ -7,7 +7,7 @@ function unregisterUser(id, active ){
         const { matchedCount } = result
 
         if (matchedCount === 0)
-            throw new Error(`user with id ${userId} not found`)
+            throw new Error(`user with id ${developerId} not found`)
     })
 }
 

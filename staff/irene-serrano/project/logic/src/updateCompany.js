@@ -7,7 +7,7 @@ function updateCompany(id, name, email, password, description,  stack, location,
         const { matchedCount } = result
 
         if (matchedCount === 0)
-            throw new Error(`user not found`)
+            throw new Error(`company not found`)
     })
 }
 

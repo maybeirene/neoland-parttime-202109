@@ -9,7 +9,7 @@ function unregisterCompany(id, active ){
         const { matchedCount } = result
 
         if (matchedCount === 0)
-            throw new Error(`user with id ${userId} not found`)
+            throw new Error(`company with id ${companyId} not found`)
     })
 }
 

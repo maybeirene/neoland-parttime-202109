@@ -1,16 +1,16 @@
 const { models: { User, Offer }} = require('data')
 const { validators: { validateId }, errors: { AuthError, NotFoundError }} = require('commons')
 
-function deleteOffer(userId, offerId) {
-    validateId(userId, 'user id')
+function deleteOffer(companyId, offerId) {
+    validateId(companyId, 'company id')
     validateId(offerId, 'offer id')
 
-    return Promise.all([User.findById(userId), Offer.findById(offerId)])
-        .then(([user, offer]) => {
-            if (!user) throw new NotFoundError(`user with id ${userId} not found`)
+    return Promise.all([User.findById(companyId), Offer.findById(offerId)])
+        .then(([company, offer]) => {
+            if (!company) throw new NotFoundError(`company with id ${companyId} not found`)
             if (!offer) throw new NotFoundError(`offer with id ${offerId} not found`)
 
-            if (offer.user.toString() !== userId) throw new AuthError(`offer with id ${offerId} does not belong to user with id ${userId}`)  
+            if (offer.company.toString() !== companyId) throw new AuthError(`offer with id ${offerId} does not belong to company with id ${companyId}`)  
             
             return Offer.deleteOne({ _id: offerId })
         })

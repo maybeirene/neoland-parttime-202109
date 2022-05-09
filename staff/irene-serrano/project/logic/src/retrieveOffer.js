@@ -1,13 +1,13 @@
 const { models: { User, Offer } } = require('data')
 const { validators: { validateId }, errors: { NotFoundError } } = require('commons')
 
-function retrieveOffer (userId, offerId) {
-    validateId(userId, 'user id')
+function retrieveOffer (companyId, offerId) {
+    validateId(companyId, 'company id')
     validateId(offerId, 'offer id')
 
-    return Promise.all([User.findById(userId).lean(), Offer.findById(offerId).lean().populate('user')])
-        .then(([user, offer]) => {
-            if (!user) throw new NotFoundError(`user with id ${userId} not found`)
+    return Promise.all([User.findById(companyId).lean(), Offer.findById(offerId).lean().populate('user')])
+        .then(([company, offer]) => {
+            if (!company) throw new NotFoundError(`company with id ${companyId} not found`)
             if (!offer) throw new NotFoundError(`offer with id ${offerId} not found`)
 
             
@@ -17,10 +17,10 @@ function retrieveOffer (userId, offerId) {
             delete offer._id
             delete offer.__v
 
-            offer.userId = offer.user._id.toString()
-            offer.companyName = offer.user.name
+            offer.companyId = offer.company._id.toString()
+            offer.companyName = offer.company.name
 
-            delete offer.user
+            delete offer.company
 
             return offer
         })

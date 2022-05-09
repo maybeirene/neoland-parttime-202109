@@ -7,9 +7,9 @@ function retrieveAllUsers(role){
     validateRole(role)
 
     return  User.find( {"role" : role} )
-        .then(users => {
-            return users.map(user => {
-                const doc = user._doc
+        .then(developers => {
+            return developers.map(developer => {
+                const doc = developer._doc
 
                 doc.id = doc._id.toString()
                 delete doc._id

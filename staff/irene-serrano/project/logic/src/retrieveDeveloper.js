@@ -1,15 +1,15 @@
 const {models :  {User}  } = require('data')
 const { validators: {validateId} } = require('commons')
 
-function retrieveUser(userId){
-    validateId(userId)
+function retrieveUser(developerId){
+    validateId(developerId)
 
-    return  User.findById(userId)
-        .then(user => {
+    return  User.findById(developerId)
+        .then(developer => {
 
-            if(user.role !==1) throw new Error('User not found')
+            if(developer.role !==1) throw new Error('User not found')
             
-            const doc = user._doc
+            const doc = developer._doc
 
             doc.id = doc._id.toString()
             delete doc._id

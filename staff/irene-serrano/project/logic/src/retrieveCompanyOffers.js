@@ -1,14 +1,14 @@
 const { models: { Offer } } = require('data')
 //const { validators: { validateId }, errors: { NotFoundError } } = require('commons')
 
-function retrieveUserOffers (userId, active) {
+function retrieveCompanyOffers (companyId, active) {
     let filter = {}
 
     active?  (filter = { 
-        "user": userId,  
+        "company": companyId,  
         "active": true 
     }) : ( filter = { 
-        "user": userId
+        "company": companyId
     })
    
     return  Offer.find( filter )
@@ -26,4 +26,4 @@ function retrieveUserOffers (userId, active) {
 
 }
 
-module.exports = retrieveUserOffers
+module.exports = retrieveCompanyOffers
