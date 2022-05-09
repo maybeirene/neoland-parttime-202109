@@ -1,21 +1,26 @@
-const {models :  {User}  } = require('data')
-const { validators: {validateId} } = require('commons')
+const {
+  models: { User },
+} = require("data");
+const {
+  validators: { validateId },
+  errors: { NotFoundError, AuthError },
+} = require("commons");
 
-function retrieveCompany(userId){
-    validateId(userId)
+function retrieveCompany(companyId) {
+  validateId(companyId, "company id");
 
-    return  User.findById(userId)
-        .then(user => {
-            if(user.role !==2) throw new Error('User not found')
+  return User.findById(companyId).lean().then((company) => {
+    if (!company) throw new NotFoundError("company not found");
 
-            const doc = user._doc
+    if (company.role !== 2) throw new AuthError("user is not a company");
 
-            doc.id = doc._id.toString()
-            delete doc._id
-            delete doc.__v
-            
-            return doc
-            })
+    company.id = company._id.toString();
+    
+    delete company._id;
+    delete company.__v;
+
+    return company;
+  });
 }
 
-module.exports = retrieveCompany
+module.exports = retrieveCompany;

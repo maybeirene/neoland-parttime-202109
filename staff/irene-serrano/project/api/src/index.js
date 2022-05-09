@@ -8,15 +8,15 @@ const express = require("express");
 const cors = require("cors");
 
 const {
-  registerUser,
+  registerDeveloper,
   registerCompany,
   authenticateUser,
-  retrieveUser,
+  retrieveDeveloper,
   retrieveCompany,
-  retrieveAllUsers,
-  updateUser,
+  retrieveAllDevelopers,
+  updateDeveloper,
   updateCompany,
-  unregisterUser,
+  unregisterDeveloper,
   unregisterCompany,
   createOffer,
   updateOffer,
@@ -24,14 +24,14 @@ const {
   activeOffer,
   retrieveOffer,
   retrieveAllOffers,
-  retrieveUserOffers,
+  retrieveDeveloperOffers,
   deleteOffer
 
 } = require('./handlers');
 
 
 /* 
-const {extractUserIdFromAuthorization } = require('./handlers/helpers')
+const {extractDeveloperIdFromAuthorization } = require('./handlers/helpers')
 
 */
 
@@ -50,36 +50,36 @@ connect(MONGODB_URL)
 
   const jsonBodyParser = express.json();
 
-  router.post("/users", jsonBodyParser, registerUser);
+  router.post("/developer", jsonBodyParser, registerDeveloper);
   router.post("/company", jsonBodyParser, registerCompany);
 
-  router.post("/users/auth", jsonBodyParser, authenticateUser)
+  router.post("/developer/auth", jsonBodyParser, authenticateUser)
   router.post("/company/auth", jsonBodyParser, authenticateUser)
 
-  router.get("/user", jsonBodyParser, retrieveUser)
+  router.get("/developer", jsonBodyParser, retrieveDeveloper)
   router.get("/company", jsonBodyParser, retrieveCompany)
 
-  router.get("/users", jsonBodyParser, retrieveAllUsers)
-  router.get("/companies", jsonBodyParser, retrieveAllUsers)
+  router.get("/developers", jsonBodyParser, retrieveAllDevelopers)
+  router.get("/companies", jsonBodyParser, retrieveAllDevelopers)
 
-  router.patch("/users", jsonBodyParser, updateUser )
-  router.patch("/companies", jsonBodyParser, updateCompany )
+  router.patch("/developer", jsonBodyParser, updateDeveloper )
+  router.patch("/company", jsonBodyParser, updateCompany )
 
-  router.patch("/users/unregister", jsonBodyParser, unregisterUser )
-  router.patch("/companies/unregister", jsonBodyParser, unregisterCompany )
+  router.patch("/developer/unregister", jsonBodyParser, unregisterDeveloper )
+  router.patch("/company/unregister", jsonBodyParser, unregisterCompany )
 
   router.post("/offer", jsonBodyParser, createOffer);
 
-  router.get("/offers/:offerId", jsonBodyParser, retrieveOffer)
+  router.get("/offer/:offerId", jsonBodyParser, retrieveOffer)
   router.get("/offers", jsonBodyParser, retrieveAllOffers)
-  router.get("/users/:ownerId/offers", jsonBodyParser, retrieveUserOffers)
+  router.get("/company/:companyId/offers", jsonBodyParser, retrieveDeveloperOffers)
 
-  router.patch("/offers/:offerId", jsonBodyParser, updateOffer);
-  router.patch("/offers/deactive/:offerId", jsonBodyParser, deactiveOffer);
-  router.patch("/offers/active/:offerId", jsonBodyParser, activeOffer);
+  router.patch("/offer/:offerId", jsonBodyParser, updateOffer);
+  router.patch("/offer/:offerId/deactivate", jsonBodyParser, deactiveOffer);
+  router.patch("/offer/:offerId/activate", jsonBodyParser, activeOffer);
  // router.patch("/offers/:offerId/deactive", jsonBodyParser, deactiveOffer);
 
- router.delete("/offers/:offerId", jsonBodyParser, deleteOffer);
+ router.delete("/offer/:offerId", jsonBodyParser, deleteOffer);
 
 
   api.use("/api", router);

@@ -1,18 +1,18 @@
-const registerUser = require('./registerUser')
+const registerDeveloper = require('./registerDeveloper')
 const registerCompany = require('./registerCompany')
- const authenticateUser = require('./authenticateUser')
-const retrieveUser = require('./retrieveUser')
+ const authenticateDeveloper = require('./authenticateDeveloper')
+const retrieveDeveloper = require('./retrieveDeveloper')
 const retrieveCompany = require('./retrieveCompany')
-const retrieveAllUsers = require('./retrieveAllUsers')
-const updateUser = require('./updateUser')
+const retrieveAllDevelopers = require('./retrieveAllDevelopers')
+const updateDeveloper = require('./updateDeveloper')
 const updateCompany = require('./updateCompany')
-const unregisterUser = require('./unregisterUser')
+const unregisterDeveloper = require('./unregisterDeveloper')
 const unregisterCompany = require('./unregisterCompany')
 
 const createOffer = require('./createOffer')
 const retrieveOffer = require('./retrieveOffer')
 const retrieveAllOffers = require('./retrieveAllOffers')
-const retrieveUserOffers = require('./retrieveUserOffers')
+const retrieveDeveloperOffers = require('./retrieveDeveloperOffers')
 const updateOffer = require('./updateOffer')
 const deactiveOffer = require('./deactiveOffer')
 const activeOffer = require('./activeOffer')
@@ -20,21 +20,21 @@ const deleteOffer = require('./deleteOffer')
 
 
 module.exports = {
-    registerUser,
+    registerDeveloper,
     registerCompany,
-    authenticateUser,
-    retrieveUser,
+    authenticateDeveloper,
+    retrieveDeveloper,
     retrieveCompany,
-    retrieveAllUsers,
-    updateUser,
+    retrieveAllDevelopers,
+    updateDeveloper,
     updateCompany,
-    unregisterUser,
+    unregisterDeveloper,
     unregisterCompany,
 
     createOffer,
     retrieveOffer,
     retrieveAllOffers,
-    retrieveUserOffers,
+    retrieveDeveloperOffers,
     updateOffer,
     deactiveOffer,
     activeOffer,

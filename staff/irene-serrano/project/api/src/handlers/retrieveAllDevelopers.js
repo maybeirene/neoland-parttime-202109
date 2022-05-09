@@ -1,10 +1,10 @@
-const { retrieveAllUsers } = require('logic')
+const { retrieveAllDevelopers } = require('logic')
 
 module.exports = (req, res) => {
     const {role} = req.body
     try {
        
-        retrieveAllUsers(role)
+        retrieveAllDevelopers(role)
             .then(users => res.json(users))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

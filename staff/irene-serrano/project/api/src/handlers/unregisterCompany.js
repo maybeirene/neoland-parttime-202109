@@ -5,11 +5,11 @@ module.exports = (req, res) => {
 
  
     try {
-        const userId = extractUserIdFromAuthorization(req)
+        const companyId = extractUserIdFromAuthorization(req)
         
         const { body: { active } } = req
 
-        unregisterCompany(userId, active)
+        unregisterCompany(companyId, active)
             .then(() => res.status(204).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
