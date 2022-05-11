@@ -6,16 +6,16 @@ const { validators: {validateRole} } = require('commons')
 function retrieveAllUsers(role){
     validateRole(role)
 
-    return  User.find( {"role" : role} )
+    return  User.find( {"role" : role} ).lean()
         .then(developers => {
             return developers.map(developer => {
-                const doc = developer._doc
+            
 
-                doc.id = doc._id.toString()
-                delete doc._id
-                delete doc.__v
+                developer.id = developer._id.toString()
+                delete developer._id
+                delete developer.__v
                 
-                return doc
+                return developer
                 })
             })
 }

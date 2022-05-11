@@ -3,7 +3,7 @@ const { updateDeveloper } = require('logic')
 
 module.exports = (req, res) => {
 
-    console.log(req.body)
+
     try {
         const developerId = extractUserIdFromAuthorization(req)
         

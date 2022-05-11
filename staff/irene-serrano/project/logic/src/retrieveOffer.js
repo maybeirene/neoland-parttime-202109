@@ -5,7 +5,7 @@ function retrieveOffer (companyId, offerId) {
     validateId(companyId, 'company id')
     validateId(offerId, 'offer id')
 
-    return Promise.all([User.findById(companyId).lean(), Offer.findById(offerId).lean().populate('user')])
+    return Promise.all([User.findById(companyId).lean(), Offer.findById(offerId).lean().populate('company')])
         .then(([company, offer]) => {
             if (!company) throw new NotFoundError(`company with id ${companyId} not found`)
             if (!offer) throw new NotFoundError(`offer with id ${offerId} not found`)

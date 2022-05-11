@@ -4,18 +4,18 @@ const { validators: {validateId} } = require('commons')
 function retrieveUser(developerId){
     validateId(developerId)
 
-    return  User.findById(developerId)
+    return  User.findById(developerId).lean()
         .then(developer => {
+            if (!developer) throw new NotFoundError("developer not found");
 
-            if(developer.role !==1) throw new Error('User not found')
+            if(developer.role !==1) throw new Error('User is not a developer')
             
-            const doc = developer._doc
+            developer.id = developer._id.toString()
 
-            doc.id = doc._id.toString()
-            delete doc._id
-            delete doc.__v
+            delete developer._id
+            delete developer.__v
             
-            return doc
+            return developer
             })
 }
 

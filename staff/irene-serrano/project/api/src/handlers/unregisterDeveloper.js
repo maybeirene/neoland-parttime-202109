@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     try {
         const developerId = extractUserIdFromAuthorization(req)
         
-        const { body: { active } } = req
+        const { body: { active = false } } = req
 
         unregisterDeveloper(developerId, active)
             .then(() => res.status(204).send())

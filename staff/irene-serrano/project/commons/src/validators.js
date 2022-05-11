@@ -50,7 +50,7 @@ function validateString(string, explain = 'string') {
 }
 function validateSalary(salary, explain = 'salary') {
     if (typeof salary !== 'number') throw new TypeError(`${explain} must be a number`)
-    if (!string.length) throw new FormatError(`${explain} is empty or blank. Anual salary revenue format must be a number without any puntuation sign, for example: 28000`)
+    if (!salary.length) throw new FormatError(`${explain} is empty or blank. Anual salary revenue format must be a number without any puntuation sign, for example: 28000`)
 }
 
 function validateBoolean(boolean, explain = 'boolean') {

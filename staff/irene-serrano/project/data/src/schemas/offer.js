@@ -2,7 +2,7 @@ const { Schema } = require('mongoose')
 const { Types: { ObjectId } } = Schema
 
 const offer = new Schema({
-    user: {
+    company: {
         type: ObjectId,
         ref: 'User',
         required: true

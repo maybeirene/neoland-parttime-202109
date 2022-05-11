@@ -2,7 +2,7 @@ const { extractUserIdFromAuthorization } = require('./helpers')
 const { updateOffer } = require('logic')
 
 module.exports = (req, res) => {
-    console.log(req)
+
     try {
         const companyId = extractUserIdFromAuthorization(req)
 

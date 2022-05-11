@@ -1,13 +1,15 @@
 const {models : { User } } = require('data')
+const bcrypt = require('bcryptjs')
 
-function updateCompany(id, name, email, password, description,  stack, location, link, active ){
+function updateCompany(id, name, email, password, description, location, link ){
 
-    return User.updateOne({_id: id}, {name, email, password, description,  stack, location, link, active})
+    return bcrypt.hash(password, 10)
+    .then(hash => User.updateOne({_id: id}, {name, email, password: hash, description,  location, link}))
     .then(result => {
         const { matchedCount } = result
 
         if (matchedCount === 0)
-            throw new Error(`company not found`)
+            throw new Error(`company with id ${companyId} not found`)
     })
 }
 

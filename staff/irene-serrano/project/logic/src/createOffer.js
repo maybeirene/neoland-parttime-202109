@@ -7,13 +7,15 @@ const {
 } = require('commons')
 
 function createOffer(companyId, title, description, stack, minSalary, maxSalary, publicationDate = Date.now(), location) {
-   /*  validateString(title)
-    validateString(description)
-    validateString(stack)
-    validateString(location)
-    validateSalary(minSalary)
-    validateSalary(maxSalary) */
+ 
+    validateString(title, explain = 'title')
+    validateString(description, explain = 'description')
+    validateString(stack, explain = 'stack')
+    validateString(location, explain = 'location')
+  /*   validateSalary(minSalary, explain = 'minSalary')
+    validateSalary(maxSalary, explain = 'maxSalary') */
 
+    
     return User.findById(companyId)
         .then(company => {
             if (!company) throw new Error(`company with id ${companyId} not found`)
@@ -21,7 +23,7 @@ function createOffer(companyId, title, description, stack, minSalary, maxSalary,
 
             return Offer.create({ company: companyId, title, description, stack, minSalary, maxSalary, publicationDate, location })
         })
-        .then(note => { })
+        .then(offer => { })
 }
 
 module.exports = createOffer

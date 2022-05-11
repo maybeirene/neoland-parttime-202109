@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     try {
         const companyId = extractUserIdFromAuthorization(req)
         
-        const { body: { active } } = req
+        const { body: { active = false} } = req
 
         unregisterCompany(companyId, active)
             .then(() => res.status(204).send())

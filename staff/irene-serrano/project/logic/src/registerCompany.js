@@ -11,12 +11,15 @@ const {
 } = require('commons')
 const bcrypt = require('bcryptjs')
 
-function registerUser (role , name, email, password, description, stack, location, link ){
+function registerCompany (role = 2, name, email, password, description, stack, location, link ){
+    
     validateString(name, explain = 'name') 
     validateString(email, explain = 'email') 
     validatePassword(password)
     validateString(description, explain = 'description') 
     if (location!== null){validateString(location, explain = 'location') }
+    if (stack!== null){validateString(stack, explain = 'stack') }
+    if (link!== null){validateString(link, explain = 'link') }
     
  
     return bcrypt.hash(password, 10)
@@ -33,4 +36,4 @@ function registerUser (role , name, email, password, description, stack, locatio
    
 
 }
-module.exports = registerUser
+module.exports = registerCompany

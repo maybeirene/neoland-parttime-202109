@@ -20,8 +20,8 @@ const {
   unregisterCompany,
   createOffer,
   updateOffer,
-  deactiveOffer,
-  activeOffer,
+  deactivateOffer,
+  activateOffer,
   retrieveOffer,
   retrieveAllOffers,
   retrieveCompanyOffers,
@@ -60,7 +60,6 @@ connect(MONGODB_URL)
   router.get("/company", jsonBodyParser, retrieveCompany)
 
   router.get("/developers", jsonBodyParser, retrieveAllDevelopers)
-  router.get("/companies", jsonBodyParser, retrieveAllDevelopers)
 
   router.patch("/developer", jsonBodyParser, updateDeveloper )
   router.patch("/company", jsonBodyParser, updateCompany )
@@ -75,9 +74,9 @@ connect(MONGODB_URL)
   router.get("/company/:companyId/offers", jsonBodyParser, retrieveCompanyOffers)
 
   router.patch("/offer/:offerId", jsonBodyParser, updateOffer);
-  router.patch("/offer/:offerId/deactivate", jsonBodyParser, deactiveOffer);
-  router.patch("/offer/:offerId/activate", jsonBodyParser, activeOffer);
- // router.patch("/offers/:offerId/deactive", jsonBodyParser, deactiveOffer);
+  router.patch("/offer/:offerId/deactivate", jsonBodyParser, deactivateOffer);
+  router.patch("/offer/:offerId/activate", jsonBodyParser, activateOffer);
+ // router.patch("/offers/:offerId/deactivate", jsonBodyParser, deactivateOffer);
 
  router.delete("/offer/:offerId", jsonBodyParser, deleteOffer);
 

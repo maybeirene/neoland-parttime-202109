@@ -1,5 +1,5 @@
 const { extractUserIdFromAuthorization } = require('./helpers')
-const { activeOffer } = require('logic')
+const { deactivateOffer } = require('logic')
 
 module.exports = (req, res) => {
    
@@ -8,7 +8,7 @@ module.exports = (req, res) => {
 
         const { params: { offerId }, body: { active } } = req
 
-        activeOffer(companyId, offerId, active)
+        deactivateOffer(companyId, offerId, active)
             .then(() => res.status(204).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

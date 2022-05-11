@@ -1,10 +1,10 @@
 const { models: { User, Offer }} = require('data')
 const { 
-    validators: { validateId},
+    validators: { validateId, validateBoolean },
     errors: { NotFoundError, AuthError }
 } = require('commons')
 
-function activeOffer(companyId, offerId ) {
+function deactivateOffer(companyId, offerId ) {
     validateId(companyId, 'company id')
     validateId(offerId, 'offer id')
 
@@ -15,11 +15,12 @@ function activeOffer(companyId, offerId ) {
 
             if (offer.company.toString() !== companyId) throw new AuthError(`offer with id ${offerId} does not belong to company with id ${companyId}`)
 
-          offer.active = true
+          offer.active = false
             
             return offer.save()
         })
         .then(offer => {})
 }
 
-module.exports = activeOffer
+module.exports = deactivateOffer
+

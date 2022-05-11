@@ -1,8 +1,11 @@
 const {models : { User } } = require('data')
+const bcrypt = require('bcryptjs')
 
-function updateUser(id, name, email, password, description,  stack, location, link ){
 
-    return User.updateOne({_id: id}, {name, email, password, description,  stack, location, link})
+function updateDeveloper(id, name, email, password, description,  stack, location, link ){
+
+    return  bcrypt.hash(password, 10)
+    .then(hash => User.updateOne({_id: id}, {name, email, password:hash, description,  stack, location, link}))
     .then(result => {
         const { matchedCount } = result
 
@@ -11,4 +14,4 @@ function updateUser(id, name, email, password, description,  stack, location, li
     })
 }
 
-module.exports = updateUser
+module.exports = updateDeveloper

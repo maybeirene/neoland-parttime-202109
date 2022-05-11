@@ -1,10 +1,9 @@
 const { retrieveAllDevelopers } = require('logic')
 
 module.exports = (req, res) => {
-    const {role} = req.body
     try {
        
-        retrieveAllDevelopers(role)
+        retrieveAllDevelopers(role = 1)
             .then(users => res.json(users))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
