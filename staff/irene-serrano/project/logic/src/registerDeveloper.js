@@ -16,9 +16,12 @@ function registerDeveloper (role = 1 , name, email, password, description, stack
     validateString(email, explain = 'email') 
     validatePassword(password)
     validateString(description, explain = 'description') 
-    if (location!== null){validateString(location, explain = 'location') }
-    if (stack!== null){validateString(stack, explain = 'stack') }
-    if (link!== null){validateString(link, explain = 'link') }
+
+  
+    location? validateString(location, explain = 'location') : null
+    stack? validateString(stack, explain = 'stack') : null
+    link? validateString(link, explain = 'link') : null
+   
     
  
     return bcrypt.hash(password, 10)
@@ -30,9 +33,6 @@ function registerDeveloper (role = 1 , name, email, password, description, stack
     
                 throw error
             })
- 
-
-   
 
 }
 module.exports = registerDeveloper

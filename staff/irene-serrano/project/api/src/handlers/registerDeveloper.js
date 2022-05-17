@@ -5,9 +5,10 @@ module.exports = (req, res) => {
     try{
         const {body: { rol , name, email, password, description, stack, location, link} } = req
 
-        registerDeveloper( rol = 1, name, email, password, description, stack, location, link )
+        registerDeveloper( rol, name, email, password, description, stack, location, link )
         .then(()=> res.status(201).send())
         .catch(error => {
+            
             let status = 500
 
                 if (error instanceof DuplicityError)

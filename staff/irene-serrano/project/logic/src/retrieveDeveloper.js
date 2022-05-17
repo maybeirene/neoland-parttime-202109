@@ -1,5 +1,5 @@
 const {models :  {User}  } = require('data')
-const { validators: {validateId} } = require('commons')
+const { validators: {validateId} , errors: { NotFoundError, AuthError }} = require('commons')
 
 function retrieveUser(developerId){
     validateId(developerId)
@@ -8,7 +8,7 @@ function retrieveUser(developerId){
         .then(developer => {
             if (!developer) throw new NotFoundError("developer not found");
 
-            if(developer.role !==1) throw new Error('User is not a developer')
+            if(developer.role !==1) throw new AuthError('User is not a developer')
             
             developer.id = developer._id.toString()
 
