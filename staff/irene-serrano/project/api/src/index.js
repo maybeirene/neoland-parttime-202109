@@ -55,6 +55,7 @@ connect(MONGODB_URL)
 
   router.post("/developer/auth", jsonBodyParser, authenticateUser)
   router.post("/company/auth", jsonBodyParser, authenticateUser)
+  router.post("/user/auth", jsonBodyParser, authenticateUser)
 
   router.get("/developer", jsonBodyParser, retrieveDeveloper)
   router.get("/company", jsonBodyParser, retrieveCompany)

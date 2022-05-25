@@ -22,7 +22,7 @@ function authenticateUser( email, password){
                 .then(match => {
                     if (!match) throw new AuthError('wrong credentials')
 
-                    return user.id
+                    return {id: user.id, role: user.role}
                 })
         })
 }
