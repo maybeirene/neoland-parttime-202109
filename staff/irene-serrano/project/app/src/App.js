@@ -21,14 +21,22 @@ function App() {
     setLoggedIn(true)
     navigate('/')
   }
-  return <Routes>
+  return <div>
+    <header>
+      <h3>APP NAME</h3>
+    </header>
+    <Routes>
       <Route path="/*" element={loggedIn ? <Home onLoggedOut={handleLoggedOut} /> : <Landing />} />
 
       <Route path="/registerDeveloper" element={loggedIn ? <Navigate to="/" /> : <RegisterDeveloper onRegistered={handleLoggedIn} />} />
- {/* <Route path="/registerCompany" element={loggedIn ? <Navigate to="/" /> : <RegisterCompany onRegistered={handleLoggedIn} />} />*/}     
+      {/* <Route path="/registerCompany" element={loggedIn ? <Navigate to="/" /> : <RegisterCompany onRegistered={handleLoggedIn} />} />*/}
 
       <Route path="/login" element={loggedIn ? <Navigate to="/" /> : <Login onLoggedIn={handleLoggedIn} />} />
     </Routes>
+
+  </div>
+
+
 
 }
 
