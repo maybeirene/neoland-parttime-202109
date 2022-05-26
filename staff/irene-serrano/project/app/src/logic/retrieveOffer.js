@@ -3,11 +3,11 @@ import { validators, errors } from 'commons'
 const { validateToken, validateId } = validators
 const { AuthError, NotFoundError, FormatError, ClientError, ServerError } = errors
 
-export default function (token, offerId) {
+export default function (offerId, token) {
     validateToken(token)
     validateId(offerId, 'offer id')
 
-    return fetch(`http://localhost:8080/api/offers/${offerId}`, {
+    return fetch(`http://localhost:8080/api/offer/${offerId}`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`

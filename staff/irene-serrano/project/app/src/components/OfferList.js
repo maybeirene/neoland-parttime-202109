@@ -11,10 +11,10 @@ function OfferList ({onItemClick}){
 
     const getAllOffers = () => {
         try {
-            retrieveAllOffers()
+            retrieveAllOffers(sessionStorage.token)
             .then(offers=> setOffers(offers))
         } catch (error){
-            setFeedback(error)
+            setFeedback(error.message)
         }
     }
 
@@ -31,7 +31,7 @@ function OfferList ({onItemClick}){
             })
             : <div>
                 <h3>Not found</h3>
-                {feedback? <p>{feedback}</p> : null}
+                {feedback ? <p>{feedback}</p> : null}
             </div>
             }
         </ul>

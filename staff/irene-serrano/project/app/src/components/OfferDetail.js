@@ -1,30 +1,29 @@
 import { retrieveOffer } from '../logic'
-import { useState, useParams, useEffect } from 'react'
-
-
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import OfferDetailPanel from './OfferDetailPanel'
 function OfferDetail() {
-    const [offer, setOffer] = useState[null]
+    const [offer, setOffer] = useState(null)
     const [feedback, setFeedback] = useState()
     const { offerId } = useParams()
-
-    const getOffer = (offerId) => {
+    const navigate = useNavigate()
+  
+    useEffect(() => {
         try {
             retrieveOffer(offerId, sessionStorage.token)
-                .then(offer => {
+                .then(offer =>{
                     setOffer(offer)
+                    
                 })
         } catch (error) {
             setFeedback(error.message)
         }
-    }
-
-    useEffect(() => {
-        getOffer()
     }, [])
 
     return <div>
-        <a href="/">back</a>
-        {offer ? <h1>{offer.title}</h1> : <h3>Not found</h3>}
+        <a onClick={()=>navigate("/")}>back</a>
+        {offer ? <OfferDetailPanel content={offer}/> : <h3>Not found</h3>}
         {feedback ? <p>{feedback}</p> : null}
     </div>
 }

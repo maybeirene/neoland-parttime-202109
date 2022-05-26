@@ -16,7 +16,10 @@ export default function ({onLoggedIn}){
                     sessionStorage.token = token
                     onLoggedIn()
                 })
-                .catch(error => setFeedback({ level: 'error', message: error.message }))
+                .catch(error => {
+                    setFeedback(error.message)
+                    if (error.message === 'token expired') delete sessionStorage.token
+                })
         } catch (error) {
             setFeedback({ level: 'error', message: error.message })
         }
@@ -24,8 +27,8 @@ export default function ({onLoggedIn}){
     
     return <div>
         <form onSubmit={login}>
-            <input name="email" placeholder="email" />
-            <input name="password" placeholder="password" />
+            <input tyoe="text" name="email" placeholder="email" />
+            <input type="password" name="password" placeholder="password" />
 
             {feedback? <p>{feedback}</p>: null}
 

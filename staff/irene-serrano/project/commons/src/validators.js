@@ -62,6 +62,13 @@ function validateRole(role, explain = 'role') {
    // if (role !== 1 | role !== 2) throw new FormatError(`invalid ${explain}`)
 }
 
+function extractPayload(token){
+    const [,payloadB64] = token.split('.')
+    const payloadJson = atob(payloadB64)
+    const payload = JSON.parse(payloadJson)
+    return payload
+}
+
 module.exports = {
     validateRole,
     validateName,
@@ -72,5 +79,6 @@ module.exports = {
     validateId,
     validateString,
     validateBoolean,
-    validateSalary
+    validateSalary,
+    extractPayload
 }
