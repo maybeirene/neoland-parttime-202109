@@ -3,12 +3,14 @@ import { useState } from 'react'
 import { extractPayload } from 'commons/src/validators'
 import OfferList from './OfferList'
 import OfferDetail from './OfferDetail'
-/*import OfferItem from '.OfferItem'
-import CompanyNav from './CompanyNav'
+import DeveloperList from './DeveloperList'
+import DeveloperDetail from './DeveloperDetail'
 import CreateOffer from './CreateOffer'
 import CompanyOffers from './CompanyOffers'
-*/
-
+import NavCompany from './NavCompany'
+import NavDeveloper from './NavDeveloper'
+import DeveloperProfile from './DeveloperProfile'
+import CompanyProfile from './CompanyProfile'
 
 export default function ({ onLoggedOut }) {
     const token = sessionStorage.token
@@ -30,29 +32,25 @@ export default function ({ onLoggedOut }) {
             <Routes>
                 <Route path="/" element={<OfferList onItemClick={showOfferDetail} />} />
                 <Route path="/offer/:offerId" element={<OfferDetail />} />
+                <Route path="/profile" element={<DeveloperProfile/>} />
             </Routes>
-            <nav>
-                <a href="#">Profile</a>
-                <a href="/" onClick={logout}>Logout</a>
-            </nav>
+            <NavDeveloper handleLogout={logout}/>
         </div>
     }
 
-   /* if (role === 2) {
+   if (role === 2) {
         return <div>
 
             <Routes>
                 <Route path="/" element={<DeveloperList onItemClick={showDeveloperDetail} />} />
                 <Route path="/developer/:developerId" element={<DeveloperDetail />} />
                 <Route path="/new-offer" element={<CreateOffer />} />
-                <Route path="my-offers" element={<CompanyOffers />} />
+                <Route path="/my-offers" element={<CompanyOffers />} />
+                <Route path="/profile" element={<CompanyProfile/>} />
+
             </Routes>
-            <nav>
-                <a>My offers</a>
-                <a href="#">Profile</a>
-                <a href="/" onClick={logout}>Logout</a>
-            </nav>
+           <NavCompany handleLogout={logout} />
         </div>
-    }*/
+    }
 
 }

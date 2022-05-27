@@ -2,23 +2,22 @@
 import {validators } from 'commons'
 const {validateEmail, validateString, validatePassword} = validators
 
-function registerDeveloepr(name, email, password, description, stack, location, link){
+function registerCompany(name, email, password, description, location, link){
 
     validateEmail(email)
     validatePassword(password) 
     validateString(name, 'name')
     validateString(description, 'description')
-    if(stack) validateString(stack, 'stack')
     if(location) validateString(location, 'location')
     if(link) validateString(link, 'link')
   
 
-    return fetch('http://localhost:8080/api/developer', {
+    return fetch('http://localhost:8080/api/company', {
     method: 'POST',
     headers: {
             'Content-Type': 'application/json'
     },
-    body: JSON.stringify({name, email, password, description, stack, location, link})
+    body: JSON.stringify({ name, email, password, description, location, link})
     })
         .then(res=> {
             const {status} = res
@@ -31,4 +30,4 @@ function registerDeveloepr(name, email, password, description, stack, location, 
 
         })
 }
-export default registerDeveloepr
+export default registerCompany

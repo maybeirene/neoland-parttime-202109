@@ -1,10 +1,12 @@
 import {authenticateUser} from '../logic'
 import { useState } from 'react'
+import { useNavigate }  from 'react-router-dom'
 
 
 export default function ({onLoggedIn}){
-
     const [feedback, setFeedback] = useState()
+    const navigate = useNavigate()
+
     const login = event => {
         event.preventDefault()
 
@@ -21,11 +23,12 @@ export default function ({onLoggedIn}){
                     if (error.message === 'token expired') delete sessionStorage.token
                 })
         } catch (error) {
-            setFeedback({ level: 'error', message: error.message })
+            setFeedback( error.message )
         }
     }
     
     return <div>
+        <a onClick={() => navigate("/")}>back</a>
         <form onSubmit={login}>
             <input tyoe="text" name="email" placeholder="email" />
             <input type="password" name="password" placeholder="password" />
