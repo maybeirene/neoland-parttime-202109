@@ -1,8 +1,53 @@
+import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
+import createOffer from "../logic/createOffer"
 
-export default function (){
+export default function () {
     const navigate = useNavigate()
-    return <div> 
-         <a onClick={()=>navigate("/")}>back</a>
-         <h2>New Offer</h2></div>
+    const [feedback, setFeedback] = useState()
+    const newOffer = event => {
+        event.preventDefault()
+        const { target:
+            {
+                title: { value: title },
+                description: { value: description },
+                stack: { value: stack },
+                minSalary: { value: minSalary },
+                maxSalary: { value: maxSalary },
+                location: { value: location }
+            } } = event
+
+
+        try {
+            createOffer(sessionStorage.token, title, description, stack, parseInt(minSalary), parseInt(maxSalary), location)
+                .then(() => {
+                    setFeedback('oferta creada')
+                })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    return <div>
+        <a onClick={() => navigate("/")}>back</a>
+        <h2>New Offer</h2>
+        <form onSubmit={newOffer}>
+            <input type="text" name="title" placeholder="title" required />
+            <textarea name="description" placeholder="description" required />
+            <select name="stack">
+                <option dissabled="true" > -- choose your offer stack -- </option>
+                <option value="full-stack">Full stack</option>
+                <option value="front-end">Front end</option>
+                <option value="back-end">Back end</option>
+            </select>
+            <input type="number" name="minSalary" placeholder="minimun salary" />
+            <input type="number" name="maxSalary" placeholder="maximun salary" />
+
+            <input type="text" name="location" placeholder="location" />
+
+
+            {feedback ? <p>{feedback}</p> : null}
+            <button type="submit">Sumbit</button>
+
+        </form>
+    </div>
 }

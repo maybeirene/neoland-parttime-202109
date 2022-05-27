@@ -16,3 +16,9 @@ nav{
   display: flex;
   justify-content: space-around;
 }
+.active{
+  background-color: aqua;
+}
+.unactive{
+  background-color: rgb(128, 156, 156);
+}

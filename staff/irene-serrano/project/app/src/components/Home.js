@@ -45,7 +45,7 @@ export default function ({ onLoggedOut }) {
                 <Route path="/" element={<DeveloperList onItemClick={showDeveloperDetail} />} />
                 <Route path="/developer/:developerId" element={<DeveloperDetail />} />
                 <Route path="/new-offer" element={<CreateOffer />} />
-                <Route path="/my-offers" element={<CompanyOffers />} />
+                <Route path="/my-offers/*" element={<CompanyOffers />} />
                 <Route path="/profile" element={<CompanyProfile/>} />
 
             </Routes>
