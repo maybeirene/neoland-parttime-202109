@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from 'react'
 import { activateOffer, deactivateOffer, deleteOffer } from "../logic"
-
+import "./Company.css"
 
 export default function ({ content, onDeleteItem }) {
 
@@ -54,18 +54,18 @@ export default function ({ content, onDeleteItem }) {
 
 
 
-    return <div className={active === true ? "active" : "unactive"}>
-        <h3>{content.title}</h3>
-        <p>{content.stack}</p>
-        <p>{formatedDate}</p>
+    return <div className={(active === true ? "Company__offerItem active" : "Company__offerItem inactive")}>
+        <h3 className="item__title">{content.title}</h3>
+        <p>Created on: {formatedDate}</p>
 
-        <div>
-            <button onClick={() => navigate(`/my-offers/edit/${offerId}`)}>Edit</button>
+        <div className="item__buttonGroup">
+            <div></div>
+            <button onClick={() => navigate(`/my-offers/edit/${offerId}`)}>🖋️ </button>
             {active === true ?
-                <button onClick={() => deactivate()}>Desactivate</button>
+                <button onClick={() => deactivate()}>🔇</button>
                 :
-                <button onClick={() => activate()}>Activate</button>}
-            <button onClick={() => handleDelete()}>Delete</button>
+                <button onClick={() => activate()}>🔈</button>}
+            <button onClick={() => handleDelete()}>🗑️</button>
         </div>
     </div>
 

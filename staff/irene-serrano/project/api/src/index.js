@@ -60,6 +60,7 @@ connect(MONGODB_URL)
   router.get("/developer", jsonBodyParser, retrieveDeveloper)
   router.get("developer/:developerId", jsonBodyParser, retrieveDeveloper)
   router.get("/company", jsonBodyParser, retrieveCompany)
+  router.get("/company/:companyId", jsonBodyParser, retrieveCompany)
 
   router.get("/developers", jsonBodyParser, retrieveAllDevelopers)
 

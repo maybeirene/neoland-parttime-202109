@@ -7,7 +7,9 @@ import registerCompany from "./registerCompany";
 
 import retrieveAllDevelopers from "./retrieveAllDevelopers"
 import retrieveDeveloper from "./retrieveDeveloper";
+import retrieveCompany from "./retrieveCompany";
 
+import updateCompany from "./updateCompany";
 import createOffer from "./createOffer";
 
 import retrieveCompanyOffers from "./retrieveCompanyOffers";
@@ -29,6 +31,8 @@ export {
     registerCompany,
     retrieveDeveloper,
     retrieveAllDevelopers,
+    retrieveCompany,
+    updateCompany,
     createOffer,
     retrieveCompanyOffers,
     retrieveAllOffers,

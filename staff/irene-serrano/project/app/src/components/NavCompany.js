@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function ({handleLogout}) {
     const navigate = useNavigate()
-    return <nav>
+    return <nav className="Company__nav">
         <a onClick={()=>navigate("/my-offers")}>My offers</a>
         <a onClick={()=>navigate("/new-offer")}>✚</a>
         <a onClick={()=>navigate("/profile")}>Profile</a>

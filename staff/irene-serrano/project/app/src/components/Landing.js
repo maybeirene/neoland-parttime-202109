@@ -1,13 +1,16 @@
+import './Landing.css'
 import { useNavigate }  from 'react-router-dom'
 export default function() {
     const navigate = useNavigate()
-    return <div>
+    return <div className="Landing">
        
-        <h1>APP TITLE</h1>
-        <p>The easiest way to find code beasts</p>
-        <p><i>or maybe you are who they are looking for</i></p>
-        <button onClick={()=>navigate("/registerCompany")}>Looking for talent</button>
-        <button onClick={()=>navigate("/registerDeveloper")}>Code beast 🦁</button>
+        <h1 className="Landing__title">APP TITLE</h1>
+        <p className="Landing__explain"> The easiest way to find code beasts
+        or maybe you are who they are looking for</p>
+        <div className="Landing__buttonContainer">
+            <button className="Landing__button-primary" onClick={()=>navigate("/registerCompany")}>Looking for talent</button>
+            <button className="Landing__button-primary" onClick={()=>navigate("/registerDeveloper")}>Code beast 🦁</button>
+        </div>
 
         <p>Already have an account? Please, <a onClick={()=>navigate("/login")}>log in</a></p>
     </div>

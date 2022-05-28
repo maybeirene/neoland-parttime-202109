@@ -22,7 +22,7 @@ function OfferList ({onItemClick}){
         getAllOffers()
     }, [])
 
-    return <div>
+    return <div className="Offer__list">
         <ul>
             {offers? offers.map(offer=>{
                 return <li key={offer.id} onClick={()=> clickOffer(offer.id)} >

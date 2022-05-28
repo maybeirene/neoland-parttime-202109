@@ -52,8 +52,10 @@ export default function ({ onRegistered }) {
 
 
 
-    return <div>
+    return <div  className="Register">
         <a onClick={()=>navigate("/")}>back</a>
+        <p>Are you a developer?</p>
+        <h2>Register</h2>
         <form onSubmit={register}>
             <input type="text" name="name" placeholder="name and surname" required/>
             <input type="email" name="email" placeholder="email" required/>
@@ -69,7 +71,7 @@ export default function ({ onRegistered }) {
             <input type="text" name="link" placeholder="link" />
 
     {feedback? <p>{feedback}</p> : null}
-            <button type="submit">Sumbit</button>
+            <button className="Register__button-primary-full" type="submit">Sumbit</button>
         </form>
     </div>
 

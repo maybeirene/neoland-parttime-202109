@@ -1,0 +1,11 @@
+.Landing,
+.Login, .Register {
+    padding: 10vw;
+    background-color: antiquewhite;
+}
+
+.Landing__buttonContainer {
+    display: flex;
+    flex-direction: column;
+}
+

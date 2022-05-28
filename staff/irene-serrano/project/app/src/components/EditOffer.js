@@ -60,51 +60,52 @@ export default function () {
 
     return <div>
         {offer ?
-            <div>
+            <div className="EditOffer_content">
                 <form onSubmit={saveOffer}>
                     <h1>{offer.title}</h1>
-                    <div className="groupfield">
+                    <div className="form__groupfield">
                         <input type="text" name="title" value={offer.title} disabled={true} />
-                        <button onClick={e => {
+                        <button className="form__editButton" onClick={e => {
                             e.preventDefault()
                             toggleEdit('title')
-                        }}>Edit</button>
+                        }}>✎</button>
                     </div>
-                    <div className="groupfield">
+                    <div className="form__groupfield">
                         <textarea type="text" name="description" value={offer.description} disabled={true} />
-                        <button onClick={e => {
+                        <button className="form__editButton" onClick={e => {
                             e.preventDefault()
                             toggleEdit('description')
-                        }}>Edit</button>
+                        }}>✎</button>
                     </div>
-
-                    <select name="stack" defaultValue={offer.stack}>
-                        <option value="full-stack" > Full stack </option>
-                        <option value="front-end" >Front end</option>
-                        <option value="back-end" >Back end</option>
-                    </select>
-
-                    <div className="groupfield">
+                    <div className="form__groupfield">
+                        <select name="stack" defaultValue={offer.stack}>
+                            <option value="full-stack" > Full stack </option>
+                            <option value="front-end" >Front end</option>
+                            <option value="back-end" >Back end</option>
+                        </select>
+                        <button className="form__editButton" > </button>
+                    </div>
+                    <div className="form__groupfield">
                         <input type="number" name="minSalary" value={offer.minSalary} disabled={true} />
-                        <button onClick={e => {
+                        <button className="form__editButton" onClick={e => {
                             e.preventDefault()
                             toggleEdit('minSalary')
-                        }}>Edit</button>
+                        }}>✎</button>
                     </div>
 
-                    <div className="groupfield">
+                    <div className="form__groupfield">
                         <input type="number" name="maxSalary" value={offer.maxSalary} disabled={true} />
-                        <button onClick={e => {
+                        <button className="form__editButton" onClick={e => {
                             e.preventDefault()
                             toggleEdit('maxSalary')
-                        }}>Edit</button>
+                        }}>✎</button>
                     </div>
-                    <div className="groupfield">
+                    <div className="form__groupfield">
                         <input type="text" name="location" value={offer.location} disabled={true} />
-                        <button onClick={e => {
+                        <button className="form__editButton" onClick={e => {
                             e.preventDefault()
                             toggleEdit('location')
-                        }}>Edit</button>
+                        }}>✎</button>
                     </div>
 
                  
@@ -112,9 +113,9 @@ export default function () {
                     <button type="submit">Save</button>
 
                 </form>
-                <button type="">Activar/desactivar</button>
-                <button  onClick={() => handleDelete()}>
-                Elimiar
+
+                <button className="Edit__deleteButton" onClick={() => handleDelete()}>
+                Delete offer
                 </button>
             </div>
 

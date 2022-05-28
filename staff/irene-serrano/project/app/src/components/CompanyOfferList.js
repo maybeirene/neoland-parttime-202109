@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import CompanyOfferItem from './CompanyOfferItem'
 import { retrieveCompanyOffers } from '../logic'
-
+import "./Company.css"
 
 function CompanyOfferList (){
 
@@ -25,7 +25,7 @@ function CompanyOfferList (){
         getCompanyOffers()
     }, [])
 
-    return <div>
+    return <div className="Company__offerList">
         {offers ? offers.map(offer => {
             return <li key={offer.id}>
                 <CompanyOfferItem content={offer} onDeleteItem={()=> getCompanyOffers() } />
