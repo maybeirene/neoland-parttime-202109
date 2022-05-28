@@ -10,7 +10,7 @@ function CompanyOfferList (){
     const [offers, setOffers] = useState()
     const [feedback, setFeedback] = useState()
 
-    useEffect(() => {
+    const getCompanyOffers =()=>{
         try {
             retrieveCompanyOffers(sessionStorage.token, userId)
                 .then(offers => {
@@ -20,12 +20,15 @@ function CompanyOfferList (){
         } catch (error) {
             console.error(error.message)
         }
+    }
+    useEffect(() => {
+        getCompanyOffers()
     }, [])
 
     return <div>
         {offers ? offers.map(offer => {
             return <li key={offer.id}>
-                <CompanyOfferItem content={offer} />
+                <CompanyOfferItem content={offer} onDeleteItem={()=> getCompanyOffers() } />
             </li>
         })
             : <h3>Not found :C </h3>}

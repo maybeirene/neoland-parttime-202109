@@ -14,8 +14,10 @@ import retrieveCompanyOffers from "./retrieveCompanyOffers";
 import retrieveAllOffers from "./retrieveAllOffers";
 import retrieveOffer from "./retrieveOffer";
 
+import updateOffer from "./updateOffer";
 import activateOffer from "./activateOffer";
 import deactivateOffer from "./deactivateOffer";
+import deleteOffer from "./deleteOffer";
 
 
 
@@ -31,6 +33,8 @@ export {
     retrieveCompanyOffers,
     retrieveAllOffers,
     retrieveOffer,
+    updateOffer,
     activateOffer,
-    deactivateOffer
+    deactivateOffer,
+    deleteOffer
 }

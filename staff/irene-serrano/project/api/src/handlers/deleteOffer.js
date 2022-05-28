@@ -8,7 +8,7 @@ module.exports = (req, res) => {
         const { params: { offerId } } = req
 
         deleteOffer(companyId, offerId)
-            .then(() => res.status(200).send())
+            .then(() => res.status(204).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })

@@ -22,3 +22,7 @@ nav{
 .unactive{
   background-color: rgb(128, 156, 156);
 }
+.groupfield{
+  display: flex;
+  justify-content: space-between;
+}

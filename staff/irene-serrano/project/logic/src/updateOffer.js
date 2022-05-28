@@ -1,8 +1,9 @@
 const { models: { User, Offer }} = require('data')
 const { 
-    validators: { validateId, validateString, validateBoolean },
+    validators: { validateId, validateString, validateSalary },
     errors: { NotFoundError, AuthError }
 } = require('commons')
+const { validateSalary } = require('commons/src/validators')
 
 function updateOffer(companyId, offerId, title, description, stack, minSalary, maxSalary, location) {
     validateId(companyId, 'company id')
@@ -11,6 +12,8 @@ function updateOffer(companyId, offerId, title, description, stack, minSalary, m
     validateString(description, 'description')
     validateString(location, 'location')
     validateString(stack, 'stack')
+    validateSalary(minSalary, 'minSalary')
+    validateSalary(maxSalary, 'maxSalary')
 
     return Promise.all([User.findById(companyId), Offer.findById(offerId)])
         .then(([company, offer]) => {
