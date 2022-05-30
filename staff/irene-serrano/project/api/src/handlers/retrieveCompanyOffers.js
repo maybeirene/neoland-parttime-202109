@@ -16,7 +16,6 @@ module.exports = (req, res) => {
        
         retrieveCompanyOffers(companyId, active)
             .then(offers => {
-                console.log(offers)
                 res.json(offers)})
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

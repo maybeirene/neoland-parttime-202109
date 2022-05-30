@@ -3,6 +3,7 @@ export default function ({content}){
         <h3 className="item__title">{content.title}</h3>
         <p>{content.stack}</p>
         <p>{content.location}</p>
+
     </div>
 
 }

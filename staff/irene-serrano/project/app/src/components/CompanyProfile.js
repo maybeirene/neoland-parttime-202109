@@ -1,18 +1,19 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { retrieveCompany, updateCompany } from '../logic'
+import { retrieveCompany, updateCompany, unregisterCompany } from '../logic'
 
 
 export default function () {
     const navigate = useNavigate()
     const [company, setCompany] = useState()
+    const [feedback, setFeedback] = useState()
 
     useEffect(() => {
         try {
             retrieveCompany(sessionStorage.token)
                 .then((company) => setCompany(company))
         }
-        catch (error) { console.error(error) }
+        catch (error) { setFeedback(error.message) }
     }, [])
 
     const saveCompany = (event) => {
@@ -27,20 +28,25 @@ export default function () {
 
         try {
             updateCompany(sessionStorage.token, name, description, location, link)
-                .then(() => console.log('compañia actualizada'))
+                .then(() => setFeedback(' ✅ compañia actualizada'))
         } catch (error) {
-            console.error(error)
+            setFeedback(error.message)
         }
     }
 
-    const toggleEdit = (target) => {
-        let inputTarget = document.querySelector(`input[name=${target}]`)
-        if (!inputTarget) inputTarget = document.querySelector(`textarea[name=${target}]`)
-
-        if (inputTarget.hasAttribute('disabled')) {
-            inputTarget.removeAttribute('disabled')
+    const unregister = () => {
+        try {
+            unregisterCompany(sessionStorage.token)
+                .then(() => {
+                    
+                    console.log('CUENTA ELIMINADA')
+                    delete sessionStorage.token
+                    navigate('/')
+                })
+                .catch(error=> console.log(error))
+        } catch (error) {
+            setFeedback(error.message)
         }
-        else inputTarget.setAttribute('disabled', "")
     }
 
     return <div>
@@ -51,40 +57,28 @@ export default function () {
                 <form onSubmit={saveCompany}>
 
                     <div className="groupfield">
-                        <input type="text" name="name" value={company.name} disabled={true} />
-                        <button onClick={e => {
-                            e.preventDefault()
-                            toggleEdit('name')
-                        }}>Edit</button>
+                        <input type="text" name="name" defaultValue={company.name} />    
                     </div>
 
                     <div className="groupfield">
-                        <textarea type="text" name="description" value={company.description} disabled={true} />
-                        <button onClick={e => {
-                            e.preventDefault()
-                            toggleEdit('description')
-                        }}>Edit</button>
+                        <textarea type="text" name="description" defaultValue={company.description} /> 
                     </div>
 
                     <div className="groupfield">
-                        <input type="text" name="location" value={company.location ? company.location : ""} placeholder="location" disabled={true} />
-                        <button onClick={e => {
-                            e.preventDefault()
-                            toggleEdit('location')
-                        }}>Edit</button>
+                        <input type="text" name="location" defaultValue={company.location ? company.location : ""} placeholder="location" />        
                     </div>
 
                     <div className="groupfield">
-                        <input type="text" name="link" value={company.link ? company.link : ""} placeholder="link" disabled={true} />
-                        <button onClick={e => {
-                            e.preventDefault()
-                            toggleEdit('link')
-                        }}>Edit</button>
+                        <input type="text" name="link" defaultValue={company.link ? company.link : ""} placeholder="link" />
                     </div>
-
+                    {feedback? <p>{feedback}</p> : null}
                     <button type="submit">Save</button>
 
                 </form>
+                
+                <button className="CompanyProfile__deleteButton" onClick={() => unregister()}>
+                   Delete User
+                </button>
             </div>
             : <h3>not found</h3>}
     </div>

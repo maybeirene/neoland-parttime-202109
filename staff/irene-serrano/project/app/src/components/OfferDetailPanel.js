@@ -8,6 +8,8 @@ function OfferDetailPanel({ content }) {
         <p className="detail__description">{content.description}</p>
         <p className="detail__text">{content.minSalary}-{content.maxSalary}€</p>
         <p className="detail__text">{content.companyName}</p>
+
+        <button className="Developer__contactButton-primary">Contact</button>
     </div>
 }
 export default OfferDetailPanel

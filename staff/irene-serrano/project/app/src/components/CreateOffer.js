@@ -21,10 +21,10 @@ export default function () {
         try {
             createOffer(sessionStorage.token, title, description, stack, parseInt(minSalary), parseInt(maxSalary), location)
                 .then(() => {
-                    setFeedback('oferta creada')
+                    setFeedback('✅ oferta creada')
                 })
         } catch (error) {
-            console.error(error)
+            setFeedback(error.message)
         }
     }
     return <div>
@@ -33,16 +33,16 @@ export default function () {
         <form onSubmit={newOffer}>
             <input type="text" name="title" placeholder="title" required />
             <textarea name="description" placeholder="description" required />
-            <select name="stack">
-                <option dissabled="true" > -- choose your offer stack -- </option>
+            <select name="stack"  required >
+                <option disabled label="Choose your offer stack" > </option>
                 <option value="full-stack">Full stack</option>
                 <option value="front-end">Front end</option>
                 <option value="back-end">Back end</option>
             </select>
-            <input type="number" name="minSalary" placeholder="minimun salary" />
-            <input type="number" name="maxSalary" placeholder="maximun salary" />
+            <input type="number" name="minSalary" placeholder="minimun salary" required/>
+            <input type="number" name="maxSalary" placeholder="maximun salary" required/>
 
-            <input type="text" name="location" placeholder="location" />
+            <input type="text" name="location" placeholder="location" required />
 
 
             {feedback ? <p>{feedback}</p> : null}

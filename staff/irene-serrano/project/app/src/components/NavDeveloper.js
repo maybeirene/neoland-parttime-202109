@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-
+import './Nav.css'
 export default function ({handleLogout}) {
     const navigate = useNavigate()
     return <nav className="Developer__nav">

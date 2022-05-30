@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import DeveloperDetailPanel from './DeveloperDetailPanel'
+
 function DeveloperDetail() {
     const [developer, setDeveloper] = useState(null)
     const [feedback, setFeedback] = useState()
@@ -13,6 +14,7 @@ function DeveloperDetail() {
         try {
             retrieveDeveloper(developerId, sessionStorage.token)
                 .then(developer =>{
+                    
                     setDeveloper(developer)
                     
                 })
@@ -21,7 +23,7 @@ function DeveloperDetail() {
         }
     }, [])
 
-    return <div>
+    return <div className='DeveloperDetail'>
         <a onClick={()=>navigate("/")}>back</a>
         {developer ? <DeveloperDetailPanel content={developer}/> : <h3>Not found</h3>}
         {feedback ? <p>{feedback}</p> : null}

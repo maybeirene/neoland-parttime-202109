@@ -3,7 +3,6 @@ const {
     validators: { validateId, validateString, validateSalary },
     errors: { NotFoundError, AuthError }
 } = require('commons')
-const { validateSalary } = require('commons/src/validators')
 
 function updateOffer(companyId, offerId, title, description, stack, minSalary, maxSalary, location) {
     validateId(companyId, 'company id')

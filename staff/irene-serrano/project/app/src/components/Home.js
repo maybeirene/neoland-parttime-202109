@@ -16,6 +16,7 @@ export default function ({ onLoggedOut }) {
     const token = sessionStorage.token
     const payload = extractPayload(token)
     const [role] = useState(payload.role)
+    const [developerId, setDeveloperId] = useState()
 
     const navigate = useNavigate()
     const logout = () => {
@@ -24,10 +25,14 @@ export default function ({ onLoggedOut }) {
     }
 
     const showOfferDetail = offerId => navigate(`offer/${offerId}`)
-    const showDeveloperDetail = developerId => navigate(`developer/${developerId}`)
+    const showDeveloperDetail = developerId => {
+        setDeveloperId(developerId)
+        navigate(`/developer/${developerId}`)
+
+    }
 
     if (role === 1) {
-        return <div>
+        return <div className='Home'>
 
             <Routes>
                 <Route path="/" element={<OfferList onItemClick={showOfferDetail} />} />
@@ -39,11 +44,11 @@ export default function ({ onLoggedOut }) {
     }
 
    if (role === 2) {
-        return <div>
+        return <div className='Home'>
 
             <Routes>
                 <Route path="/" element={<DeveloperList onItemClick={showDeveloperDetail} />} />
-                <Route path="/developer/:developerId" element={<DeveloperDetail />} />
+                <Route path="/developer/:developerId" element={<DeveloperDetail id={developerId} />} />
                 <Route path="/new-offer" element={<CreateOffer />} />
                 <Route path="/my-offers/*" element={<CompanyOffers />} />
                 <Route path="/profile" element={<CompanyProfile/>} />

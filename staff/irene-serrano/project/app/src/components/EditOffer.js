@@ -5,7 +5,8 @@ import { retrieveOffer, updateOffer, deleteOffer } from "../logic"
 export default function () {
     const { offerId } = useParams()
     const [offer, setOffer] = useState()
-    const navigate =  useNavigate()
+    const [feedback, setFeedback] = useState()
+    const navigate = useNavigate()
 
     useEffect(() => {
         try {
@@ -15,16 +16,6 @@ export default function () {
         catch (error) { console.error(error) }
     }, [])
 
-
-    const toggleEdit = (target) => {
-        let inputTarget = document.querySelector(`input[name=${target}]`)
-        if (!inputTarget) inputTarget = document.querySelector(`textarea[name=${target}]`)
-
-        if (inputTarget.hasAttribute('disabled')) {
-            inputTarget.removeAttribute('disabled')
-        }
-        else inputTarget.setAttribute('disabled', "")
-    }
 
     const saveOffer = (event) => {
         event.preventDefault()
@@ -39,23 +30,23 @@ export default function () {
             } } = event
 
         try {
-            updateOffer(sessionStorage.token, offerId, title, description, stack, minSalary, maxSalary, location)
-                .then(() => console.log('oferta actualizada'))
+            updateOffer(sessionStorage.token, offerId, title, description, stack, parseInt(minSalary), parseInt(maxSalary), location)
+                .then(() => setFeedback(' ✅ oferta actualizada'))
         } catch (error) {
-            console.error(error)
+            setFeedback(error.message)
         }
     }
 
     const handleDelete = () => {
-            try {
-                deleteOffer(sessionStorage.token, offerId)
-                .then(()=>{
+        try {
+            deleteOffer(sessionStorage.token, offerId)
+                .then(() => {
                     console.log('oferta borrada')
                     navigate('/my-offers')
                 })
-            } catch (error) {
-                console.error(error)
-            }
+        } catch (error) {
+            setFeedback(error.message)
+        }
     }
 
     return <div>
@@ -64,18 +55,12 @@ export default function () {
                 <form onSubmit={saveOffer}>
                     <h1>{offer.title}</h1>
                     <div className="form__groupfield">
-                        <input type="text" name="title" value={offer.title} disabled={true} />
-                        <button className="form__editButton" onClick={e => {
-                            e.preventDefault()
-                            toggleEdit('title')
-                        }}>✎</button>
+                        <input type="text" name="title" defaultValue={offer.title} />
+
                     </div>
                     <div className="form__groupfield">
-                        <textarea type="text" name="description" value={offer.description} disabled={true} />
-                        <button className="form__editButton" onClick={e => {
-                            e.preventDefault()
-                            toggleEdit('description')
-                        }}>✎</button>
+                        <textarea type="text" name="description" defaultValue={offer.description} />
+
                     </div>
                     <div className="form__groupfield">
                         <select name="stack" defaultValue={offer.stack}>
@@ -83,39 +68,26 @@ export default function () {
                             <option value="front-end" >Front end</option>
                             <option value="back-end" >Back end</option>
                         </select>
-                        <button className="form__editButton" > </button>
-                    </div>
-                    <div className="form__groupfield">
-                        <input type="number" name="minSalary" value={offer.minSalary} disabled={true} />
-                        <button className="form__editButton" onClick={e => {
-                            e.preventDefault()
-                            toggleEdit('minSalary')
-                        }}>✎</button>
                     </div>
 
                     <div className="form__groupfield">
-                        <input type="number" name="maxSalary" value={offer.maxSalary} disabled={true} />
-                        <button className="form__editButton" onClick={e => {
-                            e.preventDefault()
-                            toggleEdit('maxSalary')
-                        }}>✎</button>
+                        <input type="number" name="minSalary" defaultValue={offer.minSalary} />
                     </div>
+
                     <div className="form__groupfield">
-                        <input type="text" name="location" value={offer.location} disabled={true} />
-                        <button className="form__editButton" onClick={e => {
-                            e.preventDefault()
-                            toggleEdit('location')
-                        }}>✎</button>
+                        <input type="number" name="maxSalary" defaultValue={offer.maxSalary} />
                     </div>
 
-                 
-
+                    <div className="form__groupfield">
+                        <input type="text" name="location" defaultValue={offer.location} />
+                    </div>
+                    {feedback ? <p>{feedback}</p> : null}
                     <button type="submit">Save</button>
 
                 </form>
 
                 <button className="Edit__deleteButton" onClick={() => handleDelete()}>
-                Delete offer
+                    Delete offer
                 </button>
             </div>
 

@@ -37,7 +37,7 @@ export default function ({onLoggedIn}){
 
             {feedback? <p>{feedback}</p>: null}
 
-            <button type="submut" className='Login__button-primary-full'>Submit</button>
+            <button type="submit" className='Login__button-primary-full'>Submit</button>
         </form>
     </div>
 }

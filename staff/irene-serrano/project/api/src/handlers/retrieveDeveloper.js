@@ -4,7 +4,9 @@ const { extractUserIdFromAuthorization } = require('./helpers')
 
 module.exports = (req, res) => {
     try {
-        const developerId = extractUserIdFromAuthorization(req)
+        const userId = extractUserIdFromAuthorization(req)
+        const { params: { developerId } } = req
+
 
         retrieveDeveloper(developerId)
             .then(developer => res.json(developer))

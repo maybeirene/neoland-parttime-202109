@@ -1,8 +1,7 @@
 
-
 const {models : { User } } = require('data')
 
-function unregisterCompany(id, active ){
+function unregisterCompany(id){
 
     return User.updateOne({_id: id}, {"active": active })
     .then(result => {

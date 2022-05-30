@@ -1,13 +1,18 @@
 import { validators, errors } from 'commons'
-import { validateToken } from 'commons/src/validators'
 
 
-const { validateId } = validators
+const { validateId , validateToken, validateString, validateSalary} = validators
 const { AuthError, ClientError, ServerError } = errors
 
 export default function (token, offerId, title, description, stack, minSalary, maxSalary, location) {
     validateToken(token)
     validateId(offerId)
+    validateString(title, 'title')
+    validateString(description, 'description')
+    validateString(stack, 'stack')
+    validateString(location, 'location')
+    validateSalary(minSalary,'minSalary')
+    validateSalary(maxSalary, 'maxSalary')
 
     return fetch(`http://localhost:8080/api/offer/${offerId}`, {
         method: 'PATCH',
@@ -21,7 +26,7 @@ export default function (token, offerId, title, description, stack, minSalary, m
         .then(res => {
             const { status } = res
 
-            if (status === 200)
+            if (status === 204)
                 return
 
             else if (status >= 400 && status < 500)

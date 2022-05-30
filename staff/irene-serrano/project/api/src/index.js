@@ -12,6 +12,7 @@ const {
   registerCompany,
   authenticateUser,
   retrieveDeveloper,
+  retrieveDeveloperFromCompany,
   retrieveCompany,
   retrieveAllDevelopers,
   updateDeveloper,
@@ -57,8 +58,9 @@ connect(MONGODB_URL)
   router.post("/company/auth", jsonBodyParser, authenticateUser)
   router.post("/user/auth", jsonBodyParser, authenticateUser)
 
+  router.get("/developer/:developerId", jsonBodyParser, retrieveDeveloper)
   router.get("/developer", jsonBodyParser, retrieveDeveloper)
-  router.get("developer/:developerId", jsonBodyParser, retrieveDeveloper)
+  
   router.get("/company", jsonBodyParser, retrieveCompany)
   router.get("/company/:companyId", jsonBodyParser, retrieveCompany)
 

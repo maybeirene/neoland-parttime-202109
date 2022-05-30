@@ -15,7 +15,7 @@ export default function (developerId, token) {
     })
         .then(res => {
             const { status } = res
-
+            console.log(res)
             if (status === 200)
                 return res.json()
                     .then(developer => {

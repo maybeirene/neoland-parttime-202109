@@ -7,6 +7,7 @@
 
 
   --color_primary: #1ae3a3;
+  --color_primary-lowOpacity: #1ae3a344;
   --color_error: rgb(169, 37, 4);
   --color_error-midOpacity: rgba(229, 47, 2, 0.722);
 
@@ -60,14 +61,20 @@ nav {
 }
 
 /* ===== COMMON STYLES ===== */
-[class$=button-primary] {
+[class$=utton-primary] {
   margin: 5px 0;
   padding: 10px;
   border: 2px solid var(--color_primary);
   border-radius: 10px;
-  background-color: #0000;
+  background-color: var(--color_lighterGrey);
+  max-width: 20rem;
+  font-weight: 700;
+  color: var(--color_primary)
 }
-
+[class$=utton-primary]:hover{
+  background-color: var(--color_primary-lowOpacity);
+  color: var(--color_darkGrey)
+}
 
 [type="submit"]{
   width: fit-content;
@@ -84,3 +91,6 @@ nav {
   color:var(--color_lighterGrey);
   border-radius: 0.8rem;
 } 
+.Home{
+  background-color: var(--color_lighterGrey);
+}

@@ -1,12 +1,14 @@
-function OfferDetailPanel({content}) {
-    return<div>
+function DeveloperDetailPanel({content}) {
+    return <div>
         <h3>{content.name}</h3>
+        <div>
+            <p>{content.location}</p>
+            <p>{content.stack}</p>
+        </div>
+        
         <p>{content.description}</p>
-        <p>{content.location}</p>
-        <p>{content.stack}</p>
-        <p>{content.minSalary}</p>
-        <p>{content.maxSalary}</p>
-        <p>{content.companyName}</p>
+        <p>{content.link}</p>
+    
     </div>
 }
-export default OfferDetailPanel
+export default DeveloperDetailPanel

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import DeveloperItem from './DeveloperItem'
 import { retrieveAllDevelopers } from '../logic'
+import './Developer.css'
 
 
 function DeveloperList ({onItemClick}){
@@ -22,7 +23,7 @@ function DeveloperList ({onItemClick}){
         getAllDevelopers()
     }, [])
 
-    return <div>
+    return <div className="Developer__list">
         <ul>
             {developers? developers.map(developer=>{
                 return <li key={developer.id} onClick={()=> clickDeveloper(developer.id)} >
