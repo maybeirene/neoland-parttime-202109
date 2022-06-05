@@ -17,17 +17,20 @@ function OfferList ({onItemClick}){
             setFeedback(error.message)
         }
     }
-
     useEffect(()=>{
         getAllOffers()
     }, [])
 
     return <div className="Offer__list">
         <ul>
-            {offers? offers.map(offer=>{
+            {offers? offers.map(offer=>{ 
+              if(offer.active === true) {
                 return <li key={offer.id} onClick={()=> clickOffer(offer.id)} >
                     <OfferItem content={offer} />
                 </li>
+              }
+              else return null
+                
             })
             : <div>
                 <h3>Not found</h3>

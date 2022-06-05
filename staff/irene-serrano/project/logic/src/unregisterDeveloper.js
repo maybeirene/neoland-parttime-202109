@@ -1,12 +1,12 @@
 const {models : { User } } = require('data')
 
-function unregisterDeveloper(id ){
+function unregisterDeveloper(developerId){
 
-    return User.updateOne({_id: id}, { active: false })
+    return User.updateOne({_id: developerId}, { active: false })
     .then(result => {
-        const { matchedCount } = result
+        const { modifiedCount } = result
 
-        if (matchedCount === 0)
+        if (modifiedCount === 0)
             throw new Error(`user with id ${developerId} not found`)
     })
 }

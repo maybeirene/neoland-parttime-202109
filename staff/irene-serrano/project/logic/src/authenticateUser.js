@@ -17,11 +17,11 @@ function authenticateUser( email, password){
     return User.findOne({ email })
         .then( user => {
             if (!user) throw new Error ('email does not exists')
+            if(user.active === false) throw new AuthError('user deactivated')
 
             return bcrypt.compare(password, user.password)
                 .then(match => {
                     if (!match) throw new AuthError('wrong credentials')
-
                     return {id: user.id, role: user.role}
                 })
         })

@@ -3,13 +3,13 @@ const { validateToken } = validators
 const { AuthError, ClientError, ServerError } = errors
 
 export default function(token) {
-  //  validateToken(token)
+    validateToken(token)
 
     return fetch('http://localhost:8080/api/company/unregister', {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
-            'Autorization':`Bearer ${token}`
+            'Authorization':`Bearer ${token}`
         },
         
     })

@@ -1,5 +1,4 @@
-const {models : { User } } = require('data')
-const bcrypt = require('bcryptjs')
+const { models: { User } } = require('data')
 
 const {
     validators: {
@@ -11,28 +10,23 @@ const {
     }
 } = require('commons')
 
-function updateDeveloper(id, name, email, password, description,  stack, location, link ){
+function updateDeveloper(id, name, description, stack, location, link) {
 
-    validateString(name, explain = 'name') 
-    validateString(email, explain = 'email') 
-    validatePassword(password)
-    validateString(description, explain = 'description') 
-
-  
-    location? validateString(location, explain = 'location') : null
-    stack? validateString(stack, explain = 'stack') : null
-    link? validateString(link, explain = 'link') : null
+    validateString(name, explain = 'name')
+    validateString(description, explain = 'description')
+    location ? validateString(location, explain = 'location') : null
+    stack ? validateString(stack, explain = 'stack') : null
+    link ? validateString(link, explain = 'link') : null
 
 
-    return  bcrypt.hash(password, 10)
-    .then(hash => User.updateOne({_id: id}, {name, email, password:hash, description,  stack, location, link}))
-    .then(result => {
-       
-        const { matchedCount } = result
+    return User.updateOne({ _id: id }, { name, description, stack, location, link })
+        .then(result => {
 
-        if (matchedCount === 0)
-            throw new NotFoundError(`developer with id ${developerId} not found`)
-    })
+            const { updatedCount } = result
+
+            if (updatedCount === 0)
+                throw new NotFoundError(`developer with id ${developerId} not found`)
+        })
 }
 
 module.exports = updateDeveloper

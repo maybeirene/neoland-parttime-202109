@@ -6,15 +6,12 @@ module.exports = (req, res) => {
     const userId = extractUserIdFromAuthorization(req)
     const { params: { companyId }} = req
 
-  
-
     if (companyId !== userId) active = true 
     else active = null
 
-
     try {
        
-        retrieveCompanyOffers(companyId, active)
+        retrieveCompanyOffers(userId, active)
             .then(offers => {
                 res.json(offers)})
             .catch(error => res.status(400).json({ error: error.message }))

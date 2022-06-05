@@ -1,14 +1,16 @@
 import { validators, errors } from 'commons'
 
-const { validateToken, validateId } = validators
+const { validateToken} = validators
 const { AuthError, NotFoundError, FormatError, ClientError, ServerError } = errors
 
-export default function (developerId) {
-    
-    validateId(developerId, 'developer id')
+export default function (token) {
+    validateToken(token)
 
-    return fetch(`http://localhost:8080/api/developer/${developerId}`, {
+    return fetch(`http://localhost:8080/api/developer/`, {
         method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
     })
         .then(res => {
             const { status } = res

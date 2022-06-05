@@ -11,20 +11,20 @@ const {
 } = require('commons')
 const bcrypt = require('bcryptjs')
 
-function registerCompany (role = 2, name, email, password, description, stack, location, link ){
+function registerCompany ( role = 2, name, email, password, description, stack, location, link ){
     
     validateString(name, explain = 'name') 
     validateString(email, explain = 'email') 
     validatePassword(password)
     validateString(description, explain = 'description') 
     
-    location? validateString(locationk, explain = 'location') : null
+    location? validateString(location, explain = 'location') : null
     stack? validateString(stack, explain = 'stack') : null
     link? validateString(link, explain = 'link') : null
     
  
     return bcrypt.hash(password, 10)
-            .then(hash => User.create({  role, name, email, password: hash, description, stack, location, link  }))
+            .then(hash => User.create({ role, name, email, password: hash, description, stack, location, link  }))
             .then(company => { })
             .catch(error => {
                 if (error.message.includes('duplicate'))

@@ -37,7 +37,7 @@ export default function ({ onLoggedOut }) {
             <Routes>
                 <Route path="/" element={<OfferList onItemClick={showOfferDetail} />} />
                 <Route path="/offer/:offerId" element={<OfferDetail />} />
-                <Route path="/profile" element={<DeveloperProfile/>} />
+                <Route path="/profile" element={<DeveloperProfile onDeveloperDeleted={logout}/>} />
             </Routes>
             <NavDeveloper handleLogout={logout}/>
         </div>
@@ -51,7 +51,7 @@ export default function ({ onLoggedOut }) {
                 <Route path="/developer/:developerId" element={<DeveloperDetail id={developerId} />} />
                 <Route path="/new-offer" element={<CreateOffer />} />
                 <Route path="/my-offers/*" element={<CompanyOffers />} />
-                <Route path="/profile" element={<CompanyProfile/>} />
+                <Route path="/profile" element={<CompanyProfile onCompanyDeleted={logout}/>} />
 
             </Routes>
            <NavCompany handleLogout={logout} />

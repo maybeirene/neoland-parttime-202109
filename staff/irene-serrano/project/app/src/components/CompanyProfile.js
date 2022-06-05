@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { retrieveCompany, updateCompany, unregisterCompany } from '../logic'
 
 
-export default function () {
+export default function ({onCompanyDeleted}) {
     const navigate = useNavigate()
     const [company, setCompany] = useState()
     const [feedback, setFeedback] = useState()
@@ -37,12 +37,7 @@ export default function () {
     const unregister = () => {
         try {
             unregisterCompany(sessionStorage.token)
-                .then(() => {
-                    
-                    console.log('CUENTA ELIMINADA')
-                    delete sessionStorage.token
-                    navigate('/')
-                })
+                .then(onCompanyDeleted)
                 .catch(error=> console.log(error))
         } catch (error) {
             setFeedback(error.message)

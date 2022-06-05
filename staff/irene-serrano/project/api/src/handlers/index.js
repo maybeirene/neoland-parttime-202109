@@ -2,6 +2,7 @@ const registerDeveloper = require('./registerDeveloper')
 const registerCompany = require('./registerCompany')
  const authenticateUser = require('./authenticateUser')
 const retrieveDeveloper = require('./retrieveDeveloper')
+const retrieveDeveloperFromProfile = require('./retrieveDeveloperFromProfile')
 const retrieveCompany = require('./retrieveCompany')
 const retrieveAllDevelopers = require('./retrieveAllDevelopers')
 const updateDeveloper = require('./updateDeveloper')
@@ -24,6 +25,7 @@ module.exports = {
     registerCompany,
     authenticateUser,
     retrieveDeveloper,
+    retrieveDeveloperFromProfile,
     retrieveCompany,
     retrieveAllDevelopers,
     updateDeveloper,
