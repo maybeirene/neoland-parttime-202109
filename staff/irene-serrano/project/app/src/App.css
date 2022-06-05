@@ -94,3 +94,26 @@ nav {
 .Home{
   background-color: var(--color_lighterGrey);
 }
+
+[class$=__deleteButton] {
+  width: fit-content;
+  margin: 1.5rem auto;
+  padding: 0.6rem 2rem;
+  border: 2px solid var(--color_error);
+  border-radius: 10px;
+  background-color: #0000;
+  font-weight: 700;
+  color: var(--color_error);
+}
+
+[class$=__deleteButton]:hover{
+  background-color: var(--color_error-midOpacity);
+  color:var(--color_lighterGrey);
+}
+
+.DeveloperProfile{
+
+  width: 80%;
+  margin:auto;
+ 
+}

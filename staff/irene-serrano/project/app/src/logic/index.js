@@ -9,6 +9,7 @@ import retrieveAllDevelopers from "./retrieveAllDevelopers"
 import retrieveDeveloper from "./retrieveDeveloper";
 import retrieveDeveloperFromProfile from "./retrieveDeveloperFromProfile";
 import retrieveCompany from "./retrieveCompany";
+import retrieveCompanyFromOffer from "./retrieveCompanyFromOffer";
 
 import updateCompany from "./updateCompany";
 import updateDeveloper from "./updateDeveloper"
@@ -33,6 +34,7 @@ export {
     authenticateUser,
     registerDeveloper,
     registerCompany,
+    retrieveCompanyFromOffer,
     retrieveDeveloper,
     retrieveDeveloperFromProfile,
     retrieveAllDevelopers,

@@ -11,6 +11,7 @@ import NavCompany from './NavCompany'
 import NavDeveloper from './NavDeveloper'
 import DeveloperProfile from './DeveloperProfile'
 import CompanyProfile from './CompanyProfile'
+import CompanyOfferProfile from './CompanyOfferProfile'
 
 export default function ({ onLoggedOut }) {
     const token = sessionStorage.token
@@ -37,6 +38,7 @@ export default function ({ onLoggedOut }) {
             <Routes>
                 <Route path="/" element={<OfferList onItemClick={showOfferDetail} />} />
                 <Route path="/offer/:offerId" element={<OfferDetail />} />
+                <Route path="/offer/owner/:companyId" element={<CompanyOfferProfile />} />
                 <Route path="/profile" element={<DeveloperProfile onDeveloperDeleted={logout}/>} />
             </Routes>
             <NavDeveloper handleLogout={logout}/>
@@ -52,7 +54,6 @@ export default function ({ onLoggedOut }) {
                 <Route path="/new-offer" element={<CreateOffer />} />
                 <Route path="/my-offers/*" element={<CompanyOffers />} />
                 <Route path="/profile" element={<CompanyProfile onCompanyDeleted={logout}/>} />
-
             </Routes>
            <NavCompany handleLogout={logout} />
         </div>

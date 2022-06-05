@@ -5,6 +5,7 @@ export default function ({handleLogout}) {
     return <nav className="Developer__nav">
         
         <a onClick={()=>navigate("/profile")}>Profile</a>
+        <a onClick={()=>navigate("../")}>Home</a>
         <a href="/" onClick={handleLogout}>Logout</a>
     </nav>
 }

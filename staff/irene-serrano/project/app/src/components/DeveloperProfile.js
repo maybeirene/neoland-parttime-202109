@@ -45,10 +45,10 @@ export default function ({ onDeveloperDeleted }) {
         }
     }
 
-    return <div>
+    return <div className="DeveloperProfile">
         <a onClick={() => navigate("/")}>back</a>
         {developer ?
-            <div>
+            <>
                 <h2>{developer.name} profile manage</h2>
                 <form onSubmit={saveDeveloper}>
 
@@ -84,7 +84,7 @@ export default function ({ onDeveloperDeleted }) {
                 <button className="DeveloperProfile__deleteButton" onClick={() => unregister()}>
                     Delete User
                 </button>
-            </div>
+            </>
             : <h3>not found: {feedback ? <p>{feedback}</p> : <p>not feedback</p>} </h3>}
     </div>
 }
