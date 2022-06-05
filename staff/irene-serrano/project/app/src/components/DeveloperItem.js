@@ -6,7 +6,6 @@ export default function ({content}){
             <p>{content.stack}</p>
             <p>{content.location}</p>
         </div>
-        <button className="Developer__contactButton-primary">Contact</button>
     </div>
 
 }

@@ -22,6 +22,7 @@ const user = new Schema({
     description: {
         type: String,
         required: true,
+        max: 500,
     },
     stack: {
         type: String,

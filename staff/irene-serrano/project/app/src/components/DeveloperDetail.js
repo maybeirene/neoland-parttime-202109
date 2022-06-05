@@ -27,6 +27,8 @@ function DeveloperDetail() {
         <a onClick={()=>navigate("/")}>back</a>
         {developer ? <DeveloperDetailPanel content={developer}/> : <h3>Not found</h3>}
         {feedback ? <p>{feedback}</p> : null}
+        <button className="Developer__contactButton-primary">Contact</button>
+
     </div>
 }
 export default DeveloperDetail
