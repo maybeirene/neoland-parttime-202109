@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from 'react'
 import { activateOffer, deactivateOffer, deleteOffer } from "../logic"
-import "./Company.css"
+import "./offerManager.css"
 
 export default function ({ content, onDeleteItem }) {
 
@@ -54,12 +54,11 @@ export default function ({ content, onDeleteItem }) {
 
 
 
-    return <div className={(active === true ? "Company__offerItem active" : "Company__offerItem inactive")}>
+    return <div className={(active === true ? "CompanyOffer__item CompanyOffer__item-active" : "CompanyOffer__item CompanyOffer__item-inactive")}>
         <h3 className="item__title">{content.title}</h3>
-        <p>Created on: {formatedDate}</p>
+        <p className="item__text">Created on: {formatedDate}</p>
 
         <div className="item__buttonGroup">
-            <div></div>
             <button onClick={() => navigate(`/my-offers/edit/${offerId}`)}>🖋️ </button>
             {active === true ?
                 <button onClick={() => deactivate()}>🔇</button>

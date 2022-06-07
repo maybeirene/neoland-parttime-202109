@@ -1,3 +1,4 @@
+import './Home.css'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { extractPayload } from 'commons/src/validators'
@@ -34,7 +35,7 @@ export default function ({ onLoggedOut }) {
 
     if (role === 1) {
         return <div className='Home'>
-
+           
             <Routes>
                 <Route path="/" element={<OfferList onItemClick={showOfferDetail} />} />
                 <Route path="/offer/:offerId" element={<OfferDetail />} />

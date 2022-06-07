@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import DeveloperItem from './DeveloperItem'
 import { retrieveAllDevelopers } from '../logic'
-import './Developer.css'
+import './lists.css'
 
 
 function DeveloperList ({onItemClick}){
@@ -24,9 +24,11 @@ function DeveloperList ({onItemClick}){
     }, [])
 
     return <div className="Developer__list">
-        <ul>
+         <h2 className='list__title'>DEVELOPERS</h2>
+
+        <ul className='list__container'>
             {developers? developers.map(developer=>{
-                return <li key={developer.id} onClick={()=> clickDeveloper(developer.id)} >
+                return <li className='list__item' key={developer.id} onClick={()=> clickDeveloper(developer.id)} >
                     <DeveloperItem content={developer} />
                 </li>
             })

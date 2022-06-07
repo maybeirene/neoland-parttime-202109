@@ -1,4 +1,4 @@
-import './Landing.css'
+import './Login.css'
 import {authenticateUser} from '../logic'
 import { useState } from 'react'
 import { useNavigate }  from 'react-router-dom'
@@ -30,14 +30,14 @@ export default function ({onLoggedIn}){
     
     return <div className='Login'>
         <a onClick={() => navigate("/")}>back</a>
-        <h2>Log in</h2>
+        <h2 className='Login__title'>Log in</h2>
         <form  className='Login__form' onSubmit={login}>
             <input className='form__input' type="email" name="email" placeholder="email" />
             <input className='form__input' type="password" name="password" placeholder="password" />
 
             {feedback? <p>{feedback}</p>: null}
 
-            <button type="submit" className='Login__button-primary-full'>Submit</button>
+            <button className="Login__button-primary-full" type="submit" >Submit</button>
         </form>
     </div>
 }

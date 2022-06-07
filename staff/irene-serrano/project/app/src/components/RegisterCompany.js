@@ -1,3 +1,4 @@
+import './Register.css'
 import { registerCompany, authenticateCompany } from '../logic'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -55,14 +56,14 @@ export default function ({ onRegistered }) {
     return <div className="Register">
         <a onClick={()=>navigate("/")}>back</a>
         <p>Want to publish an offer?</p>
-        <h2>Register</h2>
-        <form onSubmit={register}>
-            <input type="text" name="name" placeholder="name of the company" required/>
-            <input type="email" name="email" placeholder="email" required/>
-            <input type="password" name="password" placeholder="password" required/>
-            <textarea name="description" placeholder="description" required/>
-            <input type="text" name="location" placeholder="location" />
-            <input type="text" name="link" placeholder="link" />
+        <h2 className='Register__title'>Register</h2>
+        <form className='Register__form' onSubmit={register}>
+            <input className='form__input' type="text" name="name" placeholder="name of the company" required/>
+            <input className='form__input' type="email" name="email" placeholder="email" required/>
+            <input className='form__input' type="password" name="password" placeholder="password" required/>
+            <textarea className='form__input' name="description" placeholder="description" required/>
+            <input className='form__input' type="text" name="location" placeholder="location" />
+            <input className='form__input' type="text" name="link" placeholder="link" />
 
     {feedback? <p>{feedback}</p> : null}
             <button className="Register__button-primary-full" type="submit">Sumbit</button>

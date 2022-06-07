@@ -1,3 +1,4 @@
+import './Register.css'
 import { registerDeveloper, authenticateDeveloper } from '../logic'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -55,20 +56,20 @@ export default function ({ onRegistered }) {
     return <div  className="Register">
         <a onClick={()=>navigate("/")}>back</a>
         <p>Are you a developer?</p>
-        <h2>Register</h2>
-        <form onSubmit={register}>
-            <input type="text" name="name" placeholder="name and surname" required/>
-            <input type="email" name="email" placeholder="email" required/>
-            <input type="password" name="password" placeholder="password" required/>
-            <textarea name="description" placeholder="description" required/>
-            <select name="stack">
-                <option dissabled="true" > -- choose your stack -- </option>
-                <option value="full-stack">Full stack</option>
-                <option value="front-end">Front end</option>
-                <option value="back-end">Back end</option>
+        <h2 className='Register__title'>Register</h2>
+        <form className='Register__form' onSubmit={register}>
+            <input className='form__input' type="text" name="name" placeholder="name and surname" required/>
+            <input className='form__input' type="email" name="email" placeholder="email" required/>
+            <input className='form__input' type="password" name="password" placeholder="password" required/>
+            <textarea className='form__input' name="description" placeholder="description" required/>
+            <select className='form__input' name="stack">
+                <option className='form__input' dissabled="true" > -- choose your stack -- </option>
+                <option className='form__input' value="full-stack">Full stack</option>
+                <option className='form__input' value="front-end">Front end</option>
+                <option className='form__input' value="back-end">Back end</option>
             </select>
-            <input type="text" name="location" placeholder="location" />
-            <input type="text" name="link" placeholder="link" />
+            <input className='form__input' type="text" name="location" placeholder="location" />
+            <input className='form__input' type="text" name="link" placeholder="link" />
 
     {feedback? <p>{feedback}</p> : null}
             <button className="Register__button-primary-full" type="submit">Sumbit</button>

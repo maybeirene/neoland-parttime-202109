@@ -49,47 +49,38 @@ export default function () {
         }
     }
 
-    return <div>
+    return <div className="EditOffer">
+        
+        <a onClick={() => navigate("/my-offers")}>back</a>
         {offer ?
-            <div className="EditOffer_content">
-                <form onSubmit={saveOffer}>
-                    <h1>{offer.title}</h1>
-                    <div className="form__groupfield">
-                        <input type="text" name="title" defaultValue={offer.title} />
+            <>
+            <h2 className="EditOffer__title">{offer.title}</h2>
+                <form className="EditOffer__form" onSubmit={saveOffer}>
+                    
+                        <input className="EditOffer__input" type="text" name="title" defaultValue={offer.title} />
 
-                    </div>
-                    <div className="form__groupfield">
-                        <textarea type="text" name="description" defaultValue={offer.description} />
+                        <textarea className="EditOffer__input" type="text" name="description" defaultValue={offer.description} />
 
-                    </div>
-                    <div className="form__groupfield">
-                        <select name="stack" defaultValue={offer.stack}>
+                        <select className="EditOffer__input" name="stack" defaultValue={offer.stack}>
                             <option value="full-stack" > Full stack </option>
                             <option value="front-end" >Front end</option>
                             <option value="back-end" >Back end</option>
                         </select>
-                    </div>
 
-                    <div className="form__groupfield">
-                        <input type="number" name="minSalary" defaultValue={offer.minSalary} />
-                    </div>
+                        <input className="EditOffer__input" type="number" name="minSalary" defaultValue={offer.minSalary} />
 
-                    <div className="form__groupfield">
-                        <input type="number" name="maxSalary" defaultValue={offer.maxSalary} />
-                    </div>
+                        <input className="EditOffer__input" type="number" name="maxSalary" defaultValue={offer.maxSalary} />
 
-                    <div className="form__groupfield">
-                        <input type="text" name="location" defaultValue={offer.location} />
-                    </div>
+                        <input className="EditOffer__input" type="text" name="location" defaultValue={offer.location} />
                     {feedback ? <p>{feedback}</p> : null}
-                    <button type="submit">Save</button>
+                    <button  className="EditOffer__submitButton" type="submit">Save</button>
 
                 </form>
 
-                <button className="Edit__deleteButton" onClick={() => handleDelete()}>
+                <button className="EditOffer__deleteButton" onClick={() => handleDelete()}>
                     Delete offer
                 </button>
-            </div>
+            </>
 
             : <h1>Offer not found</h1>}
     </div>

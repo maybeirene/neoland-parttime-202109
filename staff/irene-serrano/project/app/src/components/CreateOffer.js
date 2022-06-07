@@ -27,26 +27,25 @@ export default function () {
             setFeedback(error.message)
         }
     }
-    return <div>
+    return <div className="CreateOffer">
         <a onClick={() => navigate("/")}>back</a>
-        <h2>New Offer</h2>
-        <form onSubmit={newOffer}>
-            <input type="text" name="title" placeholder="title" required />
-            <textarea name="description" placeholder="description" required />
-            <select name="stack"  required >
+        <h2 className="CreateOffer__title">New Offer</h2>
+        <form className="CreateOffer__form" onSubmit={newOffer}>
+            <input className="CreateOffer__input" type="text" name="title" placeholder="title" required />
+            <textarea className="CreateOffer__input" name="description" placeholder="description" required />
+            <select className="CreateOffer__input" name="stack"  required >
                 <option disabled label="Choose your offer stack" > </option>
                 <option value="full-stack">Full stack</option>
                 <option value="front-end">Front end</option>
                 <option value="back-end">Back end</option>
             </select>
-            <input type="number" name="minSalary" placeholder="minimun salary" required/>
-            <input type="number" name="maxSalary" placeholder="maximun salary" required/>
-
-            <input type="text" name="location" placeholder="location" required />
+            <input className="CreateOffer__input" type="number" name="minSalary" placeholder="minimun salary" required/>
+            <input className="CreateOffer__input" type="number" name="maxSalary" placeholder="maximun salary" required/>
+            <input className="CreateOffer__input" type="text" name="location" placeholder="location" required />
 
 
             {feedback ? <p>{feedback}</p> : null}
-            <button type="submit">Sumbit</button>
+            <button className="CreateOffer__submitButton" type="submit">Sumbit</button>
 
         </form>
     </div>

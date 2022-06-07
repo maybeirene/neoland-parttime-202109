@@ -1,11 +1,10 @@
-import './Developer.css'
-export default function ({content}){
-    return <div className="Developer__item">
-        <h3>{content.name}</h3>
-        <div>
-            <p>{content.stack}</p>
-            <p>{content.location}</p>
-        </div>
-    </div>
+import './lists.css'
+export default function ({ content }) {
+    return <>
+        <h3 className='item__title'>{content.name}</h3>
+        <p className='item__stack'>{content.stack}</p>
+        <p className='item__location'>{content.location}</p>
+
+    </>
 
 }

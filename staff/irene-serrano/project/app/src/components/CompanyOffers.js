@@ -5,12 +5,9 @@ import EditOffer from "./EditOffer"
 
 export default function () {
    
-    const navigate = useNavigate()
+    return <div className="CompanyOffers">
 
-    return <div>
-        <a onClick={() => navigate("/")}>back</a>
-
-        <h2>CompanyOffers</h2>
+        
        
         <Routes>
             <Route path="/" element={<CompanyOfferList />} />

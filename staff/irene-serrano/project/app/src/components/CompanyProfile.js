@@ -44,37 +44,29 @@ export default function ({onCompanyDeleted}) {
         }
     }
 
-    return <div>
+    return <div className="Company__profileManager">
         <a onClick={() => navigate("/")}>back</a>
         {company ?
-            <div>
-                <h2>{company.name} profile manage</h2>
-                <form onSubmit={saveCompany}>
+            <>
+                <h2 className="profileManager__title">{company.name}</h2>
+                <form  className="profileManager__form"onSubmit={saveCompany}>
 
-                    <div className="groupfield">
-                        <input type="text" name="name" defaultValue={company.name} />    
-                    </div>
+                        <input className="profileManager__input" type="text" name="name" defaultValue={company.name} />    
 
-                    <div className="groupfield">
-                        <textarea type="text" name="description" defaultValue={company.description} /> 
-                    </div>
+                        <textarea className="profileManager__input" type="text" name="description" defaultValue={company.description} /> 
 
-                    <div className="groupfield">
-                        <input type="text" name="location" defaultValue={company.location ? company.location : ""} placeholder="location" />        
-                    </div>
+                        <input className="profileManager__input" type="text" name="location" defaultValue={company.location ? company.location : ""} placeholder="location" />        
 
-                    <div className="groupfield">
-                        <input type="text" name="link" defaultValue={company.link ? company.link : ""} placeholder="link" />
-                    </div>
+                        <input className="profileManager__input" type="text" name="link" defaultValue={company.link ? company.link : ""} placeholder="link" />
                     {feedback? <p>{feedback}</p> : null}
-                    <button type="submit">Save</button>
+                    <button className="profileManager__submitButton" type="submit">Save</button>
 
                 </form>
                 
-                <button className="CompanyProfile__deleteButton" onClick={() => unregister()}>
+                <button className="profileManager__deleteButton" onClick={() => unregister()}>
                    Delete User
                 </button>
-            </div>
+            </>
             : <h3>not found</h3>}
     </div>
 }

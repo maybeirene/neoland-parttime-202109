@@ -1,11 +1,32 @@
-.Landing,
-.Login, .Register {
-    padding: 10vw;
-    background-color: antiquewhite;
+.Landing {
+    margin: var(--space-xlg) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg)
 }
 
 .Landing__buttonContainer {
+    width: 20rem;
+    margin: auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: var(--space-md)
 }
 
+.Landing__button-primary{
+    padding: var(--space-sm);
+    border: 2px solid var(--color_primary);
+    border-radius: var(--space-sm);
+    background-color: var(--color_lighterGrey);
+    width: 20rem;
+    font-weight: var(--fontWeight-bolder);
+    color: var(--color_primary);
+
+    
+}
+
+.Landing__button-primary:hover{
+    background-color: var(--color_primary-lowOpacity);
+    color: var(--color_primary-darker)
+}

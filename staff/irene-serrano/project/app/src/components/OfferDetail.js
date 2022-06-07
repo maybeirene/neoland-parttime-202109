@@ -21,7 +21,7 @@ function OfferDetail() {
         }
     }, [])
 
-    return <div>
+    return <div className="Offer__detail">
         <a onClick={()=>navigate("/")}>back</a>
         {offer ? <OfferDetailPanel content={offer}/> : <h3>Not found</h3>}
         {feedback ? <p>{feedback}</p> : null}

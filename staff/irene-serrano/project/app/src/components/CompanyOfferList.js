@@ -1,22 +1,26 @@
 import { useState, useEffect } from "react"
 import CompanyOfferItem from './CompanyOfferItem'
-import { retrieveCompanyOffers } from '../logic'
-import "./Company.css"
+import { retrieveCompany, retrieveCompanyOffers } from '../logic'
+import "./offerManager.css"
 
-function CompanyOfferList (){
+function CompanyOfferList() {
 
-     // hey! this!!!
-     const userId = "628fc0e630fcf5a8ead68056"
+    // hey! this!!!
+    //const userId = "628fc0e630fcf5a8ead68056"
+
     const [offers, setOffers] = useState()
     const [feedback, setFeedback] = useState()
 
-    const getCompanyOffers =()=>{
+    const getCompanyOffers = () => {
         try {
-            retrieveCompanyOffers(sessionStorage.token, userId)
-                .then(offers => {
-                    setOffers(offers)
-                    })
-
+            retrieveCompany(sessionStorage.token)
+                .then(company => {
+                    const userId = company.id
+                    retrieveCompanyOffers(sessionStorage.token, userId)
+                        .then(offers => {
+                            setOffers(offers)
+                        })
+                })
         } catch (error) {
             console.error(error.message)
         }
@@ -25,14 +29,15 @@ function CompanyOfferList (){
         getCompanyOffers()
     }, [])
 
-    return <div className="Company__offerList">
+    return <div className="CompanyOffer__list">
+        <h2 className="CompanyOffers__title">My offers</h2>
         {offers ? offers.map(offer => {
             return <li key={offer.id}>
-                <CompanyOfferItem content={offer} onDeleteItem={()=> getCompanyOffers() } />
+                <CompanyOfferItem content={offer} onDeleteItem={() => getCompanyOffers()} />
             </li>
         })
             : <h3>Not found :C </h3>}
-        
+
     </div>
 }
 export default CompanyOfferList

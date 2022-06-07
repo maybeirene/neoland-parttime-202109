@@ -1,3 +1,4 @@
+import './profileManager.css'
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { retrieveDeveloperFromProfile, updateDeveloper, unregisterDeveloper } from '../logic'
@@ -45,43 +46,34 @@ export default function ({ onDeveloperDeleted }) {
         }
     }
 
-    return <div className="DeveloperProfile">
+    return <div className="Developer__profileManager">
         <a onClick={() => navigate("/")}>back</a>
         {developer ?
             <>
-                <h2>{developer.name} profile manage</h2>
-                <form onSubmit={saveDeveloper}>
+                <h2 className="profileManager__title">{developer.name}</h2>
+                <form className="profileManager__form" onSubmit={saveDeveloper}>
 
-                    <div className="form__groupfield">
-                        <input type="text" name="name" defaultValue={developer.name} />
-                    </div>
+                        <input className="profileManager__input" type="text" name="name" defaultValue={developer.name} />
 
-                    <div className="form__groupfield">
-                        <textarea type="text" name="description" defaultValue={developer.description} />
-                    </div>
+                        <textarea className="profileManager__input" type="text" name="description" defaultValue={developer.description} />
 
-                    <div className="form__groupfield">
-                        <select name="stack" defaultValue={developer.stack}>
+                        <select className="profileManager__input" name="stack" defaultValue={developer.stack}>
                             <option disabled > -- choose your stack -- </option>
                             <option value="full-stack">Full stack</option>
                             <option value="front-end">Front end</option>
                             <option value="back-end">Back end</option>
                         </select>
-                    </div>
 
-                    <div className="form__groupfield">
-                        <input type="text" name="location" defaultValue={developer.location ? developer.location : ""} placeholder="location" />
-                    </div>
+                        <input className="profileManager__input" type="text" name="location" defaultValue={developer.location ? developer.location : ""} placeholder="location" />
 
-                    <div className="form__groupfield">
-                        <input type="text" name="link" defaultValue={developer.link ? developer.link : ""} placeholder="link" />
-                    </div>
+                        <input className="profileManager__input" type="text" name="link" defaultValue={developer.link ? developer.link : ""} placeholder="link" />
+
                     {feedback ? <p>{feedback}</p> : null}
-                    <button type="submit">Save</button>
+                    <button className="profileManager__submitButton" type="submit">Save</button>
 
                 </form>
 
-                <button className="DeveloperProfile__deleteButton" onClick={() => unregister()}>
+                <button className="profileManager__deleteButton" onClick={() => unregister()}>
                     Delete User
                 </button>
             </>

@@ -2,6 +2,7 @@ import './App.css';
 import Landing from './components/Landing'
 import RegisterDeveloper from './components/RegisterDeveloper'
 import RegisterCompany from './components/RegisterCompany'
+import Header from './components/Header';
 
 import Login from './components/Login'
 import Home from './components/Home'
@@ -21,10 +22,8 @@ function App() {
     setLoggedIn(true)
     navigate('/')
   }
-  return <div>
-    <header>
-      <h3>APP NAME</h3>
-    </header>
+  return <div className='App'>
+    <Header/>
     <Routes>
       <Route path="/*" element={loggedIn ? <Home onLoggedOut={handleLoggedOut} /> : <Landing />} />
 
