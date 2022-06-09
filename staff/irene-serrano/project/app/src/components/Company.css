@@ -1,4 +1,4 @@
-.Company__offerList{
+/*.Company__offerList{
     display: flex;
     flex-direction: column;
     padding: 5px;
@@ -18,68 +18,19 @@
     background-color: #0000;
     gap: 1rem
 }
+*/
 
-/*OFFER MANAGE STYLES*/
-.item__buttonGroup {
-    height: 1.5rem;
-    display: grid;
-    grid-template-columns: 50% 1fr 1fr 1fr;
-    margin-top: 0.3rem;
-}
-
-.item__buttonGroup button {
-    background: none;
-    border: none;
-    outline: none;
-    font-size: 1.2rem;
-}
-
-.item__buttonGroup button:hover {
-    cursor: pointer;
-}
-
-.active {
-    border: 2px solid var(--color_primary);
-}
-
-.inactive {
-    color: var(--color_grey);
-    background-color: var(--color_lightGrey);
-}
-.EditOffer_content{
+.OfferCompany{
+    margin: 0 var(--space-lg);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: var(--space-lg);
 }
-.form__groupfield {
-    display: grid;
-    grid-template-columns: 85% 15%;
+.OfferCompany__title{
+    font-size: var(--text_title-lg);
+    margin-bottom: var(--space-sm);
 }
-
-.form__editButton {
-    width: 2rem;
-    margin-left: 1rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-.Edit__deleteButton {
-    width: fit-content;
-    margin: 1.5rem 0;
-    padding: 0.6rem 2rem;
-    border: 2px solid var(--color_error);
-    border-radius: 10px;
-    background-color: #0000;
-    font-weight: 700;
-    color: var(--color_error);
-}
-
-.Edit__deleteButton:hover{
-    background-color: var(--color_error-midOpacity);
-    color:var(--color_lighterGrey);
-}
-input:disabled, textarea:disabled{
-    background-color: var(--color_lighterGrey);
-    border: 2px solid var(--color_grey);
-    opacity:0.9;
+.OfferCompany__text{
+    font-size: var(--text_sm);
+    text-align: justify;
 }

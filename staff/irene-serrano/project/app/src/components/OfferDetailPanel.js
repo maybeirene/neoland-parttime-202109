@@ -17,7 +17,7 @@ function OfferDetailPanel({ content }) {
 
         <p className="detail__description">{content.description}</p>
         
-        <button className="detail__contactButton">Contact</button>
+        <button className="detail__contactButton">Apply</button>
         
         <p className="detail__text">Offer published by <a onClick={()=>{navigate(`/offer/owner/${content.companyId}`)}}>{content.companyName}</a></p>
 

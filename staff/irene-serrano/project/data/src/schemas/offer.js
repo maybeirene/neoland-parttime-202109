@@ -1,5 +1,6 @@
 const { Schema } = require('mongoose')
 const { Types: { ObjectId } } = Schema
+const request = require('./request')
 
 const offer = new Schema({
     company: {
@@ -35,12 +36,12 @@ const offer = new Schema({
         type: String,
         required: true,
     },
+    requests: [request],
     active: {
         type: Boolean,
         required: true,
         default: true
     }
-
 })
 
 module.exports = offer

@@ -1,3 +1,4 @@
+import './Company.css'
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
@@ -22,13 +23,15 @@ function CompanyOfferProfile({ }) {
         getCompany()
     }, [])
 
-    return <div className="Offer__detail">
+    return <div className="OfferCompany">
         <a onClick={()=> navigate('../')}>Home </a>
         {company ?
             <>
-                <h3 className="detail__title">{company.name}</h3>
-                <p>{company.description}</p>
-            </> : null}
+                <h3 className="OfferCompany__title">{company.name}</h3>
+                <p className="OfferCompany__text">{company.description}</p>
+                <p className="OfferCompany__text">Want to see more? Visit <a href={company.link}>{company.name}</a> web page.</p>
+            </> 
+        : null}
 
     </div> 
 }
