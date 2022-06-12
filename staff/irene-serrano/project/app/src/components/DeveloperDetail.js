@@ -24,7 +24,7 @@ function DeveloperDetail() {
     }, [])
 
     return <div className='Developer__detail'>
-        <a onClick={()=>navigate("/")}>back</a>
+        <a onClick={()=>navigate("/candidates")}>back</a>
         {developer ? <DeveloperDetailPanel content={developer}/> : <h3>Not found</h3>}
         {feedback ? <p>{feedback}</p> : null}
 

@@ -50,12 +50,22 @@ export default function ({ onLoggedOut }) {
         return <div className='Home'>
 
             <Routes>
+                <Route path="/candidates" element={<DeveloperList onItemClick={showDeveloperDetail} />} />
+                <Route path="/developer/:developerId" element={<DeveloperDetail id={developerId} />} />
+                <Route path="/new-offer" element={<CreateOffer />} />
+                <Route path="/*" element={<CompanyOffers />} />
+                <Route path='/my-offers/*' element={<CompanyOffers />} />
+                <Route path="/profile" element={<CompanyProfile onCompanyDeleted={logout}/>} />
+            </Routes>
+
+           {/* <Routes>
                 <Route path="/" element={<DeveloperList onItemClick={showDeveloperDetail} />} />
                 <Route path="/developer/:developerId" element={<DeveloperDetail id={developerId} />} />
                 <Route path="/new-offer" element={<CreateOffer />} />
                 <Route path="/my-offers/*" element={<CompanyOffers />} />
                 <Route path="/profile" element={<CompanyProfile onCompanyDeleted={logout}/>} />
             </Routes>
+            */}
            <NavCompany handleLogout={logout} />
         </div>
     }

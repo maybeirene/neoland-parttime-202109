@@ -1,7 +1,24 @@
 import { useNavigate } from "react-router-dom"
+import { useState } from 'react'
+import { addOfferRequest } from '../logic'
 
 function OfferDetailPanel({ content }) {
+
+
+    const [applied, setApplied ] = useState(false)
     const navigate = useNavigate()
+
+    const handleApply = () => {
+        try {
+            addOfferRequest(content.id, sessionStorage.token)
+        } catch (error) {
+            
+        }
+        
+        setApplied(true)
+    }
+
+
     return <>
         <h3 className="detail__title">{content.title}</h3>
 
@@ -17,11 +34,10 @@ function OfferDetailPanel({ content }) {
 
         <p className="detail__description">{content.description}</p>
         
-        <button className="detail__contactButton">Apply</button>
-        
-        <p className="detail__text">Offer published by <a onClick={()=>{navigate(`/offer/owner/${content.companyId}`)}}>{content.companyName}</a></p>
+        <button onClick={handleApply}className="detail__contactButton">Apply</button>
 
-        
+        <p className="detail__text">Offer published by <a onClick={()=>{navigate(`/offer/owner/${content.companyId}`)}}>{content.companyName}</a></p>
+     
     </>
 }
 export default OfferDetailPanel

@@ -20,6 +20,11 @@ const deactivateOffer = require('./deactivateOffer')
 const activateOffer = require('./activateOffer')
 const deleteOffer = require('./deleteOffer')
 
+const addOfferRequest = require('./addOfferRequest')
+const retrieveCandidate = require('./retrieveCandidate')
+const setRequestSeen = require('./setRequestSeen')
+const setRequestContacted = require('./setRequestContacted')
+const setRequestRejected = require('./setRequestRejected')
 
 module.exports = {
     registerDeveloper,
@@ -43,4 +48,10 @@ module.exports = {
     deactivateOffer,
     activateOffer,
     deleteOffer,
+
+    addOfferRequest,
+    retrieveCandidate,
+    setRequestSeen,
+    setRequestContacted,
+    setRequestRejected
 }

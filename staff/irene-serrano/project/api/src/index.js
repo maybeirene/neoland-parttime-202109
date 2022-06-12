@@ -28,9 +28,16 @@ const {
   retrieveOffer,
   retrieveAllOffers,
   retrieveCompanyOffers,
-  deleteOffer
+  deleteOffer,
+
+  addOfferRequest,
+  retrieveCandidate,
+  setRequestSeen,
+  setRequestContacted,
+  setRequestRejected
 
 } = require('./handlers');
+const { json } = require('express');
 
 
 /* 
@@ -42,53 +49,59 @@ const { env: { MONGODB_URL, PORT } } = process
 
 
 connect(MONGODB_URL)
-.then(() => {
-  console.log("connected to db");
+  .then(() => {
+    console.log("connected to db");
 
-  const api = express();
+    const api = express();
 
-  api.use(cors());
+    api.use(cors());
 
-  const router = express.Router();
+    const router = express.Router();
 
-  const jsonBodyParser = express.json();
+    const jsonBodyParser = express.json();
 
-  router.post("/developer", jsonBodyParser, registerDeveloper);
-  router.post("/company", jsonBodyParser, registerCompany);
+    router.post("/developer", jsonBodyParser, registerDeveloper);
+    router.post("/company", jsonBodyParser, registerCompany);
 
-  router.post("/developer/auth", jsonBodyParser, authenticateUser)
-  router.post("/company/auth", jsonBodyParser, authenticateUser)
-  router.post("/user/auth", jsonBodyParser, authenticateUser)
+    router.post("/developer/auth", jsonBodyParser, authenticateUser)
+    router.post("/company/auth", jsonBodyParser, authenticateUser)
+    router.post("/user/auth", jsonBodyParser, authenticateUser)
 
-  router.get("/developer/:developerId", jsonBodyParser, retrieveDeveloper)
-  router.get("/developer", jsonBodyParser, retrieveDeveloperFromProfile)
-  
-  router.get("/company", jsonBodyParser, retrieveCompany)
-  router.get("/company/:companyId", jsonBodyParser, retrieveCompanyFromOffer)
+    router.get("/developer/:developerId", jsonBodyParser, retrieveDeveloper)
+    router.get("/developer", jsonBodyParser, retrieveDeveloperFromProfile)
 
-  router.get("/developers", jsonBodyParser, retrieveAllDevelopers)
+    router.get("/company", jsonBodyParser, retrieveCompany)
+    router.get("/company/:companyId", jsonBodyParser, retrieveCompanyFromOffer)
 
-  router.patch("/developer", jsonBodyParser, updateDeveloper )
-  router.patch("/company", jsonBodyParser, updateCompany )
+    router.get("/developers", jsonBodyParser, retrieveAllDevelopers)
 
-  router.patch("/developer/unregister", jsonBodyParser, unregisterDeveloper )
-  router.patch("/company/unregister", jsonBodyParser, unregisterCompany )
+    router.patch("/developer", jsonBodyParser, updateDeveloper)
+    router.patch("/company", jsonBodyParser, updateCompany)
 
-  router.post("/offer", jsonBodyParser, createOffer);
+    router.patch("/developer/unregister", jsonBodyParser, unregisterDeveloper)
+    router.patch("/company/unregister", jsonBodyParser, unregisterCompany)
 
-  router.get("/offer/:offerId", jsonBodyParser, retrieveOffer)
-  router.get("/offers", jsonBodyParser, retrieveAllOffers)
-  router.get("/company/:companyId/offers", jsonBodyParser, retrieveCompanyOffers)
+    router.post("/offer", jsonBodyParser, createOffer);
 
-  router.patch("/offer/:offerId", jsonBodyParser, updateOffer);
-  router.patch("/offer/:offerId/deactivate", jsonBodyParser, deactivateOffer);
-  router.patch("/offer/:offerId/activate", jsonBodyParser, activateOffer);
- // router.patch("/offers/:offerId/deactivate", jsonBodyParser, deactivateOffer);
+    router.get("/offer/:offerId", jsonBodyParser, retrieveOffer)
+    router.get("/offers", jsonBodyParser, retrieveAllOffers)
+    router.get("/company/:companyId/offers", jsonBodyParser, retrieveCompanyOffers)
 
- router.delete("/offer/:offerId", jsonBodyParser, deleteOffer);
+    router.patch("/offer/:offerId", jsonBodyParser, updateOffer);
+    router.patch("/offer/:offerId/deactivate", jsonBodyParser, deactivateOffer);
+    router.patch("/offer/:offerId/activate", jsonBodyParser, activateOffer);
+
+    router.delete("/offer/:offerId", jsonBodyParser, deleteOffer);
+
+    //OFFER REQUESTS ROUTES
+    router.post("/offer/:offerId", jsonBodyParser, addOfferRequest);
+    router.get("/offer/:offerId/request/:requestId", jsonBodyParser, retrieveCandidate)
+    router.patch("/offer/:offerId/request/seen/:requestId", jsonBodyParser, setRequestSeen)
+    router.patch("/offer/:offerId/request/contacted/:requestId", jsonBodyParser, setRequestContacted)
+    router.patch("/offer/:offerId/request/rejected/:requestId", jsonBodyParser, setRequestRejected)
 
 
-  api.use("/api", router);
+    api.use("/api", router);
 
-  api.listen(PORT, () => console.log("json server running"));
-});
+    api.listen(PORT, () => console.log("json server running"));
+  });

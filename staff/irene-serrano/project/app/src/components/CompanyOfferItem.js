@@ -2,12 +2,16 @@ import { useNavigate } from "react-router-dom"
 import { useState } from 'react'
 import { activateOffer, deactivateOffer, deleteOffer } from "../logic"
 import "./offerManager.css"
+import OfferCandidatesList from "./OfferCandidatesList"
 
 export default function ({ content, onDeleteItem }) {
+    const offer = content
 
-    const [active, setActive] = useState(content.active)
+    const [active, setActive] = useState(offer.active)
     const navigate = useNavigate()
-    const date = content.publicationDate
+    const date = offer.publicationDate
+    const [showCandidates, setShowCandidates] = useState(false)
+
 
     function formatDate() {
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec"]
@@ -21,7 +25,7 @@ export default function ({ content, onDeleteItem }) {
 
     function deactivate() {
         try {
-            deactivateOffer(sessionStorage.token, content.id)
+            deactivateOffer(sessionStorage.token, offer.id)
                 .then(() => setActive(false))
         } catch (error) {
             console.error(error)
@@ -30,7 +34,7 @@ export default function ({ content, onDeleteItem }) {
 
     function activate() {
         try {
-            activateOffer(sessionStorage.token, content.id)
+            activateOffer(sessionStorage.token, offer.id)
                 .then(() => setActive(true))
         } catch (error) {
             console.error(error)
@@ -49,13 +53,10 @@ export default function ({ content, onDeleteItem }) {
         }
     }
     const formatedDate = formatDate(date)
-    const offerId = content.id
-
-
-
+    const offerId = offer.id
 
     return <div className={(active === true ? "CompanyOffer__item CompanyOffer__item-active" : "CompanyOffer__item CompanyOffer__item-inactive")}>
-        <h3 className="item__title">{content.title}</h3>
+        <h3 className="item__title">{offer.title}</h3>
         <p className="item__text">Created on: {formatedDate}</p>
 
         <div className="item__buttonGroup">
@@ -66,6 +67,17 @@ export default function ({ content, onDeleteItem }) {
                 <button onClick={() => activate()}>🔈</button>}
             <button onClick={() => handleDelete()}>🗑️</button>
         </div>
+
+        {showCandidates?
+             <a onClick={()=> setShowCandidates(false)}>Hide candidates</a>:
+             <a onClick={()=> setShowCandidates(true)}>See candidates</a> }
+        
+        {showCandidates? (
+            
+          <OfferCandidatesList requests={offer.requests} offerId={offer.id}/>
+            )
+        : null}
+        
     </div>
 
 }

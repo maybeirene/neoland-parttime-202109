@@ -26,6 +26,13 @@ import activateOffer from "./activateOffer";
 import deactivateOffer from "./deactivateOffer";
 import deleteOffer from "./deleteOffer";
 
+import addOfferRequest from "./addOfferRequest"
+import retrieveCandidate from "./retrieveCandidate";
+import setRequestSeen from "./setRequestSeen";
+import setRequestContacted from "./setRequestContacted";
+import setRequestRejected from "./setRequestRejected";
+
+
 
 
 export {
@@ -50,5 +57,11 @@ export {
     unregisterDeveloper,
     activateOffer,
     deactivateOffer,
-    deleteOffer
+    deleteOffer,
+
+    addOfferRequest,
+    retrieveCandidate,
+    setRequestSeen,
+    setRequestContacted,
+    setRequestRejected
 }

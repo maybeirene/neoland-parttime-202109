@@ -21,6 +21,7 @@
 */
 
 .OfferCompany{
+   
     margin: 0 var(--space-lg);
     display: flex;
     flex-direction: column;
