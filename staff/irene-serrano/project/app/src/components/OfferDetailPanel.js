@@ -11,8 +11,9 @@ function OfferDetailPanel({ content }) {
     const handleApply = () => {
         try {
             addOfferRequest(content.id, sessionStorage.token)
+            .then(()=>setApplied(true))
         } catch (error) {
-            
+            console.error(error)
         }
         
         setApplied(true)
@@ -33,8 +34,8 @@ function OfferDetailPanel({ content }) {
         </div>
 
         <p className="detail__description">{content.description}</p>
-        
-        <button onClick={handleApply}className="detail__contactButton">Apply</button>
+        {applied? <button dissabled="true" className="detail__contactButton-applied">Applied ✓</button>
+        : <button onClick={handleApply}className="detail__contactButton">Apply</button>}
 
         <p className="detail__text">Offer published by <a onClick={()=>{navigate(`/offer/owner/${content.companyId}`)}}>{content.companyName}</a></p>
      

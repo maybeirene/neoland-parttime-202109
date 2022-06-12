@@ -133,7 +133,7 @@
     align-items: baseline;
 }
 
-.detail__contactButton {
+.detail__contactButton, .detail__contactButton-applied {
     width: fit-content;
     padding: var(--space-sm);
     border: 2px solid var(--color_primary);
@@ -144,6 +144,9 @@
     align-self: flex-end;
     min-width: 14rem;
     margin-right: var(--space-lg);
+}
+.detail__contactButton-applied {
+    background-color: var(--color_primary-lowOpacity);
 }
 
 .detail__contactButton:hover {
