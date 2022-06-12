@@ -25,9 +25,8 @@ function addOfferRequest ( offerId, developerId ){
               
 
                 if(offer.requests.some(request=> { 
-                    return request.developer.toString() == developerId
-                }))throw new DuplicityError(`user with id ${developerId} already applied to this offer`)
-             
+                    const existingRequestDeveloperId = request.developer.toString() 
+                    return existingRequestDeveloperId === developerId }))throw new DuplicityError(`user with id ${developerId} already applied to this offer`)
 
                 const request =  Request({developer: developerId})
 

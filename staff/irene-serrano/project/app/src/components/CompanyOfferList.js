@@ -5,8 +5,6 @@ import "./offerManager.css"
 
 function CompanyOfferList() {
 
-    // hey! this!!!
-    //const userId = "628fc0e630fcf5a8ead68056"
 
     const [offers, setOffers] = useState()
     const [feedback, setFeedback] = useState()

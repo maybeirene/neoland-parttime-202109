@@ -10,8 +10,7 @@ module.exports = (req, res) => {
     else active = null
 
     try {
-       
-        retrieveCompanyOffers(userId, active)
+        retrieveCompanyOffers(companyId, active)
             .then(offers => {
                 res.json(offers)})
             .catch(error => res.status(400).json({ error: error.message }))

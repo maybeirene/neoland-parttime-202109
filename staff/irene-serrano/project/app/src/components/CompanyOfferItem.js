@@ -44,10 +44,10 @@ export default function ({ content, onDeleteItem }) {
     const handleDelete = () => {
         try {
             deleteOffer(sessionStorage.token, offerId)
-            .then(()=>{
-                console.log('oferta borrada')
-                onDeleteItem()
-            })
+                .then(() => {
+                    console.log('oferta borrada')
+                    onDeleteItem()
+                })
         } catch (error) {
             console.error(error)
         }
@@ -67,17 +67,19 @@ export default function ({ content, onDeleteItem }) {
                 <button onClick={() => activate()}>🔈</button>}
             <button onClick={() => handleDelete()}>🗑️</button>
         </div>
+        <div className="item__candidatesContainer">
+            {showCandidates ?
+                <a onClick={() => setShowCandidates(false)}>Hide candidates △</a> :
+                <a onClick={() => setShowCandidates(true)}>See candidates ▽</a>}
 
-        {showCandidates?
-             <a onClick={()=> setShowCandidates(false)}>Hide candidates</a>:
-             <a onClick={()=> setShowCandidates(true)}>See candidates</a> }
-        
-        {showCandidates? (
-            
-          <OfferCandidatesList requests={offer.requests} offerId={offer.id}/>
+            {showCandidates ? (
+
+                <OfferCandidatesList requests={offer.requests} offerId={offer.id} />
             )
-        : null}
-        
+                : null}
+        </div>
+
+
     </div>
 
 }

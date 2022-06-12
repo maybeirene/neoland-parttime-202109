@@ -56,22 +56,27 @@ export default function () {
             <>
             <h2 className="EditOffer__title">{offer.title}</h2>
                 <form className="EditOffer__form" onSubmit={saveOffer}>
-                    
-                        <input className="EditOffer__input" type="text" name="title" defaultValue={offer.title} />
+                    <label htmlFor="title" >Title</label>
+                    <input id="title" className="EditOffer__input" type="text" name="title" defaultValue={offer.title} />
 
-                        <textarea className="EditOffer__input" type="text" name="description" defaultValue={offer.description} />
+                    <label htmlFor="description" >Description</label>
+                        <textarea id="description" className="EditOffer__input" type="text" name="description" defaultValue={offer.description} />
 
-                        <select className="EditOffer__input" name="stack" defaultValue={offer.stack}>
+                        <label htmlFor="stack" >Stack</label>
+                        <select id="stack" className="EditOffer__input" name="stack" defaultValue={offer.stack}>
                             <option value="full-stack" > Full stack </option>
                             <option value="front-end" >Front end</option>
                             <option value="back-end" >Back end</option>
                         </select>
 
-                        <input className="EditOffer__input" type="number" name="minSalary" defaultValue={offer.minSalary} />
+                        <label htmlFor="minSalary" >Minimun salary</label>
+                        <input id="minSalary" className="EditOffer__input" type="number" name="minSalary" defaultValue={offer.minSalary} />
 
-                        <input className="EditOffer__input" type="number" name="maxSalary" defaultValue={offer.maxSalary} />
+                        <label htmlFor="maxSalary" >Maximum salary</label>
+                        <input id="maxSalary" className="EditOffer__input" type="number" name="maxSalary" defaultValue={offer.maxSalary} />
 
-                        <input className="EditOffer__input" type="text" name="location" defaultValue={offer.location} />
+                        <label htmlFor="location" >Location</label>
+                        <input id="location" className="EditOffer__input" type="text" name="location" defaultValue={offer.location} />
                     {feedback ? <p>{feedback}</p> : null}
                     <button  className="EditOffer__submitButton" type="submit">Save</button>
 

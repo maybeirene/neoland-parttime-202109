@@ -50,14 +50,17 @@ export default function ({onCompanyDeleted}) {
             <>
                 <h2 className="profileManager__title">{company.name}</h2>
                 <form  className="profileManager__form"onSubmit={saveCompany}>
-
-                        <input className="profileManager__input" type="text" name="name" defaultValue={company.name} />    
-
-                        <textarea className="profileManager__input" type="text" name="description" defaultValue={company.description} /> 
-
-                        <input className="profileManager__input" type="text" name="location" defaultValue={company.location ? company.location : ""} placeholder="location" />        
-
-                        <input className="profileManager__input" type="text" name="link" defaultValue={company.link ? company.link : ""} placeholder="link" />
+                        <label htmlFor="name" >Name</label>
+                        <input id="name" className="profileManager__input" type="text" name="name" defaultValue={company.name} />    
+                        
+                        <label htmlFor="description" >Description</label>
+                        <textarea id="description" className="profileManager__input" type="text" name="description" defaultValue={company.description} /> 
+                        
+                        <label htmlFor="location" >Location</label>
+                        <input id="location" className="profileManager__input" type="text" name="location" defaultValue={company.location ? company.location : ""} placeholder="location" />        
+                        
+                        <label htmlFor="link" >Link</label>
+                        <input id="link" className="profileManager__input" type="text" name="link" defaultValue={company.link ? company.link : ""} placeholder="link" />
                     {feedback? <p>{feedback}</p> : null}
                     <button className="profileManager__submitButton" type="submit">Save</button>
 

@@ -1,12 +1,29 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from 'react'
-import { addOfferRequest } from '../logic'
+import { useEffect, useState } from 'react'
+import { addOfferRequest, retrieveDeveloperFromProfile } from '../logic'
+
 
 function OfferDetailPanel({ content }) {
-
-
     const [applied, setApplied ] = useState(false)
     const navigate = useNavigate()
+
+    const developerHasApplied = () => {
+        try {
+            retrieveDeveloperFromProfile(sessionStorage.token)
+            .then(developer=>{
+                const {requests} = content
+                const requestIndex =  requests.findIndex((request)=> request.developer === developer.id)
+                if(requestIndex !== -1 ) setApplied(true)
+            })
+        } catch (error) {
+            console.error(error)
+        }      
+    }
+    useEffect(()=>{
+        developerHasApplied()
+    }, [])
+
+
 
     const handleApply = () => {
         try {
@@ -15,8 +32,6 @@ function OfferDetailPanel({ content }) {
         } catch (error) {
             console.error(error)
         }
-        
-        setApplied(true)
     }
 
 

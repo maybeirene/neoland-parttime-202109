@@ -53,20 +53,25 @@ export default function ({ onDeveloperDeleted }) {
                 <h2 className="profileManager__title">{developer.name}</h2>
                 <form className="profileManager__form" onSubmit={saveDeveloper}>
 
-                        <input className="profileManager__input" type="text" name="name" defaultValue={developer.name} />
+                    <label htmlFor="name" >Name</label>
+                    <input id="name" className="profileManager__input" type="text" name="name" defaultValue={developer.name} />
 
-                        <textarea className="profileManager__input" type="text" name="description" defaultValue={developer.description} />
+                    <label htmlFor="description" >Description</label>
+                    <textarea id="description" className="profileManager__input" type="text" name="description" defaultValue={developer.description} />
 
-                        <select className="profileManager__input" name="stack" defaultValue={developer.stack}>
-                            <option disabled > -- choose your stack -- </option>
-                            <option value="full-stack">Full stack</option>
-                            <option value="front-end">Front end</option>
-                            <option value="back-end">Back end</option>
-                        </select>
+                    <label htmlFor="stack" >Stack</label>
+                    <select id="stack" className="profileManager__input" name="stack" defaultValue={developer.stack}>
+                        <option disabled > -- choose your stack -- </option>
+                        <option value="full-stack">Full stack</option>
+                        <option value="front-end">Front end</option>
+                        <option value="back-end">Back end</option>
+                    </select>
 
-                        <input className="profileManager__input" type="text" name="location" defaultValue={developer.location ? developer.location : ""} placeholder="location" />
+                    <label htmlFor="location" >Location</label>
+                    <input id="location" className="profileManager__input" type="text" name="location" defaultValue={developer.location ? developer.location : ""} placeholder="location" />
 
-                        <input className="profileManager__input" type="text" name="link" defaultValue={developer.link ? developer.link : ""} placeholder="link" />
+                    <label htmlFor="link" >Link</label>
+                    <input id="link" className="profileManager__input" type="text" name="link" defaultValue={developer.link ? developer.link : ""} placeholder="link" />
 
                     {feedback ? <p>{feedback}</p> : null}
                     <button className="profileManager__submitButton" type="submit">Save</button>

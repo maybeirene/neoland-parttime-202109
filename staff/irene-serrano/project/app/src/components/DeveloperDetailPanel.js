@@ -7,7 +7,7 @@ function DeveloperDetailPanel({content}) {
         </div>
         
         <p className="detail__text">{content.description}</p>
-        <p className="detail__text">{content.link}</p>
+        <p className="detail__text">Want to know more about me? Visit my <a href={content.link}>webpage</a></p>
         
         <button className="detail__contactButton">Contact</button>
 

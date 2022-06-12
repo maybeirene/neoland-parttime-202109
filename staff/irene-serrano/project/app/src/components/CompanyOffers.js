@@ -7,8 +7,6 @@ export default function () {
    
     return <div className="CompanyOffers">
 
-        
-       
         <Routes>
             <Route path="/" element={<CompanyOfferList />} />
             <Route path="/edit/:offerId" element={<EditOffer />} />

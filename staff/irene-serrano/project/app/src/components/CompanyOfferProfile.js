@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { retrieveCompanyFromOffer } from '../logic'
+import  CompanyOffersCarrousel  from './CompanyOffersCarrousel'
 
 function CompanyOfferProfile({ }) {
     const navigate = useNavigate()
@@ -29,7 +30,9 @@ function CompanyOfferProfile({ }) {
             <>
                 <h3 className="OfferCompany__title">{company.name}</h3>
                 <p className="OfferCompany__text">{company.description}</p>
-                <p className="OfferCompany__text">Want to see more? Visit <a href={company.link}>{company.name}</a> web page.</p>
+                <p className="OfferCompany__text">Want to know more about us? Visit <a href={company.link}>{company.name}</a> web page.</p>
+
+                <CompanyOffersCarrousel companyId={company.id} companyName={company.name}/>
             </> 
         : null}
 

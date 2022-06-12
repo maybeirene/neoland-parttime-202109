@@ -18,6 +18,13 @@
     align-items: center;
     gap: var(--space-md)
 }
+.profileManager__form label{
+    align-self: flex-start;
+    font-weight: var(--fontWeight-bolder);
+
+
+
+}
 
 .profileManager__input {
     width: 100%;
