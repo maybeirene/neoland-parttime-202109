@@ -2,12 +2,15 @@ import './profileManager.css'
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { retrieveDeveloperFromProfile, updateDeveloper, unregisterDeveloper } from '../logic'
-
+import Modal from './Modal'
+import Feedback from './Feedback'
+import ConfirmDeleteUser from './modals/ConfirmDeleteUser'
 
 export default function ({ onDeveloperDeleted }) {
     const navigate = useNavigate()
     const [developer, setDeveloper] = useState()
     const [feedback, setFeedback] = useState()
+    const [modal, setModal] = useState()
 
     useEffect(() => {
         try {
@@ -15,7 +18,7 @@ export default function ({ onDeveloperDeleted }) {
                 .then((developer) => setDeveloper(developer))
         }
         catch (error) { setFeedback(error.message) }
-    }, [])
+    }, [modal])
 
     const saveDeveloper = (event) => {
         event.preventDefault()
@@ -30,9 +33,12 @@ export default function ({ onDeveloperDeleted }) {
 
         try {
             updateDeveloper(sessionStorage.token, name, description, stack, location, link)
-                .then(() => setFeedback(' ✅ compañia actualizada'))
+                .then(() => setFeedback({ level: 'success', message: 'updated user' }))
+                .catch((error)=>{
+                    setFeedback({ level: 'error', message: error.message })
+                })
         } catch (error) {
-            setFeedback(error.message)
+            setFeedback({ level: 'error', message: error.message })
         }
     }
 
@@ -40,10 +46,19 @@ export default function ({ onDeveloperDeleted }) {
         try {
             unregisterDeveloper(sessionStorage.token)
                 .then(onDeveloperDeleted)
-                .catch(error => console.log(error))
+                .catch(error => setFeedback({ level: 'error', message: error.message }))
         } catch (error) {
-            setFeedback(error.message)
+            setFeedback({level: 'error', message: error.message})
         }
+    }
+    const handleOpenModal = () => {
+        setModal(true)
+    }
+    const handleCloseModal = () => {
+        setModal(false)
+    }
+    const handleDeleteDeveloper =() => {
+        unregister()
     }
 
     return <div className="Developer__profileManager">
@@ -73,15 +88,28 @@ export default function ({ onDeveloperDeleted }) {
                     <label htmlFor="link" >Link</label>
                     <input id="link" className="profileManager__input" type="text" name="link" defaultValue={developer.link ? developer.link : ""} placeholder="link" />
 
-                    {feedback ? <p>{feedback}</p> : null}
+                    {feedback ? <Feedback level={feedback.level} message={feedback.message} /> : null}
                     <button className="profileManager__submitButton" type="submit">Save</button>
 
                 </form>
 
-                <button className="profileManager__deleteButton" onClick={() => unregister()}>
+                <button className="profileManager__deleteButton" onClick={() => handleOpenModal()}>
                     Delete User
                 </button>
             </>
-            : <h3>not found: {feedback ? <p>{feedback}</p> : <p>not feedback</p>} </h3>}
+            : <h3>not found </h3>}
+           
+
+        {modal && (
+            <Modal
+                content={
+                    <ConfirmDeleteUser
+                        onDeleted={handleDeleteDeveloper}
+                        onCancel={handleCloseModal}
+                    />
+                }
+                onClose={handleCloseModal}
+            />
+        )}
     </div>
 }

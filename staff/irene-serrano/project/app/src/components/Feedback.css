@@ -1,0 +1,36 @@
+:root{
+  --color_success: #26d251;
+  --color_success-midOpacity: rgba(39, 211, 82, 0.5);
+
+}
+.Feedback{
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 350px;
+  padding: var(--space-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: var(--fontWeight-bolder);
+  border-radius: var(--space-sm);
+  margin:auto;
+
+}
+.Feedback--error{
+    border: 2px solid var(--color_error);
+    background-color: var(--color_error-midOpacity);
+}
+
+.Feedback--success{
+    border: 2px solid var(--color_success);
+    background-color: var(--color_success-midOpacity);
+ 
+}
+
+.Feedback--info{
+  background-color: var(--color_transparent);
+  width: 50%;
+  height: 300px;
+  color: grey;
+  font-size: var(--text_title-sm)
+
+}

@@ -1,7 +1,8 @@
 import './Login.css'
 import {authenticateUser} from '../logic'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate }  from 'react-router-dom'
+import Feedback from './Feedback'
 
 
 export default function ({onLoggedIn}){
@@ -20,11 +21,11 @@ export default function ({onLoggedIn}){
                     onLoggedIn()
                 })
                 .catch(error => {
-                    setFeedback(error.message)
+                    setFeedback({ level: 'error', message: error.message })
                     if (error.message === 'token expired') delete sessionStorage.token
                 })
         } catch (error) {
-            setFeedback( error.message )
+            setFeedback({ level: 'error', message: error.message })
         }
     }
     
@@ -35,7 +36,7 @@ export default function ({onLoggedIn}){
             <input className='form__input' type="email" name="email" placeholder="email" />
             <input className='form__input' type="password" name="password" placeholder="password" />
 
-            {feedback? <p>{feedback}</p>: null}
+            {feedback? <Feedback level={feedback.level} message={feedback.message} />: null}
 
             <button className="Login__button-primary-full" type="submit" >Submit</button>
         </form>
