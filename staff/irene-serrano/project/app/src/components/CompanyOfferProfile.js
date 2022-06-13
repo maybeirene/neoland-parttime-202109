@@ -9,6 +9,7 @@ function CompanyOfferProfile({ }) {
     const navigate = useNavigate()
     const { companyId } = useParams()
     const [company, setCompany] = useState()
+    const [feedback, setFeedback] = useState()
     const getCompany = () => {
         try {
             retrieveCompanyFromOffer(companyId)
@@ -16,7 +17,7 @@ function CompanyOfferProfile({ }) {
                     setCompany(company)
                 })
         } catch (error) {
-            console.error(error)
+            setFeedback(error)
         }
     }
 
@@ -30,7 +31,7 @@ function CompanyOfferProfile({ }) {
             <>
                 <h3 className="OfferCompany__title">{company.name}</h3>
                 <p className="OfferCompany__text">{company.description}</p>
-                <p className="OfferCompany__text">Want to know more about us? Visit <a href={company.link}>{company.name}</a> web page.</p>
+                <p className="OfferCompany__text">Want to know more about us? Visit <a target="_black" href={company.link}>{company.name}</a> web page.</p>
 
                 <CompanyOffersCarrousel companyId={company.id} companyName={company.name}/>
             </> 

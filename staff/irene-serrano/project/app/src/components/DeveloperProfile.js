@@ -17,7 +17,7 @@ export default function ({ onDeveloperDeleted }) {
             retrieveDeveloperFromProfile(sessionStorage.token)
                 .then((developer) => setDeveloper(developer))
         }
-        catch (error) { setFeedback(error.message) }
+        catch (error) { setFeedback({ level: 'error', message: error.message }) }
     }, [modal])
 
     const saveDeveloper = (event) => {
@@ -33,7 +33,7 @@ export default function ({ onDeveloperDeleted }) {
 
         try {
             updateDeveloper(sessionStorage.token, name, description, stack, location, link)
-                .then(() => setFeedback({ level: 'success', message: 'updated user' }))
+                .then(() => setFeedback({ level: 'success', message: 'updated developer' }))
                 .catch((error)=>{
                     setFeedback({ level: 'error', message: error.message })
                 })

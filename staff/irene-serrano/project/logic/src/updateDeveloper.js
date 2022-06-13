@@ -3,7 +3,6 @@ const { models: { User } } = require('data')
 const {
     validators: {
         validateString,
-        validatePassword
     },
     errors: {
         NotFoundError

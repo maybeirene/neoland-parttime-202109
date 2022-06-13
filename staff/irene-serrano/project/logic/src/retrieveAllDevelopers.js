@@ -5,7 +5,7 @@ const { validators: {validateRole}, errors: {NotFoundError} } = require('commons
 
 function retrieveAllDevelopers(){
  
-    return  User.find( {role: 1} ).lean()
+    return  User.find( {role: 1, active: true} ).lean()
         .then(developers => {
           
             if(developers.length === 0) throw new NotFoundError('cant find any developer')

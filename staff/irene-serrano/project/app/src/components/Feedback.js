@@ -18,5 +18,9 @@ export default ({ level, message, onTimeout }) => {
     if(message === "name is empty or blank"){message = "Ups! Don't be shy, tell us your name"}
 
     if(message=== "user does not exist"){message = "We cannot find this user..."}
+
+    if(message === "not found any offer from company"){message = "You don't have any offers published yet!"}
+    
+    
     return <div className={`Feedback Feedback--${level}`}>{message}</div>
 }

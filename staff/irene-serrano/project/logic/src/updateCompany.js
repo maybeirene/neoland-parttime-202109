@@ -1,7 +1,19 @@
 const {models : { User } } = require('data')
-const bcrypt = require('bcryptjs')
+const {
+    validators: {
+        validateString,
+    },
+    errors: {
+        NotFoundError
+    }
+} = require('commons')
 
 function updateCompany(id, name,  description, location, link ){
+
+    validateString(name, explain = 'name')
+    validateString(description, explain = 'description')
+    location ? validateString(location, explain = 'location') : null
+    link ? validateString(link, explain = 'link') : null
 
     return User.updateOne({_id: id}, {name, description,  location, link})
 

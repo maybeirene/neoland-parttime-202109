@@ -13,7 +13,7 @@ function retrieveCompanyOffers (companyId, active) {
    
     return  Offer.find( filter )
         .then(offers => {
-            if(offers.length === 0) throw new NotFoundError(`not found any offer from company ${companyId}`)
+            if(offers.length === 0) throw new NotFoundError(`not found any offer from company`)
             
             return offers.map(offer => {
                 const doc = offer._doc

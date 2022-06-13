@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react"
-import CompanyOfferItem from './CompanyOfferItem'
-import { retrieveCompany, retrieveCompanyOffers } from '../logic'
+
 import "./offerManager.css"
+import { useState, useEffect } from "react"
+import { retrieveCompany, retrieveCompanyOffers } from '../logic'
+import CompanyOfferItem from './CompanyOfferItem'
+import Feedback from "./Feedback"
 
 function CompanyOfferList() {
 
@@ -18,9 +20,10 @@ function CompanyOfferList() {
                         .then(offers => {
                             setOffers(offers)
                         })
+                        .catch(error =>  setFeedback({level: 'info', message: error.message}))
                 })
         } catch (error) {
-            console.error(error.message)
+            setFeedback({level: 'error', message: error.message})
         }
     }
     useEffect(() => {
@@ -29,12 +32,16 @@ function CompanyOfferList() {
 
     return <div className="CompanyOffer__list">
         <h2 className="CompanyOffers__title">My offers</h2>
-        {offers ? offers.map(offer => {
-            return <li key={offer.id}>
+
+        {feedback? <Feedback level={feedback.level} message={feedback.message}/> :
+
+        offers ? offers.map(offer => {
+          return  !offer? setFeedback({level: 'info', message: 'not found any offer from company'}) :
+             <li key={offer.id}>
                 <CompanyOfferItem content={offer} onDeleteItem={() => getCompanyOffers()} />
             </li>
         })
-            : <h3>Not found :C </h3>}
+              : null}
 
     </div>
 }

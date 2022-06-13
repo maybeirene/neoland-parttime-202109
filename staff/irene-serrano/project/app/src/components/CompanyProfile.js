@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { retrieveCompany, updateCompany, unregisterCompany } from '../logic'
 import Modal from './Modal'
+import Feedback from './Feedback'
 import ConfirmDeleteUser from './modals/ConfirmDeleteUser'
 
 export default function ({ onCompanyDeleted }) {
@@ -15,7 +16,7 @@ export default function ({ onCompanyDeleted }) {
             retrieveCompany(sessionStorage.token)
                 .then((company) => setCompany(company))
         }
-        catch (error) { setFeedback(error.message) }
+        catch (error) { setFeedback({ level: 'error', message: error.message }) }
     }, [])
 
     const saveCompany = (event) => {
@@ -30,9 +31,10 @@ export default function ({ onCompanyDeleted }) {
 
         try {
             updateCompany(sessionStorage.token, name, description, location, link)
-                .then(() => setFeedback(' ✅ compañia actualizada'))
+                .then(() => setFeedback({ level: 'success', message: 'updated company' }))
+                .catch(error=>setFeedback({ level: 'error', message: error.message }))
         } catch (error) {
-            setFeedback(error.message)
+            setFeedback({ level: 'error', message: error.message })
         }
     }
 
@@ -40,9 +42,9 @@ export default function ({ onCompanyDeleted }) {
         try {
             unregisterCompany(sessionStorage.token)
                 .then(onCompanyDeleted)
-                .catch(error => console.log(error))
+                .catch(error => setFeedback({ level: 'error', message: error.message }))
         } catch (error) {
-            setFeedback(error.message)
+            setFeedback({ level: 'error', message: error.message })
         }
     }
     const handleOpenModal = () => {
@@ -65,14 +67,16 @@ export default function ({ onCompanyDeleted }) {
                     <input id="name" className="profileManager__input" type="text" name="name" defaultValue={company.name} />
 
                     <label htmlFor="description" >Description</label>
-                    <textarea id="description" className="profileManager__input" type="text" name="description" defaultValue={company.description} />
+                    <textarea id="description" className="profileManager__input" type="text" name="description" defaultValue={company.description}  />
 
                     <label htmlFor="location" >Location</label>
                     <input id="location" className="profileManager__input" type="text" name="location" defaultValue={company.location ? company.location : ""} placeholder="location" />
 
                     <label htmlFor="link" >Link</label>
                     <input id="link" className="profileManager__input" type="text" name="link" defaultValue={company.link ? company.link : ""} placeholder="link" />
-                    {feedback ? <p>{feedback}</p> : null}
+
+                    {feedback ? <Feedback level={feedback.level} message={feedback.message} /> : null}
+
                     <button className="profileManager__submitButton" type="submit">Save</button>
 
                 </form>
