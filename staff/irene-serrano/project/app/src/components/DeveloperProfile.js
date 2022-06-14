@@ -11,6 +11,7 @@ export default function ({ onDeveloperDeleted }) {
     const [developer, setDeveloper] = useState()
     const [feedback, setFeedback] = useState()
     const [modal, setModal] = useState()
+    
 
     useEffect(() => {
         try {
@@ -93,7 +94,9 @@ export default function ({ onDeveloperDeleted }) {
 
                 </form>
 
-                <button className="profileManager__deleteButton" onClick={() => handleOpenModal()}>
+                <button className="profileManager__deleteButton" onClick={(e) => {
+                    e.preventDefault()
+                    handleOpenModal(window.scrollY)}}>
                     Delete User
                 </button>
             </>
@@ -109,6 +112,7 @@ export default function ({ onDeveloperDeleted }) {
                     />
                 }
                 onClose={handleCloseModal}
+               
             />
         )}
     </div>
