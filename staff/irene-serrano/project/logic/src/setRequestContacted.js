@@ -1,7 +1,6 @@
 
 const { models: { User, Offer } } = require('data')
 const { NotFoundError, AuthError} = require('commons/src/errors')
-const { request } = require('data/src/schemas')
 
 function setRequestContacted(companyId, offerId, requestId ){
   
@@ -21,7 +20,6 @@ function setRequestContacted(companyId, offerId, requestId ){
         
         const contactedRequest = requests[requestIndex]
 
-        /* ====== AQUI ===== */
         contactedRequest.contacted = true
         
         return Offer.updateOne({_id: offerId},{"requests": requests})

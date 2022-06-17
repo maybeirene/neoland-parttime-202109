@@ -33,33 +33,45 @@ En base a los casos de uso que se han descrito en el punto anterior, listo las f
 
     Para registar usuarios, tenemos dos lógicas separadas, aunque recaen en la misma colección. Esto nos permite diferenciarlas semánticamente. También evita que tengamos conflictos con usuarios registrados como empresa y como demandante de empleo.
     En esta fase empleamos dcryptjs, una librería para encriptar contraseñas.
+## Developer side logics:
 - **registerUser**: registra a los usuarios desarrolladores. Por defecto tiene el rol seteado
 
+- **authenticateUser**
+
+- **updateDeveloper**: actualiza los datos de usuario
+
+- **retrieveDeveloper**: devuelve el usuario indicado, con rol de developer 
+
+- **unregisterUser**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
+    
+    ### offer relative logics
+
+- **retrieveAllOffers**: devuelve todas las ofertas activas.
+
+- **retrieveOffer**: devuelve una oferta concreta
+
+## Company side logics:
 - **registerCompany**: registra a los usuarios recruiter o empresa. Por defecto tiene el rol seteado, igual que las propiedades 'null' que no utiliza del modelo de datos.
 
 - **authenticateUser**
 
-- **updateUser**: actualiza los datos de usuario
+- **updateCompany**: actualiza los datos de usuario
 
 - **updateCompany**: actualiza los datos de la compañia
-
-- **retrieveUser**: devuelve el usuario indicado, con rol de developer 
 
 - **retrieveCompany**: devuelve el usuario indicado, con rol de compañía
 
 - **retrieveAllUsers**: devuelve todos los usuarios activos con rol de desarollador
 
-- **unregisterUser**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
-
 - **unregisterCompany**: nunca se eliminarán usuarios de la base de datos, sólo se desactivará el usuario.
+
+ ### offer relative logics
 
 - **createOffer**
 
 - **updateOffer**
 
-- **retrieveAllOffers**: devuelve todas las ofertas activas. En la petición, si no especificamos un body, nos devolverá TODAS las ofertas, activas e inactivas. Podemos ir añadiendo propiedades al body para poder filtrar. Por ejemplo {"active: true, "minSalary": 20000}
-
-- **retrieveUserOffers**: devuelve las ofertas activas de un usuario concreto. Comprueba si el usuario que hace la peticion es el mismo sobre el que se quieren sacar las notas. Si es el mismo, devuelve todas, activas e inactivas. Sino, solo las activas.
+- **retrieveCompanyOffers**: devuelve las ofertas activas de un usuario concreto. Comprueba si el usuario que hace la peticion es el mismo sobre el que se quieren sacar las notas. Si es el mismo, devuelve todas, activas e inactivas. Sino, solo las activas.
 
 - **retrieveOffer**: devuelve una oferta concreta
 
@@ -80,20 +92,22 @@ En base a los casos de uso que se han descrito en el punto anterior, listo las f
 
 ### Data Model (ER)
 
-Encontramos dos esquemas distintos: 'user' y 'offer'. El 'user' se utilizará tanto para los usuarios demandantes como para los ofertantes/empresas, diferenciandolos mediante una propiedad 'rol'.
+Encontramos tres esquemas distintos: 'user', 'offer' y 'request'. 
+El 'user' se utilizará tanto para los usuarios demandantes como para los ofertantes/empresas, diferenciandolos mediante una propiedad 'role'.
+'request' estará embebido dentro de la propiedad 'requests' de 'offer', que será un array.
 
 A continuación, el detalle de los esquemas:
 
     user {
         id: ObjectID,
-        rol: number,
+        role: number,
         email: string,
         password: string,
         name: string,
-        description: string (max char: 250),
+        description: string,
         stack: string,
         location: string,
-        links: [string],
+        links: string,
         active: boolean,
     }
 
@@ -107,7 +121,15 @@ A continuación, el detalle de los esquemas:
         maxSalary: number,
         publicationDate: string,
         location:  string,
+        requests:[Request]
         active: boolean,
+    }
+
+    request {
+        developer: ObjectID,
+        seen: boolean,
+        contacted: boolean,
+        rejected: boolean,
     }
 
 
@@ -121,6 +143,7 @@ A continuación, el detalle de los esquemas:
 - JWT ![](https://jwt.io/img/favicon/apple-icon-60x60.png)
 - Mongoose ![](https://mongoosejs.com/docs/images/favicon/apple-icon-60x60.png)
 - Mongo ![](https://www.mongodb.com/favicon.ico)
+- NodeMailer ![](https://nodemailer.com/favicon-32x32.png)
 
 ### TODO list
 

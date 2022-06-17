@@ -24,7 +24,7 @@ function registerCompany ( role = 2, name, email, password, description, stack, 
     
  
     return bcrypt.hash(password, 10)
-            .then(hash => User.create({ role, name, email, password: hash, description, stack, location, link  }))
+            .then(hash => User.create({ role, name, email, password: hash, description, stack : null, location, link  }))
             .then(company => { })
             .catch(error => {
                 if (error.message.includes('duplicate'))

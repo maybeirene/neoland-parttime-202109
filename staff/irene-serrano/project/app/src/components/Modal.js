@@ -1,7 +1,7 @@
 import './Modal.css'
 
 export default ({ content, onClose }) => {
-    const body = document.querySelector('#root')
+  /*  const body = document.querySelector('#root')
     const bodyHeight = body.clientHeight
     const clientWindowHeight = window.innerHeight
     const scroll = window.scrollY
@@ -11,7 +11,7 @@ export default ({ content, onClose }) => {
         else return (bodyHeight - clientWindowHeight)
     }
     const scrolledModal = getScrolledModal()
-    console.log(scrolledModal)
+*/
     const handleClickOnModal = () => {
         onClose()
     }
@@ -20,7 +20,7 @@ export default ({ content, onClose }) => {
         event.stopPropagation()
     }
 
-    return <div className="Modal" onClick={handleClickOnModal} style={{'top': scrolledModal}}>
+    return <div className="Modal" onClick={handleClickOnModal}>
         <button className="Modal__closeButton" onClick={onClose}>✕</button>
         <div onClick={handleClickOnContent}>
             {content}
