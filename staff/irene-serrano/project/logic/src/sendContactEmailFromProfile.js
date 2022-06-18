@@ -1,29 +1,21 @@
 //const { transporter } = require('nodemailer')
-const { models: { User, Offer } } = require('data')
+const { models: { User } } = require('data')
 const { NotFoundError, AuthError } = require('commons/src/errors');
 
 const nodemailer = require("nodemailer");
 const { env: { EMAIL, PASSWORD } } = process
 
 
-function sendContactEmailFromRequest(requestId, offerId, companyId) {
+function sendContactEmailFromProfile(developerId, companyId) {
 
   return User.findById(companyId)
     .then(company => {
       if (!company) throw new NotFoundError('company not found')
 
-      return Offer.findById(offerId)
-        .then(offer => {
-          if (!offer) throw new NotFoundError('offer not found')
+      return User.findById(developerId)
+        .then(developer => {
+          if (!developer) throw new NotFoundError('developer not found')
 
-          const { requests } = offer
-          const requestIndex = requests.findIndex((request) => request.id === requestId)
-          if (requestIndex === -1) throw new NotFoundError(`request not found`)
-
-          const contactedRequest = requests[requestIndex]
-
-          User.findById(contactedRequest.developer)
-            .then(developer => {
 
               const transporter = nodemailer.createTransport({
                 host: "smtp.zoho.eu",
@@ -45,10 +37,9 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
                 html: `<div>   
           <main>
               <h1>Hola, ${developer.name}!</h1>
-              <h3>${company.name} quiere contactar contigo por la oferta de trabajo:</h3>
-              <h3 class="offerTitle">${offer.title}</h3>
+              <h3>Al equipo de ${company.name} les has gustado</h3>
       
-              <p>Si sigues interesado, envía un correo a <a>${company.email}</a> presentándote, te están esperando.</p>
+              <p>Si estas interesado, envía un correo a <a>${company.email}</a> presentándote, te están esperando.</p>
               <button href=${company.email}>Escribir</button>
       
           </main></div>`,
@@ -58,8 +49,5 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
 
 
         })
-
-
-    })
 }
-module.exports = sendContactEmailFromRequest
+module.exports = sendContactEmailFromProfile

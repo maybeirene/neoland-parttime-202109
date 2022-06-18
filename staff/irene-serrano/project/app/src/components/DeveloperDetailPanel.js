@@ -1,4 +1,22 @@
+import { sendContactEmailFromProfile }  from '../logic'
+import { useState } from 'react'
+
 function DeveloperDetailPanel({content}) {
+    const [contacted, setContacted] = useState(false)
+
+    const sendContactEmail = () => {
+        try {
+            sendContactEmailFromProfile(content.id, sessionStorage.token)
+            .then(()=>{
+                setContacted(true)
+            })
+            .catch((error)=>{
+                console.error(error)
+            })
+        } catch (error) {
+            console.error(error)
+        }
+    }
     return <>
         <h3 className="detail__title">{content.name}</h3>
         <div className="detail__itemGroup">
@@ -10,8 +28,10 @@ function DeveloperDetailPanel({content}) {
         {content.link? 
         <p className="detail__text">Want to know more about me? Visit my <a  target="_black"  href={content.link}>webpage</a></p>
         : null}
+
         
-        <button className="detail__contactButton">Contact</button>
+      { contacted? <button dissabled="true" className="detail__contactButton-contacted">Contacted ✓</button> 
+                 : <button className="detail__contactButton" onClick={sendContactEmail}>Contact</button>}
 
     </>
 }

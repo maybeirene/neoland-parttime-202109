@@ -36,10 +36,10 @@ const {
   setRequestContacted,
   setRequestRejected,
 
-  sendContactEmailFromRequest
+  sendContactEmailFromRequest,
+  sendContactEmailFromProfile
 
 } = require('./handlers');
-const { json } = require('express');
 
 
 /* 
@@ -102,10 +102,10 @@ connect(MONGODB_URL)
     router.patch("/offer/:offerId/request/contacted/:requestId", jsonBodyParser, setRequestContacted)
     router.patch("/offer/:offerId/request/rejected/:requestId", jsonBodyParser, setRequestRejected)
 
-    //EMAIL SEND
+    //EMAIL SENDING
 
     router.post("/offer/:offerId/request/:requestId/contact", jsonBodyParser, sendContactEmailFromRequest);
-    router.put("/developer/:developerId/contact");
+    router.post("/developer/:developerId/contact", jsonBodyParser, sendContactEmailFromProfile);
 
     api.use("/api", router);
 

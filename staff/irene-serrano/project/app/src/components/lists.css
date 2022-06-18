@@ -185,7 +185,7 @@
     align-items: baseline;
 }
 
-.detail__contactButton, .detail__contactButton-applied {
+.detail__contactButton, .detail__contactButton-applied, .detail__contactButton-contacted {
     width: fit-content;
     padding: var(--space-sm);
     border: 2px solid var(--color_primary);
@@ -197,7 +197,7 @@
     min-width: 14rem;
     margin-right: var(--space-lg);
 }
-.detail__contactButton-applied {
+.detail__contactButton-applied, .detail__contactButton-contacted {
     background-color: var(--color_primary-lowOpacity);
 }
 

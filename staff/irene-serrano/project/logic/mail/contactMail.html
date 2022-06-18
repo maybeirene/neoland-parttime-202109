@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        :root {
+            /* COLORS */
+            --color_darkGrey: #505056;
+            --color_grey: #72737a;
+            --color_mediumlightGrey: #adaeb8;
+            --color_lightGrey: #cccdda;
+            --color_lighterGrey: #f2f2f8;
+            --color_transparent: #0000;
+            --color_primary: #1ae3a3;
+            --color_primary-lowOpacity: #1ae3a344;
+            --color_primary-dark: #0fd093;
+            --color_primary-darker: rgb(0, 65, 72);
+            --color_error: rgb(169, 37, 4);
+            --color_error-midOpacity: rgba(229, 47, 2, 0.722);
+
+            /* FONT SIZES */
+            --text_title-lg: 3.125rem;
+            --text_title-md: 2.5rem;
+            --text_title-sm: 1.5rem;
+
+            --text-lg: 1.2rem;
+            --text-md: 1rem;
+            --text-sm: 0.9rem;
+
+            /* SPACES */
+            --space-xlg: 4rem;
+            --space-lg: 2.5rem;
+            --space-md: 1rem;
+            --space-sm: 0.5rem;
+            --space-xs: 0.3rem;
+
+            /*LINES AND FONT WEIGTH*/
+            --line-md: 2px;
+            --fontWeight-bolder: 700;
+        }
+
+        * {
+            color: var(--color_darkGrey);
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        li,
+        a {
+            text-decoration: none;
+            list-style: none;
+        }
+
+        a {
+            color: var(--color_primary-dark);
+            cursor: pointer
+        }
+
+        a:hover {
+            color: var(--color_primary);
+        }
+
+        main {
+            max-width: 500px;
+            margin: var(--space-xlg) auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg)
+        }
+
+        button {
+            width: fit-content;
+            margin: var(--space-sm) auto;
+            padding: var(--space-sm) 50px;
+            border: var(--line-md) solid var(--color_primary);
+            border: none;
+            border-radius: var(--space-sm);
+            background-color: var(--color_primary);
+            color: var(--color_primary-darker);
+            font-weight: var(--fontWeight-bolder);
+        }
+
+        button:hover{
+            background-color: var(--color_primary-dark);
+        }
+        
+        .offerTitle{
+            font-size: 115%;
+            color:#72737a;
+            margin: auto;
+            font-weight: var(--fontWeight-bolder);
+        }
+    </style>
+    <main>
+        <h1>Hola, Carlos!</h1>
+        <h3>Renfe quiere contactar contigo por la oferta de trabajo</h3>
+        <span class="offerTitle">Practicas remuneradas 40h semanales</span>
+
+        <p>Si sigues interesado, envía un correo a <a>renfe@corp.com</a> presentándote, te están esperando.</p>
+        <button href="mailito:renfe@corp.com">Escribir</button>
+
+    </main>
+</body>
+
+</html>

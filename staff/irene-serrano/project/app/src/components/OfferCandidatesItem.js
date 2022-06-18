@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { setRequestSeen, setRequestContacted, setRequestRejected, retrieveCandidate } from '../logic'
+import { setRequestSeen, setRequestContacted, setRequestRejected, retrieveCandidate, sendContactEmailFromRequest } from '../logic'
+import Feedback from './Feedback'
 import './lists.css'
 
 export default function ({ requestId, offerId }) {
@@ -10,13 +11,16 @@ export default function ({ requestId, offerId }) {
     const [contacted, setContacted] = useState()
     const [rejected, setRejected] = useState()
 
+    const [feedback, setFeedback] = useState()
+
     const navigate = useNavigate()
 
 
     useEffect(() => {
         getCandidate(requestId)
-        
-    }, )
+
+
+    }, [seen, contacted, rejected])
 
     const getCandidate = (requestId) => {
         try {
@@ -33,8 +37,9 @@ export default function ({ requestId, offerId }) {
     }
 
     const setProfileSeen = () => {
+
         try {
-            setRequestSeen(offerId, candidate.id, sessionStorage.token)
+            setRequestSeen(offerId, requestId, sessionStorage.token)
                 .then(() => {
                     setSeen(true)
                     navigate(`../developer/${candidate.developerId}`)
@@ -55,31 +60,38 @@ export default function ({ requestId, offerId }) {
         }
     }
 
-    const setProfileContacted = () => {
+   
+    const sendContactEmail = () => {
+        
         try {
-            setRequestContacted(offerId, candidate.id, sessionStorage.token)
+            sendContactEmailFromRequest( requestId, offerId, sessionStorage.token)
                 .then(() => {
-                    setContacted(true)
-                    console.log('email enviado')
+                    try {
+                        setRequestContacted( offerId, requestId, sessionStorage.token)
+                            .then(() => {
+                                setContacted(true)
+                            })
+                    } catch (error) {
+                        setFeedback({'level':'error', message: error.message})
+                    }
                 })
         } catch (error) {
             console.error(error)
         }
     }
 
-
     return candidate ? (
-        <div className={!seen ? 'OfferCandidateItem-new': rejected ? 'OfferCandidateItem-rejected' : 'OfferCandidateItem-seen' }>
+        <div className={!seen ? 'OfferCandidateItem-new' : rejected ? 'OfferCandidateItem-rejected' : 'OfferCandidateItem-seen'}>
             <div className="OfferCandidateItem__titleGroup">
-                
-                {rejected ? <span className="CandidateItem__name-rejectedAdvice">❌</span> 
-                        : <span>⚪️</span>}
+
+                {rejected ? <span className="CandidateItem__name-rejectedAdvice">❌</span>
+                    : <span>⚪️</span>}
 
                 <p className="CandidateItem__name">{candidate.developerName}</p>
 
-                {seen ? null 
+                {seen ? null
                     : <span className="CandidateItem__name-newAdvice">New!</span>}
-                
+
 
             </div>
             <div className="OfferCandidateItem__buttonGroup">
@@ -89,12 +101,13 @@ export default function ({ requestId, offerId }) {
 
                 {contacted ?
                     <span className="CandidateItem__contadted">Contacted ✔️</span>
-                    : <button onClick={setProfileContacted}>Contact</button>}
+                    : <button onClick={sendContactEmail}>Contact</button>}
 
                 {rejected ?
-                        <span className="CandidateItem__rejectedAdvice">Rejected!</span>
+                    <span className="CandidateItem__rejectedAdvice">Rejected!</span>
                     : <button onClick={setProfileRejected} >Reject candidate</button>}
             </div>
+            {feedback? <Feedback level={feedback.level} message={feedback.message}/> : null}
         </div>
     ) : <h3>requests not found</h3>
 }

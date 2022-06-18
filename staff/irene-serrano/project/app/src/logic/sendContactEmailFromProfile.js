@@ -4,13 +4,12 @@ import { validateToken } from 'commons/src/validators'
 const { validateId} = validators
 const { AuthError, ClientError, ServerError } = errors
 
-export default function (requestId, offerId, token) {
+export default function (developerId, token) {
 
-    validateId(requestId, 'request id')
-    validateId(offerId, 'offer id')
+    validateId(developerId, 'developer id')
     validateToken(token)
 
-    return fetch(`http://localhost:8080/api/offer/${offerId}/request/${requestId}/contact`, {
+    return fetch(`http://localhost:8080/api/developer/${developerId}/contact`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -21,6 +21,11 @@ export default ({ level, message, onTimeout }) => {
 
     if(message === "not found any offer from company"){message = "You don't have any offers published yet!"}
     
+    if(message === "offer not found"){message = "Ups! This offer no longer exists"}
+    if(message === "company not found"){message = "Ups! This company no longer exists"}
+    if(message === "request not found"){message = "Ups! This request no longer exists"}
+
+
     
     return <div className={`Feedback Feedback--${level}`}>{message}</div>
 }
