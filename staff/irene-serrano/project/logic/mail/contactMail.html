@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <style>
+ <style>
         :root {
             /* COLORS */
             --color_darkGrey: #505056;
@@ -109,15 +109,19 @@
             font-weight: var(--fontWeight-bolder);
         }
     </style>
-    <main>
-        <h1>Hola, Carlos!</h1>
-        <h3>Renfe quiere contactar contigo por la oferta de trabajo</h3>
-        <span class="offerTitle">Practicas remuneradas 40h semanales</span>
 
-        <p>Si sigues interesado, envía un correo a <a>renfe@corp.com</a> presentándote, te están esperando.</p>
-        <button href="mailito:renfe@corp.com">Escribir</button>
 
-    </main>
+    <div>   
+        <main>
+            <h1>Hola, ${developer.name}!</h1>
+            <h3><a href=${company.link}>${company.name}</a> quiere contactar contigo por la oferta de trabajo:</h3>
+            <h3 class="offerTitle">${offer.title}</h3>
+    
+            <p>Si sigues interesado, envía un correo a <a>${company.email}</a> presentándote, te están esperando.</p>
+            <button href=${company.email}>Escribir</button>
+    
+        </main>
+    </div>
 </body>
 
-</html>
+</html> 

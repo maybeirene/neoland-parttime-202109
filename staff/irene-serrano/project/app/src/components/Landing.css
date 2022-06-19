@@ -1,10 +1,23 @@
+:root{
+--space-xxl: 8rem;
+}
 .Landing {
-    margin: var(--space-xlg) auto;
+    padding: 0 var(--space-lg);
+    margin: var(--space-xxl) auto;
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
     max-width: 30rem
 }
+
+.Landing__title{
+    font-family: var(--fontFamily-logo);
+    font-size: var( --text_title-lg);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-sm)
+} 
 
 .Landing__buttonContainer {
     display: flex;

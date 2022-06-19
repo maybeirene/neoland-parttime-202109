@@ -1,6 +1,11 @@
+import logo from '../tindev-logo.png' 
+import './Header.css'
 export default function () {
   
     return <header className="Header">
-         <h3 className="Header__title">APP NAME</h3>
+            <span className="Header__logo">
+                <img className="Header__logoImg" src={logo} alt="logo"></img>
+            </span>
+        
     </header>
 }

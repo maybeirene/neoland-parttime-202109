@@ -19,6 +19,7 @@ function retrieveCandidate (offerId, requestId) {
 
                 return User.findById({_id: developerId}).lean()
                 .then(dev=>{
+                    if(!dev) throw new NotFoundError('cant find this user')
                     currentRequest.developerName = dev.name
 
                     currentRequest.id = currentRequest._id.toString()

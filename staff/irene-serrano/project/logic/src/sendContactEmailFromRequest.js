@@ -42,16 +42,18 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
                 //  to: contactedRequest.email, // list of receivers
                 to: 'irenesg1995@gmail.com',
                 subject: "Ey! Alguien te quiere en su equipo!", // Subject line
-                html: `<div>   
-          <main>
-              <h1>Hola, ${developer.name}!</h1>
-              <h3>${company.name} quiere contactar contigo por la oferta de trabajo:</h3>
-              <h3 class="offerTitle">${offer.title}</h3>
+                html: `<div style={'max-width': '500px';
+                  'margin': '3rem auto'}>   
+          
+              <h1 style={'color':'green'}>Hola, ${developer.name}!</h1>
+              <h3><a style={'color':'#0fd093'}href=${company.link}>${company.name}</a> quiere contactar contigo por la oferta de trabajo:</h3>
+              <h3 style={'color': 'grey';
+              'font-weight': '900'; 'margin': '0 100px'}>${offer.title}</h3>
       
               <p>Si sigues interesado, envía un correo a <a>${company.email}</a> presentándote, te están esperando.</p>
               <button href=${company.email}>Escribir</button>
       
-          </main></div>`,
+          </div>`,
               })
             })
 

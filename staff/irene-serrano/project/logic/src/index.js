@@ -26,6 +26,7 @@ const setRequestRejected = require('./setRequestRejected')
 
 const sendContactEmailFromRequest = require('./sendContactEmailFromRequest')
 const sendContactEmailFromProfile = require('./sendContactEmailFromProfile')
+const contactTindev = require('./contactTindev')
 
 module.exports = {
     registerDeveloper,
@@ -55,6 +56,7 @@ module.exports = {
     setRequestRejected,
 
     sendContactEmailFromRequest,
-    sendContactEmailFromProfile
+    sendContactEmailFromProfile,
+    contactTindev
 
 }

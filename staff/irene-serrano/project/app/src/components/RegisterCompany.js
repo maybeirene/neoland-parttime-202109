@@ -58,12 +58,23 @@ export default function ({ onRegistered }) {
         <p>Want to publish an offer?</p>
         <h2 className='Register__title'>Register</h2>
         <form className='Register__form' onSubmit={register}>
-            <input className='form__input' type="text" name="name" placeholder="name of the company" required/>
-            <input className='form__input' type="email" name="email" placeholder="email" required/>
-            <input className='form__input' type="password" name="password" placeholder="password" required/>
-            <textarea className='form__input' name="description" placeholder="description" required/>
-            <input className='form__input' type="text" name="location" placeholder="location" />
-            <input className='form__input' type="text" name="link" placeholder="link" />
+            <label htmlFor="name" >Name</label>
+            <input id="name" className='form__input' type="text" name="name" placeholder="Name of the company" required/>
+            
+            <label htmlFor="email" >Email</label>
+            <input id="email" className='form__input' type="email" name="email" placeholder="Contact email" required/>
+            
+            <label htmlFor="password" >Password</label>
+            <input id="password" className='form__input' type="password" name="password" placeholder="Password" required/>
+            
+            <label htmlFor="description" >Description</label>
+            <textarea id="description" className='form__input' name="description" placeholder="Description" required/>
+            
+            <label htmlFor="location" >Location</label>
+            <input id="location" className='form__input' type="text" name="location" placeholder="Location" />
+            
+            <label htmlFor="link" >Link</label>
+            <input id="link"  className='form__input' type="text" name="link" placeholder="Link" />
 
     {feedback? <p>{feedback}</p> : null}
             <button className="Register__button-primary-full" type="submit">Sumbit</button>

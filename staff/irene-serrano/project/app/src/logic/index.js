@@ -34,6 +34,7 @@ import setRequestRejected from "./setRequestRejected";
 
 import sendContactEmailFromRequest from './sendContactEmailFromRequest'
 import sendContactEmailFromProfile from './sendContactEmailFromProfile'
+import contactTindev from './contactTindev'
 
 
 export {
@@ -67,5 +68,6 @@ export {
     setRequestRejected,
     
     sendContactEmailFromRequest,
-    sendContactEmailFromProfile
+    sendContactEmailFromProfile,
+    contactTindev
 }

@@ -55,21 +55,34 @@ export default function ({ onRegistered }) {
 
     return <div  className="Register">
         <a onClick={()=>navigate("/")}>back</a>
-        <p>Are you a developer?</p>
+        <p>Want a job?</p>
         <h2 className='Register__title'>Register</h2>
         <form className='Register__form' onSubmit={register}>
-            <input className='form__input' type="text" name="name" placeholder="name and surname" required/>
-            <input className='form__input' type="email" name="email" placeholder="email" required/>
-            <input className='form__input' type="password" name="password" placeholder="password" required/>
-            <textarea className='form__input' name="description" placeholder="description" required/>
-            <select className='form__input' name="stack">
+            <label htmlFor="name" >Name</label>
+            <input id="name" className='form__input' type="text" name="name" placeholder="Name and surname" required/>
+
+            <label htmlFor="email" >Email</label>
+            <input id="email" className='form__input' type="email" name="email" placeholder="Email" required/>
+
+            <label htmlFor="password" >Password</label>
+            <input id="password" className='form__input' type="password" name="password" placeholder="Password" required/>
+
+            <label htmlFor="description" >Description</label>
+            <textarea id="description" className='form__input' name="description" placeholder="Description" required/>
+
+            <label htmlFor="stack" >Stack</label>
+            <select id="stack" className='form__input' name="stack">
                 <option className='form__input' dissabled="true" > -- choose your stack -- </option>
                 <option className='form__input' value="full-stack">Full stack</option>
                 <option className='form__input' value="front-end">Front end</option>
                 <option className='form__input' value="back-end">Back end</option>
             </select>
-            <input className='form__input' type="text" name="location" placeholder="location" />
-            <input className='form__input' type="text" name="link" placeholder="link" />
+
+            <label htmlFor="location" >Location</label>
+            <input id="location" className='form__input' type="text" name="location" placeholder="Location" />
+
+            <label htmlFor="link" >Link</label>
+            <input id="link" className='form__input' type="text" name="link" placeholder="Link" />
 
     {feedback? <p>{feedback}</p> : null}
             <button className="Register__button-primary-full" type="submit">Sumbit</button>

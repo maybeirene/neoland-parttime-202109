@@ -31,8 +31,12 @@ export default function ({ requestId, offerId }) {
                     setContacted(candidate.contacted)
                     setRejected(candidate.rejected)
                 })
+                .catch((error)=>{
+                    setFeedback({level:'error', message: error.message})
+
+                })
         } catch (error) {
-            console.error(error)
+            setFeedback({level:'error', message: error.message})
         }
     }
 
@@ -46,7 +50,7 @@ export default function ({ requestId, offerId }) {
                 })
 
         } catch (error) {
-            console.error(error)
+            setFeedback({level:'error', message: error.message})
         }
     }
     const setProfileRejected = () => {
@@ -56,7 +60,7 @@ export default function ({ requestId, offerId }) {
                     setRejected(true)
                 })
         } catch (error) {
-            console.error(error)
+            setFeedback({level:'error', message: error.message})
         }
     }
 
@@ -76,7 +80,7 @@ export default function ({ requestId, offerId }) {
                     }
                 })
         } catch (error) {
-            console.error(error)
+            setFeedback({level:'error', message: error.message})
         }
     }
 
@@ -109,7 +113,9 @@ export default function ({ requestId, offerId }) {
             </div>
             {feedback? <Feedback level={feedback.level} message={feedback.message}/> : null}
         </div>
-    ) : <h3>requests not found</h3>
+    ) : <>
+    {feedback? <i>{feedback.message}</i> : null}
+    </>
 }
 
 

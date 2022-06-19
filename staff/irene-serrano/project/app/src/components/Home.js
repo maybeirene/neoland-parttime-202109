@@ -13,6 +13,7 @@ import NavDeveloper from './NavDeveloper'
 import DeveloperProfile from './DeveloperProfile'
 import CompanyProfile from './CompanyProfile'
 import CompanyOfferProfile from './CompanyOfferProfile'
+import Footer from './Footer'
 
 export default function ({ onLoggedOut }) {
     const token = sessionStorage.token
@@ -66,6 +67,7 @@ export default function ({ onLoggedOut }) {
                 <Route path="/profile" element={<CompanyProfile onCompanyDeleted={logout}/>} />
             </Routes>
             */}
+          
            <NavCompany handleLogout={logout} />
         </div>
     }

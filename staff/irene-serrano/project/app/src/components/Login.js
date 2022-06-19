@@ -33,8 +33,8 @@ export default function ({onLoggedIn}){
         <a onClick={() => navigate("/")}>back</a>
         <h2 className='Login__title'>Log in</h2>
         <form  className='Login__form' onSubmit={login}>
-            <input className='form__input' type="email" name="email" placeholder="email" />
-            <input className='form__input' type="password" name="password" placeholder="password" />
+            <input className='form__input' type="email" name="email" placeholder="Email" />
+            <input className='form__input' type="password" name="password" placeholder="Password" />
 
             {feedback? <Feedback level={feedback.level} message={feedback.message} />: null}
 

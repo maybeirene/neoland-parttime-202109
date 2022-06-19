@@ -3,9 +3,14 @@ import Landing from './components/Landing'
 import RegisterDeveloper from './components/RegisterDeveloper'
 import RegisterCompany from './components/RegisterCompany'
 import Header from './components/Header';
-
 import Login from './components/Login'
 import Home from './components/Home'
+import Footer from './components/Footer'
+import About from './components/About'
+import LegalAdvice from './components/LegalAdvice'
+import Contact from './components/Contact'
+
+
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import { validators } from 'commons'
@@ -31,8 +36,12 @@ function App() {
       <Route path="/registerCompany" element={loggedIn ? <Navigate to="/" /> : <RegisterCompany onRegistered={handleLoggedIn} />} />
 
       <Route path="/login" element={loggedIn ? <Navigate to="/" /> : <Login onLoggedIn={handleLoggedIn} />} />
-    </Routes>
 
+      <Route path="/legal-advice" element={<LegalAdvice />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
+    <Footer />
   </div>
 }
 

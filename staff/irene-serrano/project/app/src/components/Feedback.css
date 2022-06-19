@@ -5,7 +5,8 @@
 }
 .Feedback{
   background-color: rgba(255, 255, 255, 0.2);
-  width: 350px;
+ 
+  max-width: inherit;
   padding: var(--space-md);
   display: flex;
   justify-content: center;
