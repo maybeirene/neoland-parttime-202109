@@ -9,7 +9,8 @@
 </head>
 
 <body>
- <style>
+<!-- 
+<style>
         :root {
             /* COLORS */
             --color_darkGrey: #505056;
@@ -111,17 +112,74 @@
     </style>
 
 
-    <div>   
-        <main>
-            <h1>Hola, ${developer.name}!</h1>
-            <h3><a href=${company.link}>${company.name}</a> quiere contactar contigo por la oferta de trabajo:</h3>
-            <h3 class="offerTitle">${offer.title}</h3>
+
+  <div style="font-family: -apple-system, BlinkMacSystemFont; color:  #004148;">   
+
+<h1 >Hola, ${developer.name}!</h1>
+<h3><a style="color:#0fd093" href=${company.link}>${company.name}</a> quiere contactar contigo por la oferta de trabajo:</h3>
+
+<br></br>
+<br></br>
+
+<div style="width: 80%; margin: auto; background-color:#f2f2f8; padding: 2rem; border-radius: 0.5rem; border: 2px solid #1ae3a3;  ">
+  <h3>${offer.title}</h3>
+  <p>${offer.minSalary} - ${offer.maxSalary}€</p>
+  <p>${offer.description}</p>
+</div>
+
+
+<br></br>
+<br></br>
+
+<p>Si sigues interesado, envía un correo a <a style="color:#0fd093" >${company.email}</a> presentándote, te están esperando.</p>
+
+<br></br>
+<br></br>
+
+<button style="width: fit-content; margin: 0.5rem auto; padding: 0.5rem 50px; border: 2px solid #1ae3a3; border: none; border-radius: 0.5rem; background-color: #1ae3a3; color:  #004148; font-weight: 700 ;" href=${company.email}>Escribir</button>
+
+</div>
+    -->
+    <div style="font-family: -apple-system, BlinkMacSystemFont; color:  #004148;" >   
+     
+             
+        <h1>Has sido contactado por el formulario de la página web</h1>
+        <div style="width: 80%; margin: auto; background-color:#f2f2f8; padding: 2rem; border-radius: 0.5rem; border: 1px solid #1ae3a3;">
+          <p>${message}</p>
+          
+          <div>
+            <span style="font-weight: 700;">${name}</span>
+          <a style="color:#1ae3a3 ;" >${email}</a>
+          </div>
+          
+        </div>
+        
+
+      </div>
+
+
+
+ <!--
+
+<div style="display:flex; flex-direction:column; max-width: 500px; margin: 0 100px; background-color:#f2f2f8; padding: 3rem; border-radius: 0.5rem; border: 2px solid #1ae3a3; font-family: -apple-system, BlinkMacSystemFont; ">   
     
-            <p>Si sigues interesado, envía un correo a <a>${company.email}</a> presentándote, te están esperando.</p>
-            <button href=${company.email}>Escribir</button>
-    
-        </main>
-    </div>
+    <h1>Hola, ${developer.name}!</h1>
+    <h3>Al equipo de ${company.name} les has gustado</h3>
+
+    <p>Si estas interesado, envía un correo a <a>${company.email}</a> presentándote, te están esperando.</p>
+    <button style="width: fit-content;
+    margin: 0.5rem auto;
+    padding: 0.5rem 50px;
+    border: 2px solid #1ae3a3;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #1ae3a3;
+    color:  #004148;
+    font-weight: 700
+    ;" href=${company.email}>Escribir</button>
+
+  </div>
+ -->   
 </body>
 
 </html> 

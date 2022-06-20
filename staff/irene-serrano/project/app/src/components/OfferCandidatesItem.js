@@ -73,7 +73,11 @@ export default function ({ requestId, offerId }) {
                     try {
                         setRequestContacted( offerId, requestId, sessionStorage.token)
                             .then(() => {
+                                console.log('enviado')
                                 setContacted(true)
+                            })
+                            .catch(error=>{
+                                setFeedback({'level':'error', message: error.message})
                             })
                     } catch (error) {
                         setFeedback({'level':'error', message: error.message})

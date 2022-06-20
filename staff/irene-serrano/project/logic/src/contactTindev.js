@@ -14,8 +14,9 @@ function contactTindev(name, email, message) {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-            user: 'tindev@zohomail.eu',  // generated ethereal user
-            pass: 'qDSP5bMwL5XT', // generated ethereal password
+            user: EMAIL,  
+            pass: PASSWORD, 
+            
 
         },
     })
@@ -24,21 +25,23 @@ function contactTindev(name, email, message) {
     return transporter.sendMail({
         from: '"[TINDEV] Form contact" <tindev@zohomail.eu>', // sender address
         to: 'irenesg1995@gmail.com',
-        subject: "Someone contacted you", // Subject line
-        html: `<div>   
+        subject: "Someone contacted Tindev", // Subject line
+        html: `<div style="font-family: -apple-system, BlinkMacSystemFont; color:  #004148;" >   
      
              
-              <h1>Has sido contactado por el formulario de la página web</h1>
-              <div>
-                <h3 class="">${name}</h3>
-                <h3 class="">${email}</h3>
-                
-                <p>${message}</p>
-                
-              </div>
-              
-      
-            </div>`,
+        <h1 style="color:#004148;" >Has sido contactado por el formulario de la página web</h1>
+        <div style="width: 80%; margin: auto; background-color:#f2f2f8; padding: 2rem; border-radius: 0.5rem; border: 1px solid #1ae3a3;">
+          <p>${message}</p>
+          
+          <div>
+            <span style="font-weight: 700;">${name}</span>
+          <a style="color:#1ae3a3 ;" >${email}</a>
+          </div>
+          
+        </div>
+        
+
+      </div>`,
     })
 }
 

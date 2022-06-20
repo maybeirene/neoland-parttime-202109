@@ -1,6 +1,7 @@
 import './lists.css'
 import { useState, useEffect } from "react"
 import OfferItem from './OfferItem'
+import Feedback from './Feedback'
 import { retrieveAllOffers } from '../logic'
 
 
@@ -14,8 +15,11 @@ function OfferList({ onItemClick }) {
         try {
             retrieveAllOffers(sessionStorage.token)
                 .then(offers => setOffers(offers))
+                .catch(error=>{
+                    setFeedback({level: 'error', message: error.message})
+                })
         } catch (error) {
-            setFeedback(error.message)
+            setFeedback({level: 'error', message: error.message})
         }
     }
     useEffect(() => {
@@ -36,8 +40,8 @@ function OfferList({ onItemClick }) {
 
             })
                 : <div>
-                    <h3>Not found</h3>
-                    {feedback ? <p>{feedback}</p> : null}
+                   
+                    {feedback ? <Feedback level={feedback.level} message={feedback.message} />: null}
                 </div>
             }
         </ul>

@@ -6,6 +6,8 @@ const nodemailer = require("nodemailer");
 const { env: { EMAIL, PASSWORD } } = process
 
 
+
+
 function sendContactEmailFromRequest(requestId, offerId, companyId) {
 
   return User.findById(companyId)
@@ -30,9 +32,8 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
                 port: 465,
                 secure: true, // true for 465, false for other ports
                 auth: {
-                  user: 'tindev@zohomail.eu',  // generated ethereal user
-                  pass: 'qDSP5bMwL5XT', // generated ethereal password
-
+                  user: EMAIL,  
+                  pass: PASSWORD, 
                 },
               });
 
@@ -42,18 +43,32 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
                 //  to: contactedRequest.email, // list of receivers
                 to: 'irenesg1995@gmail.com',
                 subject: "Ey! Alguien te quiere en su equipo!", // Subject line
-                html: `<div style={'max-width': '500px';
-                  'margin': '3rem auto'}>   
-          
-              <h1 style={'color':'green'}>Hola, ${developer.name}!</h1>
-              <h3><a style={'color':'#0fd093'}href=${company.link}>${company.name}</a> quiere contactar contigo por la oferta de trabajo:</h3>
-              <h3 style={'color': 'grey';
-              'font-weight': '900'; 'margin': '0 100px'}>${offer.title}</h3>
-      
-              <p>Si sigues interesado, envía un correo a <a>${company.email}</a> presentándote, te están esperando.</p>
-              <button href=${company.email}>Escribir</button>
-      
-          </div>`,
+                html: `<div style="font-family: -apple-system, BlinkMacSystemFont;flex-wrap: wrap; color:  #004148;">   
+
+                <h1 >Hola, ${developer.name}!</h1>
+                <h3><a style="color:#0fd093" href=${company.link}>${company.name}</a> quiere contactar contigo por la oferta de trabajo:</h3>
+                
+                <br></br>
+                <br></br>
+                
+                <div style="width: 80%; margin: auto; background-color:#f2f2f8; padding: 2rem; border-radius: 0.5rem; border: 2px solid #1ae3a3;  ">
+                  <h3>${offer.title}</h3>
+                  <p>${offer.minSalary} - ${offer.maxSalary}€</p>
+                  <p>${offer.description}</p>
+                </div>
+                
+                
+                <br></br>
+                <br></br>
+                
+                <p>Si sigues interesado, envía un correo a <a style="color:#0fd093" >${company.email}</a> presentándote, te están esperando.</p>
+                
+                <br></br>
+                <br></br>
+                
+                <button style="width: fit-content; margin: 0.5rem auto; padding: 0.5rem 50px; border: 2px solid #1ae3a3; border: none; border-radius: 0.5rem; background-color: #1ae3a3; color:  #004148; font-weight: 700 ;" href=${company.email}>Escribir</button>
+                
+                </div>`,
               })
             })
 
