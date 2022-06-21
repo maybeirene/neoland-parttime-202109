@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import { createOffer } from "../logic"
 
+import Feedback from './Feedback'
+
 export default function () {
     const navigate = useNavigate()
     const [feedback, setFeedback] = useState()
@@ -21,10 +23,11 @@ export default function () {
         try {
             createOffer(sessionStorage.token, title, description, stack, parseInt(minSalary), parseInt(maxSalary), location)
                 .then(() => {
-                    setFeedback('✅ oferta creada')
+                    setFeedback({level: 'success', message: 'Offer created successfully'})
                 })
         } catch (error) {
-            setFeedback(error.message)
+            setFeedback({level: 'error', message: error.message})
+            
         }
     }
     return <div className="CreateOffer">
@@ -56,7 +59,7 @@ export default function () {
             <input id="location" className="CreateOffer__input" type="text" name="location" placeholder="location" required />
 
 
-            {feedback ? <p>{feedback}</p> : null}
+            {feedback ? <Feedback level={feedback.level} message={feedback.message}/> : null}
             <button className="CreateOffer__submitButton" type="submit">Sumbit</button>
 
         </form>

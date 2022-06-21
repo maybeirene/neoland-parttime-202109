@@ -7,12 +7,13 @@ function retrieveCandidate (offerId, requestId) {
     let currentRequest = {}
     return Offer.findById(offerId).lean()
         .then((offer) => {
-            if (!offer) throw new NotFoundError(`offer with id ${offerId} not found`)
+            if (!offer) throw new NotFoundError(`offer not found`)
+            if(offer.active === false) throw new NotFoundError('offer no longer exists')
 
             const { requests } = offer
             const requestIndex =  requests.findIndex((request)=> request._id.toString() === requestId)
             
-            if(requestIndex === -1 ) throw new NotFoundError(`request ${requestId} not found`)
+            if(requestIndex === -1 ) throw new NotFoundError(`request not found`)
 
             currentRequest = requests[requestIndex]
             const developerId = currentRequest.developer.toString()
@@ -20,6 +21,8 @@ function retrieveCandidate (offerId, requestId) {
                 return User.findById({_id: developerId}).lean()
                 .then(dev=>{
                     if(!dev) throw new NotFoundError('cant find this user')
+                    if(dev.active === false) throw new NotFoundError('user no longer exists')
+
                     currentRequest.developerName = dev.name
 
                     currentRequest.id = currentRequest._id.toString()
