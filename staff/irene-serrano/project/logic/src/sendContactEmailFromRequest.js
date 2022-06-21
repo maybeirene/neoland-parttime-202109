@@ -30,7 +30,7 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
               const transporter = nodemailer.createTransport({
                 host: "smtp.zoho.eu",
                 port: 465,
-                secure: true, // true for 465, false for other ports
+                secure: true, 
                 auth: {
                   user: EMAIL,  
                   pass: PASSWORD, 
@@ -39,10 +39,10 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
 
 
               return transporter.sendMail({
-                from: '"Tindev team 🔥" <tindev@zohomail.eu>', // sender address
+                from: '"Tindev team 🔥" <tindev@zohomail.eu>', 
                 //  to: contactedRequest.email, // list of receivers
-                to: 'irenesg1995@gmail.com',
-                subject: "Ey! Alguien te quiere en su equipo!", // Subject line
+                to: 'tindev@zohomail.eu',
+                subject: "Ey! Alguien te quiere en su equipo!", 
                 html: `<div style="font-family: -apple-system, BlinkMacSystemFont;flex-wrap: wrap; color:  #004148;">   
 
                 <h1 >Hola, ${developer.name}!</h1>

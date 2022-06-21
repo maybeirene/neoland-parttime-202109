@@ -24,7 +24,7 @@ function contactTindev(name, email, message) {
 
     return transporter.sendMail({
         from: '"[TINDEV] Form contact" <tindev@zohomail.eu>', // sender address
-        to: 'irenesg1995@gmail.com',
+        to: 'tindev@zohomail.eu',
         subject: "Someone contacted Tindev", // Subject line
         html: `<div style="font-family: -apple-system, BlinkMacSystemFont; color:  #004148;" >   
      
