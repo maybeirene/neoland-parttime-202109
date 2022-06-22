@@ -1,8 +1,11 @@
-# TINDEV
+# ![](images/tindev-logo.png) TINDEV
+
 
 ## INTRO
    
    Tindev is a simple app that connects low experienced developers with companies. No matter age, phisical appearance, gender... all people are valid no matter what, the only thing that matters is the desire to move on.
+
+![](https://thumbs.gfycat.com/HardImpoliteHummingbird-size_restricted.gif)
 
 #
 
@@ -37,7 +40,7 @@ After registering, depending on your role, you can:
 
 
 ### Use cases
-![](images/UseCases.jpg)
+![](images/useCases.jpg)
 
 ### Wireframes
 the first sketches of the application's interface
@@ -64,7 +67,7 @@ the first sketches of the application's interface
 ## TECHNICAL DESCRIPTION
 
 ### Blocks
-![](images/TechnicalBlocks.jpg)
+![](images/technicalBlocks.jpg)
 
 #### Techonologies used
 

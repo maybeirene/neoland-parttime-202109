@@ -73,7 +73,7 @@ export default function ({ requestId, offerId }) {
                     try {
                         setRequestContacted( offerId, requestId, sessionStorage.token)
                             .then(() => {
-                                console.log('enviado')
+                                setFeedback({'level':'info', message: 'Email sent'})
                                 setContacted(true)
                             })
                             .catch(error=>{
@@ -89,7 +89,7 @@ export default function ({ requestId, offerId }) {
     }
 
     return candidate ? (
-        <div className={!seen ? 'OfferCandidateItem-new' : rejected ? 'OfferCandidateItem-rejected' : 'OfferCandidateItem-seen'}>
+        <div className={!seen ? 'OfferCandidateItem OfferCandidateItem-new' : rejected ? 'OfferCandidateItem OfferCandidateItem-rejected' : 'OfferCandidateItem OfferCandidateItem-seen'}>
             <div className="OfferCandidateItem__titleGroup">
 
                 {rejected ? <span className="CandidateItem__name-rejectedAdvice">❌</span>
@@ -118,7 +118,7 @@ export default function ({ requestId, offerId }) {
             {feedback? <Feedback level={feedback.level} message={feedback.message}/> : null}
         </div>
     ) : <>
-    {feedback? <i>{feedback.message}</i> : null}
+    {feedback? <Feedback level={feedback.level} message={feedback.message}/> : null}
     </>
 }
 

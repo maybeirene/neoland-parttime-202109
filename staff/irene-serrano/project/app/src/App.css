@@ -16,6 +16,11 @@
   --color_primary-darker: rgb(0, 65, 72);
   --color_error: rgb(169, 37, 4);
   --color_error-midOpacity: rgba(229, 47, 2, 0.722);
+  --color_error-lowOpacity:rgba(229, 47, 2, 0.2);
+  --color_success: #26d251;
+  --color_success-midOpacity: rgba(39, 211, 82, 0.5);
+  --color_info: rgb(161, 186, 255);
+  --color_info-midOpacity: rgba(161, 186, 255, 0.5);
 
   /* COLORS TINDEV THEME*/
   /*

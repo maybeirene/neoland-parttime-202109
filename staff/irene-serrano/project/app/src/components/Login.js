@@ -24,7 +24,7 @@ export default function ({onLoggedIn}){
                     setFeedback({ level: 'error', message: error.message })
                     if (error.message === 'token expired') delete sessionStorage.token
                 })
-        } catch (error) {
+        } catch (error){
             setFeedback({ level: 'error', message: error.message })
         }
     }

@@ -7,12 +7,15 @@ export default function ({ requests, offerId }) {
     
     return <>
         {candidates?  <ul className='OfferCandidatesList'>
-            {candidates.map(candidate=>{
-                return <li key={candidate.developer} className='OfferCandidatesListItem' >
+           { candidates.length > 0 ?
+            (candidates.map(candidate=>{
+                 return <li key={candidate.developer} className='OfferCandidatesListItem' >
                     <OfferCandidatesItem requestId={candidate._id} offerId={offerId} />
                 </li>
                 })
-            }
-        </ul> : <h3>Candidates not found</h3>}
+            )
+            : <h3 className="OfferCandidates__NotFound">Ups! No one has applied for this offer yet</h3>  }
+        
+        </ul> :  null }
     </>
 }

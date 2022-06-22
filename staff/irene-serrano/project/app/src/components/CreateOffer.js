@@ -24,6 +24,9 @@ export default function () {
             createOffer(sessionStorage.token, title, description, stack, parseInt(minSalary), parseInt(maxSalary), location)
                 .then(() => {
                     setFeedback({level: 'success', message: 'Offer created successfully'})
+                    setTimeout(() => {
+                        navigate('/my-offers')
+                    }, 5000)
                 })
         } catch (error) {
             setFeedback({level: 'error', message: error.message})
@@ -36,10 +39,10 @@ export default function () {
         <form className="CreateOffer__form" onSubmit={newOffer}>
 
             <label htmlFor="title" >Title</label>
-            <input id="title" className="CreateOffer__input" type="text" name="title" placeholder="title" required />
+            <input id="title" className="CreateOffer__input" type="text" name="title" placeholder="Title" required />
 
             <label htmlFor="description" >Description</label>
-            <textarea id="description" className="CreateOffer__input" name="description" placeholder="description" required />
+            <textarea id="description" className="CreateOffer__input" name="description" placeholder="Description" required />
 
             <label htmlFor="stack" >Stack</label>
             <select  id="stack" className="CreateOffer__input" name="stack"  required >
@@ -50,13 +53,13 @@ export default function () {
             </select>
 
             <label htmlFor="minSalary" >Minimun salary</label>
-            <input id="minSalary" className="CreateOffer__input" type="number" name="minSalary" placeholder="minimun salary" required/>
+            <input id="minSalary" className="CreateOffer__input" type="number" min="100" name="minSalary" placeholder="Minimun salary offered" required/>
 
             <label htmlFor="maxSalary" >Maximum salary</label>
-            <input id="maxSalary" className="CreateOffer__input" type="number" name="maxSalary" placeholder="maximun salary" required/>
+            <input id="maxSalary" className="CreateOffer__input" type="number" min="100" name="maxSalary" placeholder="Maximun salary offered" required/>
             
             <label htmlFor="location" >Location</label>
-            <input id="location" className="CreateOffer__input" type="text" name="location" placeholder="location" required />
+            <input id="location" className="CreateOffer__input" type="text" name="location" placeholder="Location" required />
 
 
             {feedback ? <Feedback level={feedback.level} message={feedback.message}/> : null}

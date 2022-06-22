@@ -22,7 +22,7 @@
     font-family: Comfortaa;
     cursor: pointer;
 }
-.ConfirmDeleteUser{
+.ConfirmDeleteUser, .ConfirmDeleteOffer{
     
     background-color: aquamarine;
  
@@ -35,7 +35,7 @@
     align-items: center;
     gap: var(--space-md);
 }
-.ConfirmDeleteUser__cancelButton{
+.ConfirmDeleteUser__cancelButton, .ConfirmDeleteOffer__cancelButton{
     width: fit-content;
     padding: var(--space-sm) var(--space-lg);
     border: var(--line-md) solid var(--color_primary);
@@ -45,10 +45,10 @@
     color: var(--color_primary-darker);
     font-weight: var(--fontWeight-bolder);
 }
-.ConfirmDeleteUser__cancelButton:hover{
+.ConfirmDeleteUser__cancelButton:hover, .ConfirmDeleteOffer__cancelButton:hover{
     background-color: var(--color_primary);
 }
-.ConfirmDeleteUser__deleteButton{
+.ConfirmDeleteUser__deleteButton, .ConfirmDeleteOffer__deleteButton{
     width: fit-content;
     padding: var(--space-sm) var(--space-lg);
     border-radius: var(--space-sm);
@@ -56,7 +56,7 @@
     color: var(--color_error);
     border:none;
 }
-.ConfirmDeleteUser__deleteButton:hover {
+.ConfirmDeleteUser__deleteButton:hover, .ConfirmDeleteOffer__deleteButton:hover {
     background-color: var(--color_error-midOpacity);
     color: var(--color_lighterGrey);
 }

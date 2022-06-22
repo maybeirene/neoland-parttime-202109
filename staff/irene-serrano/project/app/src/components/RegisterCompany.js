@@ -2,12 +2,11 @@ import './Register.css'
 import { registerCompany, authenticateCompany } from '../logic'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import Feedback from './Feedback'
 
 
 export default function ({ onRegistered }) {
 
-    //const { setFeedback } = useContext(Context)
     const [feedback, setFeedback ] =useState()
     const navigate = useNavigate()
     const register = event => {
@@ -34,20 +33,17 @@ export default function ({ onRegistered }) {
                             })
                             .catch(error=> {
                                 delete sessionStorage.token
-                                setFeedback(error.message)
-                              //  console.error(error.message)
+                                setFeedback({ level: 'error', message: error.message })
                             })
                     }catch (error){
                         delete sessionStorage.token
-                        setFeedback(error.message)
-                       // console.error(error.message)
+                        setFeedback({ level: 'error', message: error.message })
                     }
                 
                 })
-               // .catch(error => setFeedback({ level: 'error', message: error.message }))
-               .catch(error  => setFeedback(error.message))
+                .catch(error => setFeedback({ level: 'error', message: error.message }))
         } catch (error) {
-            setFeedback( error.message )
+            setFeedback({ level: 'error', message: error.message })
         }
     }
 
@@ -76,7 +72,7 @@ export default function ({ onRegistered }) {
             <label htmlFor="link" >Link</label>
             <input id="link"  className='form__input' type="text" name="link" placeholder="Link" />
 
-    {feedback? <p>{feedback}</p> : null}
+            {feedback? <Feedback level={feedback.level} message={feedback.message} />: null}
             <button className="Register__button-primary-full" type="submit">Sumbit</button>
         </form>
     </div>
