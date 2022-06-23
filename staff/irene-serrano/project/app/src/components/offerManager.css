@@ -19,10 +19,6 @@
     padding: var(--space-md);
     background-color: rgba(222, 31, 31, 0);
     border-bottom: 1px solid var(--color_mediumlightGrey);
-  /*  display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-md);
@@ -69,14 +65,20 @@
     cursor: pointer;
 }
 
-.OfferCandidates__NotFound{
-   
+.OfferCandidates__NotFound{ 
     height: fit-content;
     width: 100%;
     padding: var(--space-md) ;
     color: grey;
     font-size: var(--text_md);
     grid-column: 1 / 3;
+}
+
+.CreateOffer{
+    margin: 0 var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
 }
 
 .EditOffer{
@@ -150,10 +152,4 @@ textarea.CreateOffer__input {
 .EditOffer__deleteButton:hover {
     background-color: var(--color_error-midOpacity);
     color: var(--color_lighterGrey);
-}
-.CreateOffer{
-    margin: 0 var(--space-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
 }

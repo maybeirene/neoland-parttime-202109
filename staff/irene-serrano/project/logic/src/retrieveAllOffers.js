@@ -1,5 +1,16 @@
 const { models: { Offer } } = require('data')
-const { validators: { validateId }, errors: { NotFoundError } } = require('commons')
+const { errors: { NotFoundError } } = require('commons')
+
+/**
+ * returns an array of all offers, depending on what filter is passed by
+ * 
+ * @param {object} filter An object build with users requests that filters the offers. 
+ * Not mandatory, if is not especified, returns all offers
+ * 
+ * @throws {NotFoundError} When developer is not found
+ * 
+ * @return { [object] } Returns an array with all developer objects that user is active
+ */
 
 function retrieveAllOffers(filter) {
   return Offer.find(filter)
@@ -15,8 +26,6 @@ function retrieveAllOffers(filter) {
 
       })
     })
-
-
 }
 
 module.exports = retrieveAllOffers

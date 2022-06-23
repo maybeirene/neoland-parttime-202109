@@ -1,14 +1,28 @@
 //const { transporter } = require('nodemailer')
 const { models: { User, Offer } } = require('data')
-const { NotFoundError, AuthError } = require('commons/src/errors');
+const { validators: { validateId }, errors: { NotFoundError } } = require('commons')
 
 const nodemailer = require("nodemailer");
 const { env: { EMAIL, PASSWORD } } = process
 
-
+/**
+ * Sends the information from request accepted to developer email
+ * 
+ * @param {string} requestId request id that match developer and offer
+ * @param {string} offerId id from offer that developer has applied
+ * @param {string} companyId copmany that own the offer
+ * @param {string} EMAIL platform administration email
+ * @param {string} PASSWORD platform administration password
+ * 
+ * 
+ * @return {object} email params for Nodemailer
+ */
 
 
 function sendContactEmailFromRequest(requestId, offerId, companyId) {
+  validateId(requestId, 'request id')
+  validateId(companyId, 'company id')
+  validateId(offerId, 'offer id')
 
   return User.findById(companyId)
     .then(company => {
@@ -20,6 +34,7 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
 
           const { requests } = offer
           const requestIndex = requests.findIndex((request) => request.id === requestId)
+          
           if (requestIndex === -1) throw new NotFoundError(`request not found`)
 
           const contactedRequest = requests[requestIndex]
@@ -36,7 +51,6 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
                   pass: PASSWORD, 
                 },
               });
-
 
               return transporter.sendMail({
                 from: '"Tindev team 🔥" <tindev@zohomail.eu>', 
@@ -71,12 +85,7 @@ function sendContactEmailFromRequest(requestId, offerId, companyId) {
                 </div>`,
               })
             })
-
-
-
         })
-
-
     })
 }
 module.exports = sendContactEmailFromRequest

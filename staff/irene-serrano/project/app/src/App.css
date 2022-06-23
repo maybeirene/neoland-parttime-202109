@@ -22,29 +22,6 @@
   --color_info: rgb(161, 186, 255);
   --color_info-midOpacity: rgba(161, 186, 255, 0.5);
 
-  /* COLORS TINDEV THEME*/
-  /*
-  --color_black: hsl(340, 4%, 10%);
-  --color_darkGrey: hsl(340, 4%, 33%);
-  --color_grey: hsl(338, 3%, 46%);
-  --color_mediumlightGrey: hsl(338, 7%, 70%);
-  --color_lightGrey: hsl(339, 16%, 83%);
-  --color_lighterGrey: hsl(340, 30%, 96%);
-  --color_transparent: #0000;
-  
-  --color_primary: #eb2d60;
-  --color_primary-lowOpacity: #d73e6744;
-  --color_primary-dark:#b11f46;
-  --color_primary-darker: #310410;
-  --color_secondary-light: #ffcaac;
-  --color_secondary: #F67831;
-  --color_secondary-dark: #d6621f;
-  --color_secondary-darker: #8f3602;
-  --color_success: #1ae3a3;
-  --color_success-midOpacity:#1ae3a3b8;
-  --color_error: #a92504;
-  --color_error-midOpacity: #e52f02b8;
-*/
 
   /* FONT SIZES */
   --text_title-lg: 3.125rem;
@@ -92,5 +69,9 @@ a:hover{
 input::placeholder,textarea::placeholder{
  color: var(--color_grey);
  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+ 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+}
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
 }

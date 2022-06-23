@@ -1,10 +1,16 @@
-const {
-  models: { User },
-} = require("data");
-const {
-  validators: { validateId },
-  errors: { NotFoundError, AuthError },
-} = require("commons");
+const { models: { User } } = require("data")
+const { validators: { validateId }, errors: { NotFoundError, AuthError } } = require("commons")
+
+/**
+ * returns an object with data from a specific company
+ * 
+ * @param {string} companyId id from company requested
+ * 
+ * @throws {NotFoundError} When company is not found
+ * @throws {AuthError} When user ir not a company
+ * 
+ * @return {object} Returns an object with all company data stored on database
+ */
 
 function retrieveCompany(companyId) {
   validateId(companyId, "company id");

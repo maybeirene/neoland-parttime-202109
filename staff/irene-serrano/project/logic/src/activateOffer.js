@@ -5,14 +5,16 @@ const {
 } = require('commons')
 
 /**
- * Activates user in the platform
+ * Activates offer in the platform 
  * 
  * @param {string} companyId The id of the company that requests the activation
- * @param {*} offerId The offer to be activated
+ * @param {string} offerId The offer to be activated
  * 
  * @throws {NoFoundError} WHen company or offer is not found
  * @throws {AuthError} When company does not correspond to the offer
  */
+
+
 function activateOffer(companyId, offerId ) {
     validateId(companyId, 'company id')
     validateId(offerId, 'offer id')

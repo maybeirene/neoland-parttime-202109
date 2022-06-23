@@ -7,7 +7,7 @@
 
 ![](https://thumbs.gfycat.com/HardImpoliteHummingbird-size_restricted.gif)
 
-#
+
 
 ## FUNCTIONAL DESCRIPTION
 
@@ -62,7 +62,7 @@ the first sketches of the application's interface
 ![](images/wireframes/MANAGE-OFFER_COMPANY.jpg)
 ![](images/wireframes/EDIT-PROFILE_COMPANY.jpg)
 
-#
+---
 
 ## TECHNICAL DESCRIPTION
 
@@ -126,7 +126,7 @@ the first sketches of the application's interface
         rejected: boolean (required),
     }
 
-#
+---
 
 ## TO-DO LIST
 - Update user email and password

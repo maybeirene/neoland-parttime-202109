@@ -73,8 +73,9 @@ export default function ({ requestId, offerId }) {
                     try {
                         setRequestContacted( offerId, requestId, sessionStorage.token)
                             .then(() => {
-                                setFeedback({'level':'info', message: 'Email sent'})
+                                setFeedback({'level':'success', message: 'Email sent'})
                                 setContacted(true)
+                                setTimeout(()=>setFeedback(null), 3000)
                             })
                             .catch(error=>{
                                 setFeedback({'level':'error', message: error.message})
@@ -95,7 +96,7 @@ export default function ({ requestId, offerId }) {
                 {rejected ? <span className="CandidateItem__name-rejectedAdvice">❌</span>
                     : <span>⚪️</span>}
 
-                <p className="CandidateItem__name">{candidate.developerName}</p>
+                <p className="CandidateItem__name" onClick={setProfileSeen}>{candidate.developerName}</p>
 
                 {seen ? null
                     : <span className="CandidateItem__name-newAdvice">New!</span>}

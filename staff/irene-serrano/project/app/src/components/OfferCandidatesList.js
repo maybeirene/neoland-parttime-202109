@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import './candidates.css'
 import OfferCandidatesItem from './OfferCandidatesItem'
+import './candidates.css'
+
 export default function ({ requests, offerId }) {
     const [candidates, setCandidates] = useState(requests)
-    
-    
+
     return <>
         {candidates?  <ul className='OfferCandidatesList'>
            { candidates.length > 0 ?

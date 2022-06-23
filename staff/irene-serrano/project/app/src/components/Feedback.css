@@ -44,3 +44,8 @@
   background-color: var(--color_error-lowOpacity);
   color:var(--color_grey)
 }
+
+.OfferCandidateItem .Feedback--success{
+  width: 100%;
+  opacity: 0.8;
+}
